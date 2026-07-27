@@ -77,7 +77,6 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
         }
 
-        /* Tactile Paper Texture Border */
         .paper-card {
             background-color: #FFFFFF;
             border: 3px solid #1E1B2E;
@@ -90,7 +89,6 @@
             box-shadow: 10px 10px 0px 0px #1E1B2E;
         }
 
-        /* Springy Bounce Hover */
         .btn-bounce {
             transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
             border: 3px solid #1E1B2E;
@@ -104,7 +102,6 @@
             box-shadow: 2px 2px 0px 0px #1E1B2E;
         }
 
-        /* Wavy Cutout Mask Effects */
         .cutout-mask-circle {
             clip-path: circle(0% at 50% 50%);
             transition: clip-path 1.1s cubic-bezier(0.25, 1, 0.5, 1);
@@ -113,7 +110,6 @@
             clip-path: circle(100% at 50% 50%);
         }
 
-        /* Custom Reveal Animation System */
         .reveal-pop {
             opacity: 0;
             transform: scale(0.85) translateY(30px);
@@ -134,7 +130,6 @@
             transform: translateY(0) rotate(0deg);
         }
 
-        /* Custom Cursor Trail Sparkle Particle */
         .magic-particle {
             pointer-events: none;
             position: fixed;
@@ -150,7 +145,7 @@
 </head>
 <body class="bg-brand-cream text-brand-dark font-sans bg-noise selection:bg-brand-yellow selection:text-brand-dark overflow-x-hidden">
 
-    <!-- Navigation Bar -->
+    <!-- ===== NAVIGATION (FIXED) ===== -->
     <nav class="fixed top-0 left-0 right-0 z-50 px-4 py-3 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto">
             <div class="bg-white/90 backdrop-blur-md border-3 border-brand-dark rounded-full px-6 py-3 shadow-fun flex items-center justify-between">
@@ -162,7 +157,7 @@
                             <path d="M12 6v12M4 12h16" stroke="#1E1B2E" stroke-width="2.5" stroke-linecap="round"/>
                         </svg>
                     </div>
-                    <span class="font-display font-bold text-2xl tracking-wide text-brand-dark">Nookly<span class="text-brand-coral">.</span></span>
+                    <span class="font-display font-bold text-2xl tracking-wide text-brand-dark" data-cms-edit="site-title">Nookly<span class="text-brand-coral">.</span></span>
                 </a>
 
                 <!-- Desktop Navigation Links -->
@@ -175,19 +170,34 @@
                     <li><a href="contact.html" class="hover:text-brand-blue hover:underline decoration-brand-mint decoration-4 underline-offset-4 transition-all">Contact</a></li>
                 </ul>
 
-                <!-- CTA Button -->
-                <div class="hidden sm:block">
-                    <a href="#membership" class="btn-bounce bg-brand-coral text-white font-display font-bold text-sm py-2.5 px-6 rounded-full shadow-fun-coral flex items-center gap-2">
+                <!-- CTA Button (desktop) – linked to homepage membership -->
+                <div class="hidden md:block">
+                    <a href="index.html#membership" class="btn-bounce bg-brand-coral text-white font-display font-bold text-sm py-2.5 px-6 rounded-full shadow-fun-coral flex items-center gap-2">
                         <span>Become a Member</span>
                         <span class="text-lg">✨</span>
                     </a>
                 </div>
 
-                <!-- Mobile Menu Button -->
-                <button class="md:hidden w-10 h-10 border-2 border-brand-dark rounded-xl bg-brand-yellow flex items-center justify-center font-bold" id="mobile-menu-btn" aria-label="Toggle Menu">
-                    🍔
+                <!-- Mobile Menu Toggle Button (SVG icon) -->
+                <button class="md:hidden w-10 h-10 border-2 border-brand-dark rounded-xl bg-brand-yellow flex items-center justify-center" id="mobile-menu-btn" aria-label="Toggle menu">
+                    <svg class="w-6 h-6" fill="none" stroke="#1E1B2E" stroke-width="3" stroke-linecap="round">
+                        <path d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
                 </button>
             </div>
+        </div>
+
+        <!-- Mobile Navigation Panel (hidden by default) -->
+        <div id="mobile-nav" class="md:hidden hidden absolute top-20 left-4 right-4 bg-white border-3 border-brand-dark rounded-3xl shadow-fun-lg p-6 z-50">
+            <ul class="flex flex-col items-center gap-4 font-bold text-lg text-brand-dark">
+                <li><a href="index.html" class="hover:text-brand-blue">Home</a></li>
+                <li><a href="about.html" class="text-brand-blue">About</a></li>
+                <li><a href="library.html" class="hover:text-brand-blue">Library</a></li>
+                <li><a href="bookclub.html" class="hover:text-brand-blue">Book Club</a></li>
+                <li><a href="events.html" class="hover:text-brand-blue">Events</a></li>
+                <li><a href="contact.html" class="hover:text-brand-blue">Contact</a></li>
+                <li><a href="index.html#membership" class="btn-bounce bg-brand-coral text-white w-full text-center py-3 rounded-2xl">Become a Member ✨</a></li>
+            </ul>
         </div>
     </nav>
 
@@ -205,7 +215,7 @@
         <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
             
             <!-- Hero Badge -->
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-yellow border-2 border-brand-dark shadow-[3px_3px_0px_0px_#1E1B2E] text-brand-dark font-display font-bold text-xs uppercase tracking-wider mb-6 animate-bounce">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-yellow border-2 border-brand-dark shadow-[3px_3px_0px_0px_#1E1B2E] text-brand-dark font-display font-bold text-xs uppercase tracking-wider mb-6 animate-bounce" data-cms-edit="hero-badge">
                 <span class="text-base">💛</span> Our Story & Heart
             </div>
 
@@ -219,12 +229,12 @@
                 </span>
             </h1>
 
-            <p class="text-lg sm:text-xl text-brand-dark/80 font-medium mb-10 leading-relaxed max-w-2xl mx-auto">
+            <p class="text-lg sm:text-xl text-brand-dark/80 font-medium mb-10 leading-relaxed max-w-2xl mx-auto" data-cms-edit="hero-description">
                 A modern reading club and community library built on curiosity, creativity, and the belief that every child deserves a magical space to grow.
             </p>
 
             <!-- Quick Stats Pills -->
-            <div class="flex flex-wrap items-center justify-center gap-4 max-w-3xl mx-auto reveal-pop">
+            <div class="flex flex-wrap items-center justify-center gap-4 max-w-3xl mx-auto reveal-pop" data-cms-repeat="hero-stats">
                 <div class="bg-white border-3 border-brand-dark rounded-2xl px-5 py-3 shadow-fun flex items-center gap-3">
                     <span class="text-3xl">📚</span>
                     <div class="text-left">
@@ -311,21 +321,21 @@
                         Our Story
                     </span>
                     
-                    <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark mb-6">
+                    <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark mb-6" data-cms-edit="story-title">
                         How a Small Book Nook Became a Community
                     </h2>
 
                     <div class="space-y-4 text-brand-dark/80 font-medium text-lg leading-relaxed mb-8">
-                        <p>
+                        <p data-cms-edit="story-text-1">
                             Nookly started in a cozy corner of a neighborhood café where a few parents gathered to read with their children. What began as a weekly storytelling circle quickly grew into a vibrant club with hundreds of families, dedicated educators, and a shared mission to make reading an adventure.
                         </p>
-                        <p>
+                        <p data-cms-edit="story-text-2">
                             Today, Nookly is a warm, inclusive space where children aged 4–12 explore new worlds through books, workshops, and events — all while building confidence and a lifelong love for learning.
                         </p>
                     </div>
 
                     <!-- Timeline Mini Steps -->
-                    <div class="grid sm:grid-cols-3 gap-4">
+                    <div class="grid sm:grid-cols-3 gap-4" data-cms-repeat="timeline">
                         <div class="paper-card p-4 rounded-2xl bg-white text-center">
                             <span class="font-display font-extrabold text-lg text-brand-coral block">2021</span>
                             <span class="text-xs font-bold text-brand-dark/70">Café Story Corner</span>
@@ -362,7 +372,7 @@
             </div>
 
             <!-- Cards Grid -->
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-3 gap-8" data-cms-repeat="core-values">
                 
                 <!-- Mission Card -->
                 <div class="paper-card rounded-[2.5rem] p-8 bg-white reveal-pop relative overflow-hidden group">
@@ -372,8 +382,8 @@
                     <div class="w-16 h-16 rounded-2xl bg-brand-peach border-2 border-brand-dark flex items-center justify-center text-3xl mb-6 shadow-fun group-hover:rotate-12 transition-transform">
                         🎯
                     </div>
-                    <h3 class="font-display font-bold text-2xl text-brand-dark mb-3">Mission</h3>
-                    <p class="text-brand-dark/75 font-medium leading-relaxed">
+                    <h3 class="font-display font-bold text-2xl text-brand-dark mb-3" data-cms-edit="mission-title">Mission</h3>
+                    <p class="text-brand-dark/75 font-medium leading-relaxed" data-cms-edit="mission-text">
                         To ignite curiosity and a love for reading in every child through engaging stories, hands-on activities, and a supportive community.
                     </p>
                 </div>
@@ -386,8 +396,8 @@
                     <div class="w-16 h-16 rounded-2xl bg-brand-mint border-2 border-brand-dark flex items-center justify-center text-3xl mb-6 shadow-fun group-hover:-rotate-12 transition-transform">
                         🔭
                     </div>
-                    <h3 class="font-display font-bold text-2xl text-brand-dark mb-3">Vision</h3>
-                    <p class="text-brand-dark/75 font-medium leading-relaxed">
+                    <h3 class="font-display font-bold text-2xl text-brand-dark mb-3" data-cms-edit="vision-title">Vision</h3>
+                    <p class="text-brand-dark/75 font-medium leading-relaxed" data-cms-edit="vision-text">
                         A world where all children see themselves as confident readers and imaginative thinkers, empowered to shape their own futures.
                     </p>
                 </div>
@@ -400,9 +410,9 @@
                     <div class="w-16 h-16 rounded-2xl bg-brand-yellow border-2 border-brand-dark flex items-center justify-center text-3xl mb-6 shadow-fun group-hover:rotate-12 transition-transform">
                         💖
                     </div>
-                    <h3 class="font-display font-bold text-2xl text-brand-dark mb-3">Values</h3>
+                    <h3 class="font-display font-bold text-2xl text-brand-dark mb-3" data-cms-edit="values-title">Values</h3>
                     
-                    <ul class="space-y-2 text-brand-dark/80 font-medium">
+                    <ul class="space-y-2 text-brand-dark/80 font-medium" data-cms-repeat="values-list">
                         <li class="flex items-center gap-2"><span class="text-brand-coral font-bold">•</span> <strong>Curiosity:</strong> We ask questions.</li>
                         <li class="flex items-center gap-2"><span class="text-brand-blue font-bold">•</span> <strong>Inclusivity:</strong> Every voice matters.</li>
                         <li class="flex items-center gap-2"><span class="text-brand-lime font-bold">•</span> <strong>Joy:</strong> Learning is an adventure.</li>
@@ -427,23 +437,23 @@
                 <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark mb-4">
                     Meet Our Team
                 </h2>
-                <p class="text-brand-dark/80 font-medium text-lg">
+                <p class="text-brand-dark/80 font-medium text-lg" data-cms-edit="team-description">
                     Passionate educators, storytellers, and dreamers dedicated to making Nookly a second home for curious minds.
                 </p>
             </div>
 
             <!-- Team Grid -->
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8" data-cms-repeat="team">
                 
                 <!-- Member 1 -->
                 <div class="paper-card rounded-[2.5rem] p-6 bg-white text-center reveal-pop group">
                     <div class="w-28 h-28 mx-auto rounded-full bg-brand-yellow border-3 border-brand-dark flex items-center justify-center text-5xl mb-5 shadow-fun group-hover:scale-105 group-hover:rotate-6 transition-transform">
                         👩‍🏫
                     </div>
-                    <h3 class="font-display font-bold text-2xl text-brand-dark mb-1">Ms. Priya</h3>
-                    <p class="text-brand-coral font-bold text-sm mb-3">Founder & Head Storyteller</p>
+                    <h3 class="font-display font-bold text-2xl text-brand-dark mb-1" data-cms-edit="team-name">Ms. Priya</h3>
+                    <p class="text-brand-coral font-bold text-sm mb-3" data-cms-edit="team-role">Founder & Head Storyteller</p>
                     <div class="bg-brand-cream border-2 border-brand-dark rounded-xl p-2.5 text-xs font-semibold text-brand-dark/80 shadow-[2px_2px_0px_0px_#1E1B2E]">
-                        Favorite Book: <span class="text-brand-blue">Matilda 📚</span>
+                        Favorite Book: <span class="text-brand-blue" data-cms-edit="team-fav-book">Matilda 📚</span>
                     </div>
                 </div>
 
@@ -452,10 +462,10 @@
                     <div class="w-28 h-28 mx-auto rounded-full bg-brand-lime border-3 border-brand-dark flex items-center justify-center text-5xl mb-5 shadow-fun group-hover:scale-105 group-hover:-rotate-6 transition-transform">
                         🧑‍🎨
                     </div>
-                    <h3 class="font-display font-bold text-2xl text-brand-dark mb-1">Mr. James</h3>
-                    <p class="text-brand-blue font-bold text-sm mb-3">Creative Workshop Lead</p>
+                    <h3 class="font-display font-bold text-2xl text-brand-dark mb-1" data-cms-edit="team-name">Mr. James</h3>
+                    <p class="text-brand-blue font-bold text-sm mb-3" data-cms-edit="team-role">Creative Workshop Lead</p>
                     <div class="bg-brand-cream border-2 border-brand-dark rounded-xl p-2.5 text-xs font-semibold text-brand-dark/80 shadow-[2px_2px_0px_0px_#1E1B2E]">
-                        Favorite Book: <span class="text-brand-purple">Wild Things 🎨</span>
+                        Favorite Book: <span class="text-brand-purple" data-cms-edit="team-fav-book">Wild Things 🎨</span>
                     </div>
                 </div>
 
@@ -464,10 +474,10 @@
                     <div class="w-28 h-28 mx-auto rounded-full bg-brand-purple text-white border-3 border-brand-dark flex items-center justify-center text-5xl mb-5 shadow-fun group-hover:scale-105 group-hover:rotate-6 transition-transform">
                         👩‍🔬
                     </div>
-                    <h3 class="font-display font-bold text-2xl text-brand-dark mb-1">Dr. Aisha</h3>
-                    <p class="text-brand-purple font-bold text-sm mb-3">Literacy Specialist</p>
+                    <h3 class="font-display font-bold text-2xl text-brand-dark mb-1" data-cms-edit="team-name">Dr. Aisha</h3>
+                    <p class="text-brand-purple font-bold text-sm mb-3" data-cms-edit="team-role">Literacy Specialist</p>
                     <div class="bg-brand-cream border-2 border-brand-dark rounded-xl p-2.5 text-xs font-semibold text-brand-dark/80 shadow-[2px_2px_0px_0px_#1E1B2E]">
-                        Favorite Book: <span class="text-brand-coral">Phantom Tollbooth 🔬</span>
+                        Favorite Book: <span class="text-brand-coral" data-cms-edit="team-fav-book">Phantom Tollbooth 🔬</span>
                     </div>
                 </div>
 
@@ -476,10 +486,10 @@
                     <div class="w-28 h-28 mx-auto rounded-full bg-brand-peach border-3 border-brand-dark flex items-center justify-center text-5xl mb-5 shadow-fun group-hover:scale-105 group-hover:-rotate-6 transition-transform">
                         🧑‍💻
                     </div>
-                    <h3 class="font-display font-bold text-2xl text-brand-dark mb-1">Leo</h3>
-                    <p class="text-brand-mintDark text-brand-dark font-bold text-sm mb-3">Community Manager</p>
+                    <h3 class="font-display font-bold text-2xl text-brand-dark mb-1" data-cms-edit="team-name">Leo</h3>
+                    <p class="text-brand-mintDark text-brand-dark font-bold text-sm mb-3" data-cms-edit="team-role">Community Manager</p>
                     <div class="bg-brand-cream border-2 border-brand-dark rounded-xl p-2.5 text-xs font-semibold text-brand-dark/80 shadow-[2px_2px_0px_0px_#1E1B2E]">
-                        Favorite Book: <span class="text-brand-blue">The Little Prince 🦊</span>
+                        Favorite Book: <span class="text-brand-blue" data-cms-edit="team-fav-book">The Little Prince 🦊</span>
                     </div>
                 </div>
 
@@ -502,36 +512,36 @@
             </div>
 
             <!-- Gallery Grid -->
-            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6" data-cms-repeat="gallery">
                 
                 <div class="paper-card rounded-[2.5rem] p-6 bg-brand-yellow flex flex-col items-center justify-center aspect-[4/3] reveal-pop cursor-pointer group">
                     <span class="text-7xl group-hover:scale-125 group-hover:rotate-6 transition-transform filter drop-shadow-[2px_2px_0px_#1E1B2E]">📚</span>
-                    <span class="mt-4 font-display font-bold text-brand-dark bg-white border-2 border-brand-dark px-4 py-1.5 rounded-xl shadow-[2px_2px_0px_0px_#1E1B2E]">Storytime Saturdays</span>
+                    <span class="mt-4 font-display font-bold text-brand-dark bg-white border-2 border-brand-dark px-4 py-1.5 rounded-xl shadow-[2px_2px_0px_0px_#1E1B2E]" data-cms-edit="gallery-label">Storytime Saturdays</span>
                 </div>
 
                 <div class="paper-card rounded-[2.5rem] p-6 bg-brand-lime flex flex-col items-center justify-center aspect-[4/3] reveal-pop delay-100 cursor-pointer group">
                     <span class="text-7xl group-hover:scale-125 group-hover:-rotate-6 transition-transform filter drop-shadow-[2px_2px_0px_#1E1B2E]">🎨</span>
-                    <span class="mt-4 font-display font-bold text-brand-dark bg-white border-2 border-brand-dark px-4 py-1.5 rounded-xl shadow-[2px_2px_0px_0px_#1E1B2E]">Crafts & Characters</span>
+                    <span class="mt-4 font-display font-bold text-brand-dark bg-white border-2 border-brand-dark px-4 py-1.5 rounded-xl shadow-[2px_2px_0px_0px_#1E1B2E]" data-cms-edit="gallery-label">Crafts & Characters</span>
                 </div>
 
                 <div class="paper-card rounded-[2.5rem] p-6 bg-brand-purple flex flex-col items-center justify-center aspect-[4/3] reveal-pop delay-200 cursor-pointer group">
                     <span class="text-7xl group-hover:scale-125 group-hover:rotate-6 transition-transform filter drop-shadow-[2px_2px_0px_#1E1B2E]">🌟</span>
-                    <span class="mt-4 font-display font-bold text-brand-dark bg-white border-2 border-brand-dark px-4 py-1.5 rounded-xl shadow-[2px_2px_0px_0px_#1E1B2E]">Starry Night Tales</span>
+                    <span class="mt-4 font-display font-bold text-brand-dark bg-white border-2 border-brand-dark px-4 py-1.5 rounded-xl shadow-[2px_2px_0px_0px_#1E1B2E]" data-cms-edit="gallery-label">Starry Night Tales</span>
                 </div>
 
                 <div class="paper-card rounded-[2.5rem] p-6 bg-brand-peach flex flex-col items-center justify-center aspect-[4/3] reveal-pop cursor-pointer group">
                     <span class="text-7xl group-hover:scale-125 group-hover:-rotate-6 transition-transform filter drop-shadow-[2px_2px_0px_#1E1B2E]">🎪</span>
-                    <span class="mt-4 font-display font-bold text-brand-dark bg-white border-2 border-brand-dark px-4 py-1.5 rounded-xl shadow-[2px_2px_0px_0px_#1E1B2E]">Book Costume Day</span>
+                    <span class="mt-4 font-display font-bold text-brand-dark bg-white border-2 border-brand-dark px-4 py-1.5 rounded-xl shadow-[2px_2px_0px_0px_#1E1B2E]" data-cms-edit="gallery-label">Book Costume Day</span>
                 </div>
 
                 <div class="paper-card rounded-[2.5rem] p-6 bg-brand-mint flex flex-col items-center justify-center aspect-[4/3] reveal-pop delay-100 cursor-pointer group">
                     <span class="text-7xl group-hover:scale-125 group-hover:rotate-6 transition-transform filter drop-shadow-[2px_2px_0px_#1E1B2E]">📖</span>
-                    <span class="mt-4 font-display font-bold text-brand-dark bg-white border-2 border-brand-dark px-4 py-1.5 rounded-xl shadow-[2px_2px_0px_0px_#1E1B2E]">Quiet Reading Nooks</span>
+                    <span class="mt-4 font-display font-bold text-brand-dark bg-white border-2 border-brand-dark px-4 py-1.5 rounded-xl shadow-[2px_2px_0px_0px_#1E1B2E]" data-cms-edit="gallery-label">Quiet Reading Nooks</span>
                 </div>
 
                 <div class="paper-card rounded-[2.5rem] p-6 bg-brand-coral flex flex-col items-center justify-center aspect-[4/3] reveal-pop delay-200 cursor-pointer group">
                     <span class="text-7xl group-hover:scale-125 group-hover:-rotate-6 transition-transform filter drop-shadow-[2px_2px_0px_#1E1B2E]">🧩</span>
-                    <span class="mt-4 font-display font-bold text-brand-dark bg-white border-2 border-brand-dark px-4 py-1.5 rounded-xl shadow-[2px_2px_0px_0px_#1E1B2E]">Puzzle & Quest Hours</span>
+                    <span class="mt-4 font-display font-bold text-brand-dark bg-white border-2 border-brand-dark px-4 py-1.5 rounded-xl shadow-[2px_2px_0px_0px_#1E1B2E]" data-cms-edit="gallery-label">Puzzle & Quest Hours</span>
                 </div>
 
             </div>
@@ -550,7 +560,7 @@
                 <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark mb-4">
                     Ready to Start the Adventure?
                 </h2>
-                <p class="text-brand-dark/80 font-medium text-lg mb-8 max-w-lg mx-auto">
+                <p class="text-brand-dark/80 font-medium text-lg mb-8 max-w-lg mx-auto" data-cms-edit="cta-text">
                     Join Nookly today and give your child the gift of imagination, community, and lifelong learning.
                 </p>
                 <a href="index.html#membership" class="inline-flex items-center gap-3 btn-bounce bg-brand-coral text-white font-display font-bold text-lg py-4 px-10 rounded-2xl shadow-fun-coral">
@@ -668,27 +678,24 @@
 
         // 3. Mobile Menu Toggle
         const mobileBtn = document.getElementById('mobile-menu-btn');
-        if (mobileBtn) {
+        const mobileNav = document.getElementById('mobile-nav');
+        if (mobileBtn && mobileNav) {
             mobileBtn.addEventListener('click', () => {
-                const navLinks = document.querySelector('nav ul');
-                if (navLinks) {
-                    navLinks.classList.toggle('hidden');
-                    navLinks.classList.toggle('flex');
-                    navLinks.classList.toggle('flex-col');
-                    navLinks.classList.toggle('absolute');
-                    navLinks.classList.toggle('top-16');
-                    navLinks.classList.toggle('left-4');
-                    navLinks.classList.toggle('right-4');
-                    navLinks.classList.toggle('bg-white');
-                    navLinks.classList.toggle('p-6');
-                    navLinks.classList.toggle('rounded-2xl');
-                    navLinks.classList.toggle('border-3');
-                    navLinks.classList.toggle('border-brand-dark');
-                    navLinks.classList.toggle('shadow-fun');
-                }
+                mobileNav.classList.toggle('hidden');
             });
         }
-    </script>
 
+        // 4. Navbar Shadow on Scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 30) {
+                navbar.classList.add('py-1');
+                navbar.classList.remove('py-3');
+            } else {
+                navbar.classList.add('py-3');
+                navbar.classList.remove('py-1');
+            }
+        });
+    </script>
 </body>
 </html>
