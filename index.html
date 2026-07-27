@@ -4,21 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Nookly - Where curious minds grow. A modern children's reading club and community library.">
-  <title>Nookly - Where Curious Minds Grow</title>
+  <title>Nookly – Where Curious Minds Grow</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --blue: #4F7CFF;
-      --mint: #3DD6B5;
-      --purple: #8B6DFF;
-      --coral: #FF6B7A;
-      --sun: #FFD166;
-      --peach: #FFA58C;
-      --bg: #F9FAFB;
-      --white: #fff;
-      --text: #1D2939;
-      --text-light: #667085;
-      --border: #E6ECF5;
+      --blue: #3B6FFF;
+      --coral: #FF5E7A;
+      --lime: #7ED957;
+      --yellow: #FFD23F;
+      --purple: #B388FF;
+      --peach: #FFB08A;
+      --bg: #FFFDF9;
+      --white: #FFFFFF;
+      --text: #1A1D2E;
+      --text-light: #4A4E5E;
+      --border: #E6E1D6;
       --radius: 28px;
       --font: 'Plus Jakarta Sans', sans-serif;
     }
@@ -33,34 +33,33 @@
       overflow-x: hidden;
     }
 
-    h1 { font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; }
-    h2 { font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; }
+    h1 { font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; }
+    h2 { font-size: clamp(2rem, 4.5vw, 3.5rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; }
     h3 { font-size: 1.5rem; font-weight: 700; }
     p { font-size: 1.15rem; color: var(--text-light); max-width: 600px; }
 
     .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
     .section { padding: 100px 24px; }
 
+    /* BUTTONS – solid colors */
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
       padding: 18px 36px; border-radius: 40px; font-weight: 700; font-size: 1rem;
       transition: all 0.25s ease; cursor: pointer; text-decoration: none; border: none;
+      color: white;
     }
-    .btn-primary {
-      background: var(--blue); color: white; box-shadow: 0 10px 25px rgba(79,124,255,0.3);
-    }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(79,124,255,0.4); }
-    .btn-outline {
-      background: transparent; color: var(--blue); border: 2px solid var(--blue);
-    }
+    .btn-primary { background: var(--blue); box-shadow: 0 8px 20px rgba(59,111,255,0.25); }
+    .btn-primary:hover { background: #2B5CEB; transform: translateY(-3px); box-shadow: 0 12px 28px rgba(59,111,255,0.4); }
+    .btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); box-shadow: none; }
     .btn-outline:hover { background: var(--blue); color: white; }
+    .btn-coral { background: var(--coral); box-shadow: 0 8px 20px rgba(255,94,122,0.25); }
+    .btn-coral:hover { background: #E84D68; transform: translateY(-3px); box-shadow: 0 12px 28px rgba(255,94,122,0.4); }
 
-    /* ----- NAVIGATION ----- */
+    /* NAV – solid white */
     .nav {
       position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
-      background: rgba(255,255,255,0.85); backdrop-filter: blur(12px);
+      background: var(--white); border-bottom: 1px solid var(--border);
       padding: 0 24px; height: 80px; display: flex; align-items: center;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
     }
     .nav-inner {
       width: 100%; max-width: 1200px; margin: 0 auto;
@@ -71,107 +70,183 @@
       width: 40px; height: 40px; background: var(--blue); border-radius: 12px;
       display: flex; align-items: center; justify-content: center; color: white;
     }
-    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
     .nav-links a { font-weight: 600; color: var(--text); transition: color 0.2s; }
     .nav-links a:hover { color: var(--blue); }
 
-    /* ----- HERO (asymmetric, no circles) ----- */
+    /* HERO – flat peach background, no gradient */
     .hero {
       padding: 160px 24px 120px;
-      background: linear-gradient(135deg, #EEF2FF 0%, #F9FAFB 100%);
+      background: #FFF0E5;
       position: relative; overflow: hidden;
     }
     .hero-grid {
       display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
       align-items: center; max-width: 1200px; margin: 0 auto;
     }
-    .hero-text { z-index: 2; }
-    .hero-text h1 { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 24px; }
+    .hero-text h1 {
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+    .hero-text h1 em {
+      font-style: normal;
+      color: var(--coral);
+    }
     .hero-illustration {
       position: relative;
       width: 100%; max-width: 520px; margin: 0 auto;
-      background: linear-gradient(135deg, var(--sun), var(--coral));
+      background: var(--yellow);
       border-radius: 40px;
       aspect-ratio: 1 / 1;
       display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 30px 60px rgba(255,107,122,0.3);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.06);
     }
-    .hero-illustration img { width: 75%; }
     .hero-bg-shape {
-      position: absolute; top: -120px; right: -60px; width: 500px; height: 500px;
-      background: rgba(255,166,140,0.25); border-radius: 80px;
-      transform: rotate(45deg); z-index: 0;
+      position: absolute; top: -60px; right: -40px; width: 300px; height: 300px;
+      background: var(--lime); border-radius: 60px; transform: rotate(30deg); z-index: 0;
+      opacity: 0.3;
     }
 
-    /* ----- ALTERNATING BACKGROUNDS ----- */
-    .bg-soft-blue { background: #F0F4FF; }
-    .bg-soft-mint { background: #E6FFF8; }
-    .bg-soft-purple { background: #F3F0FF; }
-    .bg-soft-coral { background: #FFF0EE; }
+    /* Section backgrounds – flat tints */
+    .bg-warm-yellow { background: #FFF8E7; }
+    .bg-warm-green { background: #F0FFE8; }
+    .bg-warm-purple { background: #F8F0FF; }
+    .bg-warm-coral { background: #FFF0EE; }
+    .bg-warm-peach { background: #FFF4EC; }
     .bg-white { background: white; }
 
-    /* ----- FEATURED BLOCK (editorial) ----- */
+    /* FEATURED BLOCK – flat colors */
     .featured-grid {
       display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
     }
     .featured-image {
-      background: linear-gradient(135deg, var(--mint), #FFF);
+      background: var(--lime);
       border-radius: 36px; aspect-ratio: 1 / 1;
       display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.05);
     }
-    .featured-image span { font-size: 5rem; }
 
-    /* ----- CARDS (no circles) ----- */
+    /* CARDS – flat white with top stripe */
     .cards-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 36px; margin-top: 48px;
     }
     .card {
       background: white; border-radius: var(--radius); padding: 36px;
-      box-shadow: 0 6px 24px rgba(0,0,0,0.04); transition: all 0.3s ease;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
     .card:hover { transform: translateY(-8px); box-shadow: 0 16px 32px rgba(0,0,0,0.08); }
-    .card-icon { width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 20px; }
-
-    /* ----- EVENTS (timeline style) ----- */
-    .events-list { display: flex; flex-direction: column; gap: 20px; }
-    .event-item {
-      display: flex; align-items: center; gap: 24px; background: white;
-      padding: 24px; border-radius: 24px; box-shadow: 0 6px 20px rgba(0,0,0,0.03);
+    .card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 6px;
+      background: var(--blue);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
     }
-    .event-date {
-      background: var(--blue); color: white; border-radius: 16px;
-      padding: 10px 20px; text-align: center; font-weight: 700;
-      min-width: 70px; font-size: 1.2rem;
+    .card:hover::before { transform: scaleX(1); }
+    .card-icon {
+      width: 64px; height: 64px; border-radius: 24px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 32px; margin-bottom: 20px;
     }
 
-    /* ----- MEMBERSHIP ----- */
+    /* EXPLORE CATEGORIES – pill style, flat */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .category-pill {
+      background: white;
+      border-radius: 50px;
+      padding: 28px 20px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+      transition: all 0.25s ease;
+      border: 2px solid transparent;
+      cursor: pointer;
+    }
+    .category-pill:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+      border-color: var(--blue);
+    }
+    .category-pill span { font-size: 2rem; display: block; margin-bottom: 8px; }
+
+    /* EVENTS – timeline, flat date badges */
+    .events-timeline {
+      display: flex; flex-direction: column; gap: 32px;
+      position: relative;
+      margin-top: 48px;
+    }
+    .event-entry {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+    .event-date-badge {
+      width: 80px; height: 80px;
+      background: var(--coral);
+      color: white;
+      border-radius: 50%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      font-weight: 800;
+      font-size: 1.4rem;
+      line-height: 1.2;
+      box-shadow: 0 10px 20px rgba(255,94,122,0.25);
+      transition: transform 0.3s;
+    }
+    .event-entry:hover .event-date-badge { transform: scale(1.1); }
+    .event-info {
+      background: white;
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.03);
+    }
+
+    /* MEMBERSHIP – flat cards */
     .pricing-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
     }
     .pricing-card {
-      background: white; border-radius: var(--radius); padding: 40px 30px;
-      text-align: center; box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+      background: white;
+      border-radius: 32px;
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+      transition: all 0.3s;
     }
     .pricing-card.featured {
       border: 2px solid var(--blue);
-      background: linear-gradient(white, #F0F4FF);
+      background: #F5F9FF;
       transform: scale(1.05);
     }
     .price { font-size: 3rem; font-weight: 800; color: var(--blue); margin: 20px 0; }
 
-    /* ----- NEWSLETTER ----- */
+    /* NEWSLETTER */
     .newsletter-form {
       display: flex; gap: 12px; max-width: 500px; margin: 0 auto;
     }
     .newsletter-form input {
       flex: 1; padding: 16px 24px; border: 2px solid var(--border);
       border-radius: 40px; font-family: var(--font); font-size: 1rem;
+      background: white;
     }
     .newsletter-form input:focus { outline: none; border-color: var(--blue); }
 
-    /* ----- FOOTER ----- */
+    /* FOOTER */
     .footer {
       background: var(--text); color: white; padding: 60px 24px 30px;
     }
@@ -179,20 +254,18 @@
       display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
       gap: 40px; margin-bottom: 40px;
     }
-    .footer a { color: #BCC4D4; transition: color 0.2s; }
+    .footer a { color: #AAB2C0; transition: color 0.2s; }
     .footer a:hover { color: white; }
 
-    /* ----- ANIMATIONS (more dynamic) ----- */
+    /* ANIMATIONS – same reveal system */
     .reveal {
-      opacity: 0; transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+      opacity: 0; transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
     }
     .reveal.from-left { transform: translateX(-40px); }
     .reveal.from-right { transform: translateX(40px); }
     .reveal.from-bottom { transform: translateY(40px); }
     .reveal.scale-in { transform: scale(0.95); }
-    .reveal.visible {
-      opacity: 1; transform: translate(0) scale(1);
-    }
+    .reveal.visible { opacity: 1; transform: translate(0) scale(1); }
 
     @media (max-width: 768px) {
       .hero-grid, .featured-grid { grid-template-columns: 1fr; text-align: center; }
@@ -206,47 +279,46 @@
   <!-- Navigation -->
   <nav class="nav">
     <div class="nav-inner">
-      <a href="#" class="logo">
+      <a href="index.html" class="logo">
         <div class="logo-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" fill="white" opacity=".8"/><path d="M12 6v12M4 12h16" stroke="white" stroke-width="2"/></svg></div>
         Nookly
       </a>
       <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Library</a></li>
-        <li><a href="#">Book Club</a></li>
-        <li><a href="#">Events</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="library.html">Library</a></li>
+        <li><a href="bookclub.html">Book Club</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
-      <a href="#" class="btn btn-primary">Become a Member</a>
+      <a href="#" class="btn btn-coral">Become a Member</a>
     </div>
   </nav>
 
-  <!-- Hero (asymmetric, clean) -->
+  <!-- Hero (flat, no gradient) -->
   <section class="hero">
     <div class="hero-bg-shape"></div>
     <div class="hero-grid">
       <div class="hero-text reveal from-left">
-        <h1>Every Great Adventure Begins With a Story.</h1>
+        <h1>Every Great Adventure <em>Begins With a Story.</em></h1>
         <p style="margin-bottom: 32px;">Nookly opens the door to imagination, curiosity, and lifelong learning for children aged 4–12. Join our reading club and community library today.</p>
         <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-          <a href="#" class="btn btn-primary">Become a Member</a>
+          <a href="#" class="btn btn-coral">Become a Member</a>
           <a href="#" class="btn btn-outline">Explore Books</a>
         </div>
       </div>
       <div class="hero-illustration reveal from-right">
-        <!-- illustration placeholder -->
-        <span style="font-size: 5rem; color: white;">📚</span>
+        <span style="font-size: 5rem; color: white;">📚✨</span>
       </div>
     </div>
   </section>
 
-  <!-- Featured Programme (editorial) -->
-  <section class="section bg-soft-peach">
+  <!-- Featured Programme -->
+  <section class="section bg-warm-peach">
     <div class="container">
       <div class="featured-grid">
         <div class="featured-image reveal scale-in">
-          <span>📖</span>
+          <span style="font-size: 5rem;">📖</span>
         </div>
         <div class="reveal from-right">
           <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue);">Featured Programme</span>
@@ -258,25 +330,25 @@
     </div>
   </section>
 
-  <!-- Programmes (cards with varied animations) -->
-  <section class="section bg-soft-mint">
+  <!-- Programmes (cards with top stripe) -->
+  <section class="section bg-warm-green">
     <div class="container">
-      <div class="section-header reveal from-bottom" style="text-align: center; margin-bottom: 48px;">
-        <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue);">What We Offer</span>
+      <div class="reveal from-bottom" style="text-align: center; margin-bottom: 48px;">
+        <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--coral);">What We Offer</span>
         <h2>Programmes Designed to Inspire</h2>
       </div>
       <div class="cards-grid">
-        <div class="card reveal from-bottom">
-          <div class="card-icon" style="background:#FFEECC;">📚</div>
+        <div class="card reveal scale-in">
+          <div class="card-icon" style="background:#FFF0D9;">📚</div>
           <h3>Weekly Reading Club</h3>
           <p>Guided reading, discussions, and friendship every Saturday.</p>
         </div>
-        <div class="card reveal from-bottom" style="transition-delay: 0.1s;">
+        <div class="card reveal scale-in" style="transition-delay: 0.1s;">
           <div class="card-icon" style="background:#E8F5FF;">🎨</div>
           <h3>Creative Workshops</h3>
           <p>Arts & crafts that bring stories to life.</p>
         </div>
-        <div class="card reveal from-bottom" style="transition-delay: 0.2s;">
+        <div class="card reveal scale-in" style="transition-delay: 0.2s;">
           <div class="card-icon" style="background:#E6FFFA;">🏆</div>
           <h3>Monthly Challenges</h3>
           <p>Reading challenges with exciting rewards.</p>
@@ -285,82 +357,111 @@
     </div>
   </section>
 
-  <!-- Why Nookly (staggered animations) -->
-  <section class="section bg-soft-purple">
+  <!-- Why Nookly -->
+  <section class="section bg-warm-purple">
     <div class="container">
-      <div class="section-header reveal from-bottom" style="text-align: center; margin-bottom: 48px;">
+      <div class="reveal from-bottom" style="text-align: center; margin-bottom: 48px;">
         <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue);">Why Nookly</span>
         <h2>A Reading Space Kids Love,<br>Parents Trust</h2>
       </div>
       <div class="cards-grid">
-        <div class="card reveal from-left"><h3>🧠 Curated Collections</h3><p>Handpicked by educators for age & interest.</p></div>
-        <div class="card reveal scale-in"><h3>👨‍👩‍👧‍👦 Parent Dashboard</h3><p>Track progress, get recommendations.</p></div>
-        <div class="card reveal from-right"><h3>🌈 Inclusive Community</h3><p>Every child feels seen and inspired.</p></div>
+        <div class="card reveal from-left">
+          <div class="card-icon" style="background:#FFF0D9;">🧠</div>
+          <h3>Curated Collections</h3>
+          <p>Handpicked by educators for age & interest.</p>
+        </div>
+        <div class="card reveal scale-in">
+          <div class="card-icon" style="background:#E8F5FF;">👨‍👩‍👧‍👦</div>
+          <h3>Parent Dashboard</h3>
+          <p>Track progress, get recommendations.</p>
+        </div>
+        <div class="card reveal from-right">
+          <div class="card-icon" style="background:#E6FFFA;">🌈</div>
+          <h3>Inclusive Community</h3>
+          <p>Every child feels seen and inspired.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Reading Categories -->
-  <section class="section bg-soft-coral">
-    <div class="container">
-      <div class="section-header reveal from-bottom" style="text-align: center; margin-bottom: 48px;">
-        <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue);">Explore</span>
-        <h2>Reading Categories</h2>
-      </div>
-      <div class="cards-grid">
-        <div class="card reveal scale-in" style="border-top:5px solid var(--blue);"><h3>Adventure</h3><p>Epic quests and daring tales.</p></div>
-        <div class="card reveal scale-in" style="border-top:5px solid var(--mint);"><h3>Fantasy</h3><p>Magical worlds and mythical creatures.</p></div>
-        <div class="card reveal scale-in" style="border-top:5px solid var(--coral);"><h3>Science & Nature</h3><p>Discover how the world works.</p></div>
-        <div class="card reveal scale-in" style="border-top:5px solid var(--sun);"><h3>Friendship</h3><p>Heartwarming stories about connection.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Events -->
+  <!-- Explore Categories (pills) -->
   <section class="section bg-white">
     <div class="container">
-      <div class="section-header reveal from-bottom" style="text-align: center; margin-bottom: 48px;">
+      <div class="reveal from-bottom" style="text-align: center; margin-bottom: 40px;">
+        <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--coral);">Explore</span>
+        <h2>Reading Categories</h2>
+      </div>
+      <div class="category-grid">
+        <div class="category-pill reveal scale-in"><span>🚀</span> Adventure</div>
+        <div class="category-pill reveal scale-in" style="transition-delay:0.05s;"><span>🧙</span> Fantasy</div>
+        <div class="category-pill reveal scale-in" style="transition-delay:0.1s;"><span>🔬</span> Science & Nature</div>
+        <div class="category-pill reveal scale-in" style="transition-delay:0.15s;"><span>🤝</span> Friendship</div>
+        <div class="category-pill reveal scale-in" style="transition-delay:0.2s;"><span>🎨</span> Creativity</div>
+        <div class="category-pill reveal scale-in" style="transition-delay:0.25s;"><span>🌍</span> World Stories</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events (timeline with flat badges) -->
+  <section class="section bg-warm-coral">
+    <div class="container">
+      <div class="reveal from-bottom" style="text-align: center; margin-bottom: 48px;">
         <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue);">Events</span>
         <h2>What's Happening at Nookly</h2>
       </div>
-      <div class="events-list">
-        <div class="event-item reveal from-left">
-          <div class="event-date"><strong>12</strong><br>Jul</div>
-          <div><h3>Storytelling Under the Stars</h3><p>Outdoor evening tales for ages 4–8.</p></div>
+      <div class="events-timeline">
+        <div class="event-entry reveal from-left">
+          <div class="event-date-badge">12<br><small style="font-size:0.8rem;">Jul</small></div>
+          <div class="event-info">
+            <h3>Storytelling Under the Stars</h3>
+            <p>An outdoor evening of magical tales for ages 4–8.</p>
+          </div>
         </div>
-        <div class="event-item reveal from-right">
-          <div class="event-date"><strong>24</strong><br>Jul</div>
-          <div><h3>Creative Writing Camp</h3><p>Unleash your child's inner author.</p></div>
+        <div class="event-entry reveal from-right">
+          <div class="event-date-badge" style="background: var(--lime);">24<br><small style="font-size:0.8rem;">Jul</small></div>
+          <div class="event-info">
+            <h3>Creative Writing Camp</h3>
+            <p>A half-day workshop to unleash your child's inner author.</p>
+          </div>
         </div>
-        <div class="event-item reveal from-left">
-          <div class="event-date"><strong>5</strong><br>Aug</div>
-          <div><h3>Book Character Parade</h3><p>Dress up & march through the library!</p></div>
+        <div class="event-entry reveal from-left">
+          <div class="event-date-badge" style="background: var(--purple);">5<br><small style="font-size:0.8rem;">Aug</small></div>
+          <div class="event-info">
+            <h3>Book Character Parade</h3>
+            <p>Dress up as your favorite character and march through the library.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Membership -->
-  <section class="section bg-soft-mint">
+  <section class="section bg-warm-yellow">
     <div class="container">
-      <div class="section-header reveal from-bottom" style="text-align: center; margin-bottom: 48px;">
+      <div class="reveal from-bottom" style="text-align: center; margin-bottom: 48px;">
         <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue);">Membership</span>
         <h2>Join the Nookly Family</h2>
       </div>
       <div class="pricing-grid">
         <div class="pricing-card reveal scale-in">
           <h3>Explorer</h3><div class="price">$9<span style="font-size:1rem;">/mo</span></div>
-          <ul style="list-style:none; color:var(--text-light);"><li>✓ 2 books/month</li><li>✓ Club access</li><li>✓ Newsletter</li></ul>
+          <ul style="list-style:none; color:var(--text-light); text-align:left; display:inline-block;">
+            <li>✓ 2 books/month</li><li>✓ Club access</li><li>✓ Newsletter</li>
+          </ul>
           <a href="#" class="btn btn-outline" style="margin-top:24px;">Get Started</a>
         </div>
         <div class="pricing-card featured reveal scale-in" style="transition-delay:0.1s;">
           <h3>Adventurer</h3><div class="price">$19<span style="font-size:1rem;">/mo</span></div>
-          <ul style="list-style:none; color:var(--text-light);"><li>✓ 5 books/month</li><li>✓ All events free</li><li>✓ Parent dashboard</li><li>✓ Birthday surprise</li></ul>
+          <ul style="list-style:none; color:var(--text-light); text-align:left; display:inline-block;">
+            <li>✓ 5 books/month</li><li>✓ All events free</li><li>✓ Parent dashboard</li><li>✓ Birthday surprise</li>
+          </ul>
           <a href="#" class="btn btn-primary" style="margin-top:24px;">Most Popular</a>
         </div>
         <div class="pricing-card reveal scale-in" style="transition-delay:0.2s;">
           <h3>Dreamer</h3><div class="price">$29<span style="font-size:1rem;">/mo</span></div>
-          <ul style="list-style:none; color:var(--text-light);"><li>✓ Unlimited books</li><li>✓ 1-on-1 coach</li><li>✓ Exclusive workshops</li></ul>
+          <ul style="list-style:none; color:var(--text-light); text-align:left; display:inline-block;">
+            <li>✓ Unlimited books</li><li>✓ 1-on-1 coach</li><li>✓ Exclusive workshops</li>
+          </ul>
           <a href="#" class="btn btn-outline" style="margin-top:24px;">Go Premium</a>
         </div>
       </div>
@@ -368,19 +469,19 @@
   </section>
 
   <!-- Testimonials -->
-  <section class="section bg-soft-peach">
+  <section class="section bg-warm-green">
     <div class="container">
-      <div class="section-header reveal from-bottom" style="text-align: center; margin-bottom: 48px;">
+      <div class="reveal from-bottom" style="text-align: center; margin-bottom: 48px;">
         <h2>What Parents Say</h2>
       </div>
       <div class="cards-grid">
         <div class="card reveal from-left" style="text-align: center;">
           <p style="font-style:italic;">"My daughter used to hate reading. Nookly turned it into her favorite part of the day."</p>
-          <p style="font-weight: 700; color: var(--blue);">— Sarah M., Parent</p>
+          <p style="font-weight: 700; color: var(--coral); margin-top: 16px;">— Sarah M., Parent</p>
         </div>
         <div class="card reveal from-right" style="text-align: center;">
           <p style="font-style:italic;">"As a teacher, I love the curated lists and inclusive environment."</p>
-          <p style="font-weight: 700; color: var(--blue);">— Mr. David, 3rd Grade Teacher</p>
+          <p style="font-weight: 700; color: var(--coral); margin-top: 16px;">— Mr. David, 3rd Grade Teacher</p>
         </div>
       </div>
     </div>
@@ -394,7 +495,7 @@
         <p style="margin: 16px auto;">Reading tips, event updates, and magical stories delivered to your inbox.</p>
         <form class="newsletter-form" style="margin-top: 32px;">
           <input type="email" placeholder="Your email address" required>
-          <button type="submit" class="btn btn-primary">Subscribe</button>
+          <button type="submit" class="btn btn-coral">Subscribe</button>
         </form>
       </div>
     </div>
@@ -406,30 +507,20 @@
       <div class="footer-grid">
         <div>
           <div style="display:flex; align-items:center; gap:10px; font-weight:800; font-size:1.8rem; margin-bottom:16px;">
-            <div class="logo-icon" style="background:var(--mint);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" fill="white" opacity=".8"/><path d="M12 6v12M4 12h16" stroke="white" stroke-width="2"/></svg></div> Nookly
+            <div class="logo-icon" style="background:var(--coral);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" fill="white" opacity=".8"/><path d="M12 6v12M4 12h16" stroke="white" stroke-width="2"/></svg></div> Nookly
           </div>
-          <p style="color:#BCC4D4;">Where curious minds grow.</p>
+          <p style="color:#AAB2C0;">Where curious minds grow.</p>
         </div>
-        <div>
-          <h4 style="color:white; margin-bottom:16px;">Explore</h4>
-          <a href="#">About</a><br><a href="#">Library</a><br><a href="#">Book Club</a>
-        </div>
-        <div>
-          <h4 style="color:white; margin-bottom:16px;">Connect</h4>
-          <a href="#">Events</a><br><a href="#">Contact</a><br><a href="#">Instagram</a>
-        </div>
-        <div>
-          <h4 style="color:white; margin-bottom:16px;">Visit</h4>
-          <p style="color:#BCC4D4;">123 Storybook Lane<br>Imagination City, IC 00000</p>
-        </div>
+        <div><h4 style="color:white; margin-bottom:16px;">Explore</h4><a href="about.html">About</a><br><a href="library.html">Library</a><br><a href="bookclub.html">Book Club</a></div>
+        <div><h4 style="color:white; margin-bottom:16px;">Connect</h4><a href="events.html">Events</a><br><a href="contact.html">Contact</a><br><a href="#">Instagram</a></div>
+        <div><h4 style="color:white; margin-bottom:16px;">Visit</h4><p style="color:#AAB2C0;">123 Storybook Lane<br>Imagination City, IC 00000</p></div>
       </div>
-      <div style="text-align:center; border-top:1px solid rgba(255,255,255,0.1); padding-top:30px; color:#BCC4D4;">
+      <div style="text-align:center; border-top:1px solid rgba(255,255,255,0.1); padding-top:30px; color:#AAB2C0;">
         © 2026 Nookly. All rights reserved.
       </div>
     </div>
   </footer>
 
-  <!-- Inline JS for reveal animations -->
   <script>
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
@@ -441,6 +532,5 @@
     }, { threshold: 0.15 });
     reveals.forEach(el => observer.observe(el));
   </script>
-
 </body>
 </html>
