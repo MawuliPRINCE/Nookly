@@ -1,0 +1,221 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+collections:
+  - name: "content"
+    label: "Site Content"
+    files:
+      - file: "content.json"
+        label: "All Content"
+        name: "content"
+        format: "json"
+        fields:
+          # ---- Site Settings ----
+          - label: "Site Settings"
+            name: "site"
+            widget: "object"
+            fields:
+              - {label: "Site Title", name: "title", widget: "string", default: "Nookly"}
+              - {label: "Logo", name: "logo_url", widget: "image", default: "assets/images/logo.svg", required: true}
+              - {label: "Footer Text", name: "footer_text", widget: "string", default: "Where curious minds grow."}
+
+          # ---- Homepage ----
+          - label: "Homepage"
+            name: "home"
+            widget: "object"
+            fields:
+              - {label: "Hero Badge", name: "hero_badge", widget: "string"}
+              - {label: "Hero Description", name: "hero_desc", widget: "text"}
+              - {label: "Member Count Text", name: "member_count", widget: "string"}
+              - {label: "Video Badge", name: "video_badge", widget: "string"}
+              - {label: "Video Title", name: "video_title", widget: "string"}
+              - {label: "Video Description", name: "video_desc", widget: "string"}
+              - {label: "Featured Title", name: "featured_title", widget: "string"}
+              - {label: "Featured Description", name: "featured_desc", widget: "text"}
+              - label: "Programmes"
+                name: "programmes"
+                widget: "list"
+                fields:
+                  - {label: "Icon", name: "icon", widget: "string", default: "📚"}
+                  - {label: "Title", name: "title", widget: "string"}
+                  - {label: "Description", name: "desc", widget: "text"}
+              - label: "Reading Categories"
+                name: "categories"
+                widget: "list"
+                fields:
+                  - {label: "Icon", name: "icon", widget: "string"}
+                  - {label: "Label", name: "label", widget: "string"}
+              - label: "Homepage Events"
+                name: "events"
+                widget: "list"
+                fields:
+                  - {label: "Date", name: "date", widget: "string"}
+                  - {label: "Month", name: "month", widget: "string"}
+                  - {label: "Title", name: "title", widget: "string"}
+                  - {label: "Description", name: "desc", widget: "text"}
+              - label: "Testimonials"
+                name: "testimonials"
+                widget: "list"
+                fields:
+                  - {label: "Quote", name: "text", widget: "text"}
+                  - {label: "Author", name: "author", widget: "string"}
+                  - {label: "Role", name: "role", widget: "string"}
+
+          # ---- About Page ----
+          - label: "About Page"
+            name: "about"
+            widget: "object"
+            fields:
+              - {label: "Hero Badge", name: "hero_badge", widget: "string"}
+              - {label: "Hero Description", name: "hero_desc", widget: "text"}
+              - {label: "Story Title", name: "story_title", widget: "string"}
+              - {label: "Story Paragraph 1", name: "story_text_1", widget: "text"}
+              - {label: "Story Paragraph 2", name: "story_text_2", widget: "text"}
+              - label: "Team Members"
+                name: "team"
+                widget: "list"
+                fields:
+                  - {label: "Emoji", name: "emoji", widget: "string"}
+                  - {label: "Name", name: "name", widget: "string"}
+                  - {label: "Role", name: "role", widget: "string"}
+                  - {label: "Favourite Book", name: "book", widget: "string"}
+              - label: "Gallery"
+                name: "gallery"
+                widget: "list"
+                fields:
+                  - {label: "Icon", name: "icon", widget: "string"}
+                  - {label: "Label", name: "label", widget: "string"}
+              - {label: "CTA Text", name: "cta_text", widget: "text"}
+
+          # ---- Library Page ----
+          - label: "Library Page"
+            name: "library"
+            widget: "object"
+            fields:
+              - {label: "Hero Badge", name: "hero_badge", widget: "string"}
+              - {label: "Hero Description", name: "hero_desc", widget: "text"}
+              - label: "Collections"
+                name: "collections"
+                widget: "list"
+                fields:
+                  - {label: "Icon", name: "icon", widget: "string"}
+                  - {label: "Label", name: "label", widget: "string"}
+              - label: "Featured Books"
+                name: "featured_books"
+                widget: "list"
+                fields:
+                  - {label: "Cover Emoji", name: "cover_icon", widget: "string"}
+                  - {label: "Title", name: "title", widget: "string"}
+                  - {label: "Description", name: "desc", widget: "text"}
+                  - {label: "Staff Name", name: "staff", widget: "string"}
+                  - {label: "Age Range", name: "age", widget: "string"}
+              - label: "Reading Spaces"
+                name: "spaces"
+                widget: "list"
+                fields:
+                  - {label: "Icon", name: "icon", widget: "string"}
+                  - {label: "Title", name: "title", widget: "string"}
+                  - {label: "Description", name: "desc", widget: "text"}
+              - label: "Facilities"
+                name: "facilities"
+                widget: "list"
+                fields:
+                  - {label: "Icon", name: "icon", widget: "string"}
+                  - {label: "Title", name: "title", widget: "string"}
+                  - {label: "Description", name: "desc", widget: "text"}
+              - {label: "CTA Text", name: "cta_text", widget: "text"}
+
+          # ---- Book Club Page ----
+          - label: "Book Club Page"
+            name: "bookclub"
+            widget: "object"
+            fields:
+              - {label: "Hero Badge", name: "hero_badge", widget: "string"}
+              - {label: "Hero Description", name: "hero_desc", widget: "text"}
+              - label: "Steps"
+                name: "steps"
+                widget: "list"
+                fields:
+                  - {label: "Step Number", name: "number", widget: "string"}
+                  - {label: "Title", name: "title", widget: "string"}
+                  - {label: "Description", name: "desc", widget: "text"}
+              - label: "Challenges"
+                name: "challenges"
+                widget: "list"
+                fields:
+                  - {label: "Icon", name: "icon", widget: "string"}
+                  - {label: "Title", name: "title", widget: "string"}
+                  - {label: "Description", name: "desc", widget: "text"}
+              - label: "Rewards"
+                name: "rewards"
+                widget: "list"
+                fields:
+                  - {label: "Icon", name: "icon", widget: "string"}
+                  - {label: "Title", name: "title", widget: "string"}
+                  - {label: "Description", name: "desc", widget: "text"}
+              - label: "Benefits"
+                name: "benefits"
+                widget: "list"
+                fields:
+                  - {label: "Benefit Text", name: "text", widget: "text"}
+
+          # ---- Events Page ----
+          - label: "Events Page"
+            name: "events_page"
+            widget: "object"
+            fields:
+              - {label: "Hero Badge", name: "hero_badge", widget: "string"}
+              - {label: "Hero Description", name: "hero_desc", widget: "text"}
+              - label: "Regular Events"
+                name: "regular_events"
+                widget: "list"
+                fields:
+                  - {label: "Icon", name: "icon", widget: "string"}
+                  - {label: "Tag", name: "tag", widget: "string"}
+                  - {label: "Title", name: "title", widget: "string"}
+                  - {label: "Description", name: "desc", widget: "text"}
+                  - {label: "Schedule", name: "schedule", widget: "string"}
+              - label: "Special Events"
+                name: "special_events"
+                widget: "list"
+                fields:
+                  - {label: "Icon", name: "icon", widget: "string"}
+                  - {label: "Tag", name: "tag", widget: "string"}
+                  - {label: "Title", name: "title", widget: "string"}
+                  - {label: "Description", name: "desc", widget: "text"}
+              - {label: "CTA Text", name: "cta_text", widget: "text"}
+
+          # ---- Contact Page ----
+          - label: "Contact Page"
+            name: "contact"
+            widget: "object"
+            fields:
+              - {label: "Hero Badge", name: "hero_badge", widget: "string"}
+              - {label: "Hero Description", name: "hero_desc", widget: "text"}
+              - {label: "Address", name: "address", widget: "string"}
+              - {label: "Email", name: "email", widget: "string"}
+              - {label: "Phone", name: "phone", widget: "string"}
+              - label: "Opening Hours"
+                name: "opening_hours"
+                widget: "list"
+                fields:
+                  - {label: "Day", name: "day", widget: "string"}
+                  - {label: "Time", name: "time", widget: "string"}
+              - label: "Social Links"
+                name: "social_links"
+                widget: "list"
+                fields:
+                  - {label: "Icon", name: "icon", widget: "string"}
+                  - {label: "Label", name: "label", widget: "string"}
+                  - {label: "URL", name: "url", widget: "string"}
+              - label: "FAQ"
+                name: "faq"
+                widget: "list"
+                fields:
+                  - {label: "Question", name: "question", widget: "string"}
+                  - {label: "Answer", name: "answer", widget: "text"}
+              - {label: "CTA Text", name: "cta_text", widget: "text"}
