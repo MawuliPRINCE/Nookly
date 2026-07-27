@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Nookly - Get in touch, find us, check opening hours, and read our FAQ.">
+  <title>Contact – Nookly</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #3B6FFF;
+      --coral: #FF5E7A;
+      --lime: #7ED957;
+      --yellow: #FFD23F;
+      --purple: #B388FF;
+      --peach: #FFB08A;
+      --bg: #FFFDF9;
+      --white: #FFFFFF;
+      --text: #1A1D2E;
+      --text-light: #4A4E5E;
+      --border: #E6E1D6;
+      --radius: 28px;
+      --font: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    h1 { font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; }
+    h2 { font-size: clamp(2rem, 4.5vw, 3.5rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; }
+    h3 { font-size: 1.5rem; font-weight: 700; }
+    p { font-size: 1.15rem; color: var(--text-light); max-width: 600px; }
+
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+    .section { padding: 100px 24px; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 18px 36px; border-radius: 40px; font-weight: 700; font-size: 1rem;
+      transition: all 0.25s ease; cursor: pointer; text-decoration: none; border: none;
+      color: white;
+    }
+    .btn-primary { background: var(--blue); box-shadow: 0 8px 20px rgba(59,111,255,0.25); }
+    .btn-primary:hover { background: #2B5CEB; transform: translateY(-3px); box-shadow: 0 12px 28px rgba(59,111,255,0.4); }
+    .btn-coral { background: var(--coral); box-shadow: 0 8px 20px rgba(255,94,122,0.25); }
+    .btn-coral:hover { background: #E84D68; transform: translateY(-3px); box-shadow: 0 12px 28px rgba(255,94,122,0.4); }
+
+    /* NAV */
+    .nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      background: var(--white); border-bottom: 1px solid var(--border);
+      padding: 0 24px; height: 80px; display: flex; align-items: center;
+    }
+    .nav-inner {
+      width: 100%; max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.8rem; color: var(--text); }
+    .logo-icon {
+      width: 40px; height: 40px; background: var(--blue); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; color: white;
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-weight: 600; color: var(--text); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-links a.active { color: var(--blue); font-weight: 700; }
+
+    /* PAGE HERO */
+    .page-hero {
+      padding: 160px 24px 100px;
+      background: #F0FFE8; /* soft lime tint */
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero h1 { color: var(--text); }
+    .page-hero h1 em { font-style: normal; color: var(--lime); }
+    .bg-shape-hero {
+      position: absolute; top: -50px; right: -30px; width: 260px; height: 260px;
+      background: var(--coral); border-radius: 50px; transform: rotate(20deg); z-index: 0;
+      opacity: 0.25;
+    }
+
+    /* Section backgrounds */
+    .bg-warm-yellow { background: #FFF8E7; }
+    .bg-warm-green { background: #F0FFE8; }
+    .bg-warm-purple { background: #F8F0FF; }
+    .bg-warm-coral { background: #FFF0EE; }
+    .bg-white { background: white; }
+
+    /* CONTACT FORM + INFO GRID */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 60px;
+      margin-top: 40px;
+    }
+    .contact-form {
+      background: white;
+      border-radius: 32px;
+      padding: 40px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block; font-weight: 700; margin-bottom: 8px;
+      font-size: 0.95rem; color: var(--text);
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%; padding: 16px 20px;
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      font-family: var(--font); font-size: 1rem;
+      background: #FDFCF8; transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none; border-color: var(--blue);
+    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    .info-sidebar {
+      display: flex; flex-direction: column; gap: 24px;
+    }
+    .info-card {
+      background: white;
+      border-radius: 24px;
+      padding: 28px 24px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.03);
+      display: flex; align-items: flex-start; gap: 16px;
+      transition: transform 0.3s;
+    }
+    .info-card:hover { transform: translateY(-4px); }
+    .info-icon {
+      width: 48px; height: 48px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; flex-shrink: 0;
+    }
+    .info-icon.i1 { background: #FFF0D9; }
+    .info-icon.i2 { background: #E8F5FF; }
+    .info-icon.i3 { background: #F3F0FF; }
+
+    /* MAP PLACEHOLDER */
+    .map-placeholder {
+      background: var(--peach);
+      border-radius: 32px;
+      height: 280px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+      margin-top: 40px;
+    }
+
+    /* OPENING HOURS */
+    .hours-list {
+      max-width: 500px; margin: 40px auto 0;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .hours-row {
+      display: flex; justify-content: space-between;
+      background: white; padding: 18px 24px;
+      border-radius: 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      font-weight: 600;
+    }
+    .hours-row .day { color: var(--text); }
+    .hours-row .time { color: var(--blue); }
+
+    /* SOCIAL PILLS */
+    .social-pills {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
+      margin-top: 30px;
+    }
+    .social-pill {
+      display: flex; align-items: center; gap: 8px;
+      background: white; padding: 14px 24px;
+      border-radius: 40px; font-weight: 700;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      transition: all 0.25s; text-decoration: none; color: var(--text);
+    }
+    .social-pill:hover { background: var(--blue); color: white; transform: translateY(-3px); }
+
+    /* FAQ */
+    .faq-list {
+      max-width: 750px; margin: 40px auto 0;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .faq-item {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%; padding: 20px 24px;
+      font-family: var(--font); font-size: 1.1rem; font-weight: 700;
+      text-align: left; border: none; background: none;
+      cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+      color: var(--text);
+    }
+    .faq-question span { font-size: 1.5rem; transition: transform 0.3s; }
+    .faq-item.open .faq-question span { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      padding: 0 24px;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding: 0 24px 20px;
+    }
+    .faq-answer p { font-size: 1rem; }
+
+    /* CTA */
+    .cta-banner {
+      background: var(--blue);
+      border-radius: 36px; padding: 60px 40px; text-align: center;
+      color: white;
+      margin-top: 40px;
+    }
+    .cta-banner h2, .cta-banner p { color: white; }
+    .cta-banner .btn { background: white; color: var(--blue); font-weight: 800; }
+    .cta-banner .btn:hover { background: #EBF1FF; }
+
+    /* FOOTER */
+    .footer {
+      background: var(--text); color: white; padding: 60px 24px 30px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+      gap: 40px; margin-bottom: 40px;
+    }
+    .footer a { color: #AAB2C0; transition: color 0.2s; }
+    .footer a:hover { color: white; }
+
+    /* REVEAL ANIMATIONS */
+    .reveal {
+      opacity: 0; transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .reveal.from-left { transform: translateX(-40px); }
+    .reveal.from-right { transform: translateX(40px); }
+    .reveal.from-bottom { transform: translateY(40px); }
+    .reveal.scale-in { transform: scale(0.95); }
+    .reveal.visible { opacity: 1; transform: translate(0) scale(1); }
+
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" fill="white" opacity=".8"/><path d="M12 6v12M4 12h16" stroke="white" stroke-width="2"/></svg></div>
+        Nookly
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="library.html">Library</a></li>
+        <li><a href="bookclub.html">Book Club</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <a href="#" class="btn btn-coral">Become a Member</a>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="bg-shape-hero"></div>
+    <div class="container reveal from-bottom">
+      <h1>Let's <em>Talk</em></h1>
+      <p style="margin: 20px auto 0; max-width: 650px;">Have a question or want to visit? Drop us a message, give us a call, or stop by — we'd love to meet you.</p>
+    </div>
+  </section>
+
+  <!-- Contact Form + Info Sidebar -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="reveal from-bottom" style="text-align: center; margin-bottom: 30px;">
+        <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--coral);">Get In Touch</span>
+        <h2>Send Us a Message</h2>
+      </div>
+      <div class="contact-grid">
+        <!-- Form -->
+        <div class="contact-form reveal from-left">
+          <form action="#" method="POST">
+            <div class="form-group">
+              <label for="name">Your Name *</label>
+              <input type="text" id="name" name="name" placeholder="e.g. Priya Sharma" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" placeholder="e.g. priya@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="topic">What's this about?</label>
+              <select id="topic" name="topic">
+                <option value="">Select a topic</option>
+                <option value="membership">Membership Questions</option>
+                <option value="events">Events & Workshops</option>
+                <option value="bookclub">Book Club</option>
+                <option value="visit">Planning a Visit</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Your Message *</label>
+              <textarea id="message" name="message" placeholder="Tell us how we can help..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
+          </form>
+        </div>
+
+        <!-- Info Sidebar -->
+        <div class="info-sidebar">
+          <div class="info-card reveal from-right">
+            <div class="info-icon i1">📍</div>
+            <div>
+              <h4>Visit Us</h4>
+              <p style="font-size:0.95rem;">123 Storybook Lane<br>Imagination City, IC 00000</p>
+            </div>
+          </div>
+          <div class="info-card reveal from-right" style="transition-delay:0.1s;">
+            <div class="info-icon i2">📧</div>
+            <div>
+              <h4>Email</h4>
+              <p style="font-size:0.95rem;">hello@nookly.com</p>
+            </div>
+          </div>
+          <div class="info-card reveal from-right" style="transition-delay:0.2s;">
+            <div class="info-icon i3">📞</div>
+            <div>
+              <h4>Phone</h4>
+              <p style="font-size:0.95rem;">+1 (555) 123-4567</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Placeholder -->
+  <section class="section bg-warm-green" style="padding-top: 0;">
+    <div class="container">
+      <div class="map-placeholder reveal scale-in">
+        <div style="text-align: center; color: white;">
+          <span style="font-size: 3rem;">🗺️</span>
+          <p style="color: white; font-weight: 700; font-size: 1.2rem;">Map Placeholder</p>
+          <p style="color: rgba(255,255,255,0.85);">Embed your Google Map or illustration here</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Opening Hours -->
+  <section class="section bg-warm-yellow">
+    <div class="container">
+      <div class="reveal from-bottom" style="text-align: center; margin-bottom: 30px;">
+        <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue);">When We're Open</span>
+        <h2>Opening Hours</h2>
+      </div>
+      <div class="hours-list">
+        <div class="hours-row reveal from-left">
+          <span class="day">Monday – Friday</span>
+          <span class="time">9:00 AM – 6:00 PM</span>
+        </div>
+        <div class="hours-row reveal from-right">
+          <span class="day">Saturday</span>
+          <span class="time">9:00 AM – 4:00 PM</span>
+        </div>
+        <div class="hours-row reveal from-left">
+          <span class="day">Sunday</span>
+          <span class="time">10:00 AM – 2:00 PM</span>
+        </div>
+      </div>
+      <p style="text-align: center; margin-top: 20px;">Closed on public holidays. Special event hours may vary — check our <a href="events.html" style="color: var(--blue); font-weight: 700;">Events page</a>.</p>
+    </div>
+  </section>
+
+  <!-- Social Media -->
+  <section class="section bg-white">
+    <div class="container" style="text-align: center;">
+      <div class="reveal from-bottom">
+        <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--coral);">Follow Along</span>
+        <h2>Social Media</h2>
+        <p>Join our community online for daily book recommendations, event updates, and behind‑the‑scenes fun.</p>
+      </div>
+      <div class="social-pills">
+        <a href="#" class="social-pill reveal scale-in">📸 Instagram</a>
+        <a href="#" class="social-pill reveal scale-in" style="transition-delay:0.05s;">📘 Facebook</a>
+        <a href="#" class="social-pill reveal scale-in" style="transition-delay:0.1s;">🐦 Twitter / X</a>
+        <a href="#" class="social-pill reveal scale-in" style="transition-delay:0.15s;">🎥 YouTube</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section bg-warm-purple">
+    <div class="container">
+      <div class="reveal from-bottom" style="text-align: center; margin-bottom: 30px;">
+        <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue);">Got Questions?</span>
+        <h2>Frequently Asked Questions</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item reveal from-bottom">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            How do I sign up for a membership? <span>+</span>
+          </button>
+          <div class="faq-answer"><p>Click any "Become a Member" button on our site, choose your plan, and fill out the short form. You'll get a welcome email with everything you need within minutes.</p></div>
+        </div>
+        <div class="faq-item reveal from-bottom" style="transition-delay:0.05s;">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            Can I visit Nookly without a membership? <span>+</span>
+          </button>
+          <div class="faq-answer"><p>Yes! Drop-in visits are welcome during opening hours. You can browse the library, join a trial reading session, and explore the space before deciding to join.</p></div>
+        </div>
+        <div class="faq-item reveal from-bottom" style="transition-delay:0.1s;">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            What age groups does Nookly cater to? <span>+</span>
+          </button>
+          <div class="faq-answer"><p>Our programmes are designed for children aged 4–12, split into three groups: 4–6, 7–9, and 10–12. We also have a toddler play area for younger siblings.</p></div>
+        </div>
+        <div class="faq-item reveal from-bottom" style="transition-delay:0.15s;">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            Do parents need to stay during sessions? <span>+</span>
+          </button>
+          <div class="faq-answer"><p>For children under 7, we ask a parent or guardian to remain on the premises. For older children, you're welcome to drop off or relax in our parent café with free Wi‑Fi.</p></div>
+        </div>
+        <div class="faq-item reveal from-bottom" style="transition-delay:0.2s;">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            Can I cancel my membership anytime? <span>+</span>
+          </button>
+          <div class="faq-answer"><p>Absolutely. All memberships are month‑to‑month with no long‑term commitment. Cancel anytime from your account dashboard or by emailing us.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section bg-warm-coral">
+    <div class="container">
+      <div class="cta-banner reveal scale-in">
+        <h2>Ready to Join the Nookly Family?</h2>
+        <p style="margin: 20px auto;">Sign up today and unlock a world of stories, events, and community.</p>
+        <a href="#" class="btn">Become a Member</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div style="display:flex; align-items:center; gap:10px; font-weight:800; font-size:1.8rem; margin-bottom:16px;">
+            <div class="logo-icon" style="background:var(--coral);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" fill="white" opacity=".8"/><path d="M12 6v12M4 12h16" stroke="white" stroke-width="2"/></svg></div> Nookly
+          </div>
+          <p style="color:#AAB2C0;">Where curious minds grow.</p>
+        </div>
+        <div><h4 style="color:white; margin-bottom:16px;">Explore</h4><a href="about.html">About</a><br><a href="library.html">Library</a><br><a href="bookclub.html">Book Club</a></div>
+        <div><h4 style="color:white; margin-bottom:16px;">Connect</h4><a href="events.html">Events</a><br><a href="contact.html">Contact</a><br><a href="#">Instagram</a></div>
+        <div><h4 style="color:white; margin-bottom:16px;">Visit</h4><p style="color:#AAB2C0;">123 Storybook Lane<br>Imagination City, IC 00000</p></div>
+      </div>
+      <div style="text-align:center; border-top:1px solid rgba(255,255,255,0.1); padding-top:30px; color:#AAB2C0;">
+        © 2026 Nookly. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
