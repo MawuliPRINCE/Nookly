@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
@@ -22,18 +21,12 @@
                     },
                     colors: {
                         brand: {
-                            blue: '#3B6FFF',
-                            blueDark: '#224BDB',
-                            coral: '#FF5E7A',
-                            coralDark: '#E03C58',
-                            lime: '#7ED957',
-                            yellow: '#FFD23F',
-                            yellowDark: '#E5B518',
-                            purple: '#9D65FF',
-                            purpleDark: '#7C3EFF',
-                            peach: '#FFB08A',
-                            mint: '#4EEDC4',
-                            dark: '#1E1B2E',
+                            blue: '#3B6FFF', blueDark: '#224BDB',
+                            coral: '#FF5E7A', coralDark: '#E03C58',
+                            lime: '#7ED957', yellow: '#FFD23F',
+                            yellowDark: '#E5B518', purple: '#9D65FF',
+                            purpleDark: '#7C3EFF', peach: '#FFB08A',
+                            mint: '#4EEDC4', dark: '#1E1B2E',
                             cream: '#FFFDF9',
                         }
                     },
@@ -43,12 +36,11 @@
                         'fun-coral': '0 8px 0px 0px #FF5E7A',
                         'fun-blue': '0 8px 0px 0px #3B6FFF',
                         'fun-yellow': '0 8px 0px 0px #FFD23F',
-                        'fun-purple': '0 8px 0px 0px #9D65FF',
                     },
                     keyframes: {
-                        wiggle: { '0%, 100%': { transform: 'rotate(-3deg)' }, '50%': { transform: 'rotate(3deg)' } },
-                        floatSlow: { '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' }, '50%': { transform: 'translateY(-14px) rotate(2deg)' } },
-                        floatFast: { '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' }, '50%': { transform: 'translateY(-8px) rotate(-3deg)' } },
+                        wiggle: { '0%,100%': { transform: 'rotate(-3deg)' }, '50%': { transform: 'rotate(3deg)' } },
+                        floatSlow: { '0%,100%': { transform: 'translateY(0px) rotate(0deg)' }, '50%': { transform: 'translateY(-14px) rotate(2deg)' } },
+                        floatFast: { '0%,100%': { transform: 'translateY(0px) rotate(0deg)' }, '50%': { transform: 'translateY(-8px) rotate(-3deg)' } },
                     },
                     animation: {
                         'wiggle': 'wiggle 2s ease-in-out infinite',
@@ -61,51 +53,20 @@
     </script>
 
     <style>
-        .bg-noise {
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
-        }
-        .paper-card {
-            background-color: #FFFFFF;
-            border: 3px solid #1E1B2E;
-            box-shadow: 6px 6px 0px 0px #1E1B2E;
-            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        .paper-card:hover {
-            transform: translate(-4px, -4px);
-            box-shadow: 10px 10px 0px 0px #1E1B2E;
-        }
-        .btn-bounce {
-            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border: 3px solid #1E1B2E;
-        }
-        .btn-bounce:hover {
-            transform: translate(-3px, -3px) scale(1.02);
-            box-shadow: 7px 7px 0px 0px #1E1B2E;
-        }
-        .btn-bounce:active {
-            transform: translate(2px, 2px) scale(0.98);
-            box-shadow: 2px 2px 0px 0px #1E1B2E;
-        }
-        .reveal-pop {
-            opacity: 0;
-            transform: scale(0.85) translateY(30px);
-            transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        .reveal-pop.visible {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-        }
-        .magic-particle {
-            pointer-events: none;
-            position: fixed;
-            border-radius: 50%;
-            animation: particleFade 0.8s forwards ease-out;
-            z-index: 9999;
-        }
-        @keyframes particleFade {
-            0% { opacity: 1; transform: scale(1); }
-            100% { opacity: 0; transform: scale(0.2) translateY(-20px); }
-        }
+        .bg-noise { background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E"); }
+        .paper-card { background-color: #FFFFFF; border: 3px solid #1E1B2E; box-shadow: 6px 6px 0px 0px #1E1B2E; transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .paper-card:hover { transform: translate(-4px, -4px); box-shadow: 10px 10px 0px 0px #1E1B2E; }
+        .btn-bounce { transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1); border: 3px solid #1E1B2E; }
+        .btn-bounce:hover { transform: translate(-3px, -3px) scale(1.02); box-shadow: 7px 7px 0px 0px #1E1B2E; }
+        .btn-bounce:active { transform: translate(2px, 2px) scale(0.98); box-shadow: 2px 2px 0px 0px #1E1B2E; }
+        .reveal-pop { opacity: 0; transform: scale(0.85) translateY(30px); transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .reveal-pop.visible { opacity: 1; transform: scale(1) translateY(0); }
+        .magic-particle { pointer-events: none; position: fixed; border-radius: 50%; animation: particleFade 0.8s forwards ease-out; z-index: 9999; }
+        @keyframes particleFade { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0.2) translateY(-20px); } }
+        .modal-backdrop { opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+        .modal-backdrop.active { opacity: 1; visibility: visible; }
+        .modal-content { transform: scale(0.9) translateY(20px); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .modal-backdrop.active .modal-content { transform: scale(1) translateY(0); }
     </style>
 </head>
 <body class="bg-brand-cream text-brand-dark font-sans bg-noise selection:bg-brand-yellow selection:text-brand-dark overflow-x-hidden">
@@ -121,7 +82,7 @@
                             <path d="M12 6v12M4 12h16" stroke="#1E1B2E" stroke-width="2.5" stroke-linecap="round"/>
                         </svg>
                     </div>
-                    <span class="font-display font-bold text-2xl tracking-wide text-brand-dark">Nookly<span class="text-brand-coral">.</span></span>
+                    <span class="font-display font-bold text-2xl tracking-wide text-brand-dark" data-cms-edit="site-title">Nookly<span class="text-brand-coral">.</span></span>
                 </a>
                 <ul class="hidden md:flex items-center gap-7 font-bold text-sm text-brand-dark">
                     <li><a href="index.html" class="hover:text-brand-blue transition-colors">Home</a></li>
@@ -131,16 +92,29 @@
                     <li><a href="events.html" class="text-brand-blue underline decoration-brand-coral decoration-4 underline-offset-4">Events</a></li>
                     <li><a href="contact.html" class="hover:text-brand-blue transition-colors">Contact</a></li>
                 </ul>
-                <div class="hidden sm:block">
-                    <a href="#membership" class="btn-bounce bg-brand-coral text-white font-display font-bold text-sm py-2.5 px-6 rounded-full shadow-fun-coral flex items-center gap-2">
+                <div class="hidden md:block">
+                    <a href="index.html#membership" class="btn-bounce bg-brand-coral text-white font-display font-bold text-sm py-2.5 px-6 rounded-full shadow-fun-coral flex items-center gap-2">
                         <span>Become a Member</span>
-                        <span>✨</span>
+                        <span class="text-lg">✨</span>
                     </a>
                 </div>
-                <button class="md:hidden w-10 h-10 border-2 border-brand-dark rounded-xl bg-brand-yellow flex items-center justify-center font-bold">
-                    🍔
+                <button class="md:hidden w-10 h-10 border-2 border-brand-dark rounded-xl bg-brand-yellow flex items-center justify-center" id="mobile-menu-btn" aria-label="Toggle menu">
+                    <svg class="w-6 h-6" fill="none" stroke="#1E1B2E" stroke-width="3" stroke-linecap="round">
+                        <path d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
                 </button>
             </div>
+        </div>
+        <div id="mobile-nav" class="md:hidden hidden absolute top-20 left-4 right-4 bg-white border-3 border-brand-dark rounded-3xl shadow-fun-lg p-6 z-50">
+            <ul class="flex flex-col items-center gap-4 font-bold text-lg text-brand-dark">
+                <li><a href="index.html" class="hover:text-brand-blue">Home</a></li>
+                <li><a href="about.html" class="hover:text-brand-blue">About</a></li>
+                <li><a href="library.html" class="hover:text-brand-blue">Library</a></li>
+                <li><a href="bookclub.html" class="hover:text-brand-blue">Book Club</a></li>
+                <li><a href="events.html" class="text-brand-blue">Events</a></li>
+                <li><a href="contact.html" class="hover:text-brand-blue">Contact</a></li>
+                <li><a href="index.html#membership" class="btn-bounce bg-brand-coral text-white w-full text-center py-3 rounded-2xl">Become a Member ✨</a></li>
+            </ul>
         </div>
     </nav>
 
@@ -149,18 +123,15 @@
         <div class="absolute top-32 left-10 text-6xl animate-float-slow opacity-80 pointer-events-none select-none">🎉</div>
         <div class="absolute bottom-20 right-10 text-6xl animate-float-fast opacity-80 pointer-events-none select-none">🎭</div>
         <div class="max-w-4xl mx-auto px-6 reveal-pop">
-            <span class="inline-block bg-brand-yellow border-2 border-brand-dark px-5 py-2 rounded-full font-display font-bold text-sm uppercase tracking-wider shadow-[3px_3px_0px_0px_#1E1B2E] mb-6">
-                Upcoming Fun
-            </span>
+            <span class="inline-block bg-brand-yellow border-2 border-brand-dark px-5 py-2 rounded-full font-display font-bold text-sm uppercase tracking-wider shadow-[3px_3px_0px_0px_#1E1B2E] mb-6" data-cms-edit="events-hero-badge">Upcoming Fun</span>
             <h1 class="font-display font-extrabold text-5xl sm:text-6xl lg:text-7xl text-brand-dark mb-8">
-                What's <span class="text-brand-coral relative inline-block">
-                    Happening
+                What's <span class="text-brand-coral relative inline-block">Happening
                     <svg class="absolute -bottom-2 left-0 w-full h-4 text-brand-blue" viewBox="0 0 200 15" fill="none">
                         <path d="M2 11C50 3 150 3 198 11" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
                     </svg>
                 </span>
             </h1>
-            <p class="text-lg sm:text-xl text-brand-dark/70 font-medium max-w-lg mx-auto">
+            <p class="text-lg sm:text-xl text-brand-dark/70 font-medium max-w-lg mx-auto" data-cms-edit="events-hero-desc">
                 From magical storytelling to creative competitions — there's always something exciting at Nookly.
             </p>
         </div>
@@ -170,15 +141,10 @@
     <section class="py-24 bg-brand-cream border-b-4 border-brand-dark">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-14 reveal-pop">
-                <span class="bg-brand-coral text-white font-display font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full border-2 border-brand-dark shadow-[2px_2px_0px_0px_#1E1B2E] inline-block mb-3">
-                    Regular Events
-                </span>
-                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark">
-                    Storytelling & Reading Sessions
-                </h2>
+                <span class="bg-brand-coral text-white font-display font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full border-2 border-brand-dark shadow-[2px_2px_0px_0px_#1E1B2E] inline-block mb-3">Regular Events</span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark">Storytelling & Reading Sessions</h2>
             </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-cms-repeat="regular-events">
                 <!-- Event Card 1 -->
                 <div class="paper-card rounded-[2.5rem] overflow-hidden bg-white reveal-pop group">
                     <div class="h-40 bg-brand-coral flex items-center justify-center text-5xl relative">
@@ -188,14 +154,14 @@
                     <div class="p-6">
                         <h3 class="font-display font-bold text-2xl text-brand-dark mb-2">Stories Under the Stars</h3>
                         <p class="text-brand-dark/70 text-sm mb-4">Outdoor evening tales with blankets and hot chocolate. Every Friday, 6 PM. Ages 4–8.</p>
-                        <div class="flex items-center gap-2 text-brand-blue font-bold text-sm">
-                            <span>📅 Fridays</span>
-                            <span>•</span>
-                            <span>🕕 6 PM</span>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2 text-brand-blue font-bold text-sm">
+                                <span>📅 Fridays</span><span>•</span><span>🕕 6 PM</span>
+                            </div>
+                            <button onclick="openEventModal('Stories Under the Stars')" class="text-xs font-bold text-brand-coral hover:underline cursor-pointer">Learn More</button>
                         </div>
                     </div>
                 </div>
-
                 <!-- Event Card 2 -->
                 <div class="paper-card rounded-[2.5rem] overflow-hidden bg-white reveal-pop delay-100 group">
                     <div class="h-40 bg-brand-lime flex items-center justify-center text-5xl relative">
@@ -205,14 +171,14 @@
                     <div class="p-6">
                         <h3 class="font-display font-bold text-2xl text-brand-dark mb-2">Silent Reading Mornings</h3>
                         <p class="text-brand-dark/70 text-sm mb-4">Cozy, quiet reading time with themed book baskets. Saturdays, 9–11 AM. All ages.</p>
-                        <div class="flex items-center gap-2 text-brand-lime font-bold text-sm">
-                            <span>📅 Saturdays</span>
-                            <span>•</span>
-                            <span>🕘 9 AM</span>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2 text-brand-lime font-bold text-sm">
+                                <span>📅 Saturdays</span><span>•</span><span>🕘 9 AM</span>
+                            </div>
+                            <button onclick="openEventModal('Silent Reading Mornings')" class="text-xs font-bold text-brand-coral hover:underline cursor-pointer">Learn More</button>
                         </div>
                     </div>
                 </div>
-
                 <!-- Event Card 3 -->
                 <div class="paper-card rounded-[2.5rem] overflow-hidden bg-white reveal-pop delay-200 group">
                     <div class="h-40 bg-brand-purple flex items-center justify-center text-5xl relative">
@@ -222,10 +188,11 @@
                     <div class="p-6">
                         <h3 class="font-display font-bold text-2xl text-brand-dark mb-2">Guest Storyteller Hour</h3>
                         <p class="text-brand-dark/70 text-sm mb-4">Local authors and performers bring stories to life. Monthly on the first Sunday. Ages 6–12.</p>
-                        <div class="flex items-center gap-2 text-brand-purple font-bold text-sm">
-                            <span>📅 1st Sunday</span>
-                            <span>•</span>
-                            <span>🕑 2 PM</span>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2 text-brand-purple font-bold text-sm">
+                                <span>📅 1st Sunday</span><span>•</span><span>🕑 2 PM</span>
+                            </div>
+                            <button onclick="openEventModal('Guest Storyteller Hour')" class="text-xs font-bold text-brand-coral hover:underline cursor-pointer">Learn More</button>
                         </div>
                     </div>
                 </div>
@@ -237,34 +204,30 @@
     <section class="py-24 bg-brand-yellow/10 border-b-4 border-brand-dark">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-14 reveal-pop">
-                <span class="bg-brand-purple text-white font-display font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full border-2 border-brand-dark shadow-[2px_2px_0px_0px_#1E1B2E] inline-block mb-3">
-                    Special Events
-                </span>
-                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark">
-                    Holiday Activities & Competitions
-                </h2>
+                <span class="bg-brand-purple text-white font-display font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full border-2 border-brand-dark shadow-[2px_2px_0px_0px_#1E1B2E] inline-block mb-3">Special Events</span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark">Holiday Activities & Competitions</h2>
             </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-3 gap-8" data-cms-repeat="special-events">
                 <div class="paper-card rounded-[2.5rem] p-8 bg-white reveal-pop text-center group">
                     <div class="text-6xl mb-4">🎃</div>
                     <span class="inline-block bg-brand-coral text-white font-display font-bold text-xs px-3 py-1 rounded-full mb-3 border-2 border-brand-dark">Holiday</span>
                     <h3 class="font-display font-bold text-2xl text-brand-dark mb-2">Halloween Book Parade</h3>
                     <p class="text-brand-dark/70 text-sm">Dress as your favorite character and trick-or-treat for books! Oct 31st, 4 PM.</p>
+                    <button onclick="openEventModal('Halloween Book Parade')" class="mt-4 text-xs font-bold text-brand-blue hover:underline cursor-pointer">Get Details</button>
                 </div>
-
                 <div class="paper-card rounded-[2.5rem] p-8 bg-white reveal-pop delay-100 text-center group">
                     <div class="text-6xl mb-4">🎄</div>
                     <span class="inline-block bg-brand-lime text-brand-dark font-display font-bold text-xs px-3 py-1 rounded-full mb-3 border-2 border-brand-dark">Holiday</span>
                     <h3 class="font-display font-bold text-2xl text-brand-dark mb-2">Winter Story Camp</h3>
                     <p class="text-brand-dark/70 text-sm">A week of crafts, cocoa, and holiday tales. Dec 20–24, daily 10 AM–1 PM.</p>
+                    <button onclick="openEventModal('Winter Story Camp')" class="mt-4 text-xs font-bold text-brand-blue hover:underline cursor-pointer">Get Details</button>
                 </div>
-
                 <div class="paper-card rounded-[2.5rem] p-8 bg-white reveal-pop delay-200 text-center group">
                     <div class="text-6xl mb-4">🏆</div>
                     <span class="inline-block bg-brand-blue text-white font-display font-bold text-xs px-3 py-1 rounded-full mb-3 border-2 border-brand-dark">Competition</span>
                     <h3 class="font-display font-bold text-2xl text-brand-dark mb-2">Young Writers' Contest</h3>
                     <p class="text-brand-dark/70 text-sm">Submit your original short story by Aug 15th. Prizes for ages 6–12!</p>
+                    <button onclick="openEventModal('Young Writers\' Contest')" class="mt-4 text-xs font-bold text-brand-blue hover:underline cursor-pointer">Get Details</button>
                 </div>
             </div>
         </div>
@@ -274,59 +237,35 @@
     <section class="py-24 bg-brand-cream border-b-4 border-brand-dark">
         <div class="max-w-3xl mx-auto px-6">
             <div class="text-center mb-14 reveal-pop">
-                <span class="bg-brand-mint text-brand-dark font-display font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full border-2 border-brand-dark shadow-[2px_2px_0px_0px_#1E1B2E] inline-block mb-3">
-                    Plan Ahead
-                </span>
-                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark">
-                    Event Calendar
-                </h2>
-                <p class="text-lg text-brand-dark/70 font-medium max-w-xl mx-auto mt-4">
-                    Mark your calendars! Here's a look at this month's key dates.
-                </p>
+                <span class="bg-brand-mint text-brand-dark font-display font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full border-2 border-brand-dark shadow-[2px_2px_0px_0px_#1E1B2E] inline-block mb-3">Plan Ahead</span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark">Event Calendar</h2>
+                <p class="text-lg text-brand-dark/70 font-medium max-w-xl mx-auto mt-4">Mark your calendars! Here's a look at this month's key dates.</p>
             </div>
-
             <div class="paper-card rounded-[2.5rem] p-8 bg-white reveal-pop">
-                <!-- Month Header -->
                 <div class="flex items-center justify-between mb-8">
                     <button class="w-10 h-10 border-2 border-brand-dark rounded-xl bg-brand-yellow flex items-center justify-center font-bold hover:bg-brand-yellowDark transition-colors">◀</button>
                     <h3 class="font-display font-extrabold text-2xl">July 2026</h3>
                     <button class="w-10 h-10 border-2 border-brand-dark rounded-xl bg-brand-yellow flex items-center justify-center font-bold hover:bg-brand-yellowDark transition-colors">▶</button>
                 </div>
-
-                <!-- Days Grid -->
                 <div class="grid grid-cols-7 gap-3 text-center">
-                    <div class="font-display font-bold text-xs text-brand-dark/50 py-2">Mon</div>
-                    <div class="font-display font-bold text-xs text-brand-dark/50 py-2">Tue</div>
-                    <div class="font-display font-bold text-xs text-brand-dark/50 py-2">Wed</div>
-                    <div class="font-display font-bold text-xs text-brand-dark/50 py-2">Thu</div>
-                    <div class="font-display font-bold text-xs text-brand-dark/50 py-2">Fri</div>
-                    <div class="font-display font-bold text-xs text-brand-dark/50 py-2">Sat</div>
-                    <div class="font-display font-bold text-xs text-brand-dark/50 py-2">Sun</div>
-
-                    <!-- Empty days for June -->
+                    <div class="font-display font-bold text-xs text-brand-dark/50 py-2">Mon</div><div class="font-display font-bold text-xs text-brand-dark/50 py-2">Tue</div><div class="font-display font-bold text-xs text-brand-dark/50 py-2">Wed</div><div class="font-display font-bold text-xs text-brand-dark/50 py-2">Thu</div><div class="font-display font-bold text-xs text-brand-dark/50 py-2">Fri</div><div class="font-display font-bold text-xs text-brand-dark/50 py-2">Sat</div><div class="font-display font-bold text-xs text-brand-dark/50 py-2">Sun</div>
                     <div></div><div></div><div>1</div><div>2</div><div>3</div>
                     <div class="bg-brand-coral text-white border-2 border-brand-dark rounded-xl py-2 font-display font-bold">4</div>
                     <div>5</div>
-
                     <div>6</div><div>7</div><div>8</div><div>9</div>
                     <div class="bg-brand-lime text-brand-dark border-2 border-brand-dark rounded-xl py-2 font-display font-bold">10</div>
                     <div>11</div>
                     <div class="bg-brand-coral text-white border-2 border-brand-dark rounded-xl py-2 font-display font-bold">12</div>
-
                     <div>13</div><div>14</div><div>15</div>
                     <div class="bg-brand-lime text-brand-dark border-2 border-brand-dark rounded-xl py-2 font-display font-bold">16</div>
                     <div>17</div><div>18</div><div>19</div>
-
                     <div>20</div><div>21</div><div>22</div><div>23</div>
                     <div class="bg-brand-coral text-white border-2 border-brand-dark rounded-xl py-2 font-display font-bold">24</div>
                     <div>25</div><div>26</div>
-
                     <div>27</div><div>28</div><div>29</div><div>30</div>
                     <div class="bg-brand-lime text-brand-dark border-2 border-brand-dark rounded-xl py-2 font-display font-bold">31</div>
                     <div></div><div></div>
                 </div>
-
-                <!-- Legend -->
                 <div class="flex justify-center gap-8 mt-8 text-sm font-bold">
                     <div class="flex items-center gap-2"><span class="w-4 h-4 bg-brand-coral border border-brand-dark rounded-md inline-block"></span> Storytelling</div>
                     <div class="flex items-center gap-2"><span class="w-4 h-4 bg-brand-lime border border-brand-dark rounded-md inline-block"></span> Reading Sessions</div>
@@ -336,18 +275,14 @@
     </section>
 
     <!-- ===== CTA ===== -->
-    <section class="py-20 bg-brand-coral/10 relative overflow-hidden" id="membership">
+    <section class="py-20 bg-brand-coral/10 relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-6">
             <div class="paper-card rounded-[3rem] p-10 md:p-14 bg-brand-yellow/30 text-center reveal-pop relative overflow-hidden">
                 <div class="absolute -top-10 -right-10 text-8xl opacity-20 pointer-events-none select-none">🎪</div>
                 <div class="text-5xl mb-4">🎟️</div>
-                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark mb-4">
-                    Don't Miss the Fun!
-                </h2>
-                <p class="text-lg text-brand-dark/80 font-medium max-w-lg mx-auto mb-8">
-                    Join Nookly and get free access to all events, plus early registration for special activities.
-                </p>
-                <a href="#" class="btn-bounce bg-brand-coral text-white font-display font-bold text-lg py-4 px-8 rounded-2xl shadow-fun-coral inline-flex items-center gap-2">
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark mb-4">Don't Miss the Fun!</h2>
+                <p class="text-lg text-brand-dark/80 font-medium max-w-lg mx-auto mb-8" data-cms-edit="events-cta-text">Join Nookly and get free access to all events, plus early registration for special activities.</p>
+                <a href="index.html#membership" class="btn-bounce bg-brand-coral text-white font-display font-bold text-lg py-4 px-8 rounded-2xl shadow-fun-coral inline-flex items-center gap-2">
                     <span>Become a Member</span>
                     <span>✨</span>
                 </a>
@@ -361,14 +296,10 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                 <div>
                     <a href="index.html" class="flex items-center gap-3 mb-4 group">
-                        <div class="w-10 h-10 bg-brand-coral border-2 border-white rounded-xl flex items-center justify-center text-white shadow-[3px_3px_0px_0px_#FFF]">
-                            📚
-                        </div>
+                        <div class="w-10 h-10 bg-brand-coral border-2 border-white rounded-xl flex items-center justify-center text-white shadow-[3px_3px_0px_0px_#FFF]">📚</div>
                         <span class="font-display font-bold text-2xl tracking-wide text-white">Nookly</span>
                     </a>
-                    <p class="text-slate-300 font-medium leading-relaxed">
-                        Where curious minds grow. Fostering a love for reading in children worldwide.
-                    </p>
+                    <p class="text-slate-300 font-medium leading-relaxed">Where curious minds grow. Fostering a love for reading in children worldwide.</p>
                 </div>
                 <div>
                     <h4 class="font-display font-bold text-lg mb-4 text-brand-yellow">Explore</h4>
@@ -388,10 +319,7 @@
                 </div>
                 <div>
                     <h4 class="font-display font-bold text-lg mb-4 text-brand-peach">Visit Us</h4>
-                    <p class="text-slate-300 font-medium leading-relaxed mb-3">
-                        123 Storybook Lane<br>
-                        Imagination City, IC 00000
-                    </p>
+                    <p class="text-slate-300 font-medium leading-relaxed mb-3">123 Storybook Lane<br>Imagination City, IC 00000</p>
                 </div>
             </div>
             <div class="border-t-2 border-slate-700 pt-8 text-center text-slate-400 font-medium text-sm">
@@ -400,6 +328,21 @@
         </div>
     </footer>
 
+    <!-- ===== EVENT DETAILS MODAL ===== -->
+    <div id="event-modal" class="modal-backdrop fixed inset-0 z-[60] flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="closeEventModal()"></div>
+        <div class="modal-content paper-card rounded-[2.5rem] p-8 md:p-12 bg-white relative max-w-md w-full text-center">
+            <button onclick="closeEventModal()" class="absolute top-4 right-4 w-10 h-10 border-2 border-brand-dark rounded-xl bg-brand-yellow flex items-center justify-center font-bold text-xl hover:bg-brand-yellowDark transition-colors">✕</button>
+            <div class="text-5xl mb-4">🎈</div>
+            <h3 class="font-display font-extrabold text-2xl text-brand-dark mb-2" id="modal-event-name">Event Name</h3>
+            <p class="text-brand-dark/70 font-medium mb-6">To register for this event or learn more, please become a member or contact us.</p>
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <a href="index.html#membership" class="btn-bounce bg-brand-coral text-white font-display font-bold py-3 px-6 rounded-xl shadow-fun-coral">Become a Member</a>
+                <a href="contact.html" class="btn-bounce bg-white text-brand-dark font-display font-bold py-3 px-6 rounded-xl shadow-fun">Contact Us</a>
+            </div>
+        </div>
+    </div>
+
     <!-- ===== SCRIPTS ===== -->
     <script>
         // Magic particle trail
@@ -407,13 +350,12 @@
         const colors = ['#FF5E7A', '#3B6FFF', '#FFD23F', '#9D65FF', '#4EEDC4'];
         document.addEventListener('mousemove', (e) => {
             const now = Date.now();
-            if (now - lastParticleTime > 50) {
+            if (now - lastParticleTime > 45) {
                 lastParticleTime = now;
                 const p = document.createElement('div');
                 p.className = 'magic-particle';
-                const size = Math.random() * 10 + 5;
-                p.style.width = `${size}px`;
-                p.style.height = `${size}px`;
+                p.style.width = `${Math.random() * 10 + 5}px`;
+                p.style.height = p.style.width;
                 p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
                 p.style.border = '1px solid #1E1B2E';
                 p.style.left = `${e.clientX}px`;
@@ -423,19 +365,29 @@
             }
         });
 
-        // Reveal animations on scroll
+        // Scroll reveal
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
         }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
         document.querySelectorAll('.reveal-pop').forEach(el => observer.observe(el));
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 30) nav.classList.add('py-1'); else nav.classList.remove('py-1');
-        });
+        // Mobile menu
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileNav = document.getElementById('mobile-nav');
+        if (mobileBtn && mobileNav) mobileBtn.addEventListener('click', () => mobileNav.classList.toggle('hidden'));
+
+        // Navbar scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => navbar.classList.toggle('py-1', window.scrollY > 30));
+
+        // Event modal
+        function openEventModal(eventName) {
+            document.getElementById('modal-event-name').textContent = eventName;
+            document.getElementById('event-modal').classList.add('active');
+        }
+        function closeEventModal() {
+            document.getElementById('event-modal').classList.remove('active');
+        }
     </script>
 </body>
 </html>
