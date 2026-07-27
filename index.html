@@ -5,381 +5,199 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Nookly - Where curious minds grow. A modern children's reading club and community library.">
   <title>Nookly - Where Curious Minds Grow</title>
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* ========== DESIGN SYSTEM ========== */
     :root {
-      --color-primary: #4F7CFF;
-      --color-mint: #3DD6B5;
-      --color-purple: #8B6DFF;
-      --color-coral: #FF6B7A;
-      --color-sun: #FFD166;
-      --color-peach: #FFA58C;
-      --color-bg: #F7F9FC;
-      --color-white: #FFFFFF;
-      --color-text: #1D2939;
-      --color-text-light: #667085;
-      --color-border: #E6ECF5;
-
-      --font-heading: 'Plus Jakarta Sans', sans-serif;
-      --font-body: 'Nunito', sans-serif;
-      --max-width: 1200px;
-      --nav-height: 80px;
-      --section-padding: 100px 20px;
-      --border-radius: 32px;
-      --card-shadow: 0 4px 20px rgba(0,0,0,0.04);
-      --card-hover-shadow: 0 16px 36px rgba(0,0,0,0.08);
-      --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      --blue: #4F7CFF;
+      --mint: #3DD6B5;
+      --purple: #8B6DFF;
+      --coral: #FF6B7A;
+      --sun: #FFD166;
+      --peach: #FFA58C;
+      --bg: #F9FAFB;
+      --white: #fff;
+      --text: #1D2939;
+      --text-light: #667085;
+      --border: #E6ECF5;
+      --radius: 28px;
+      --font: 'Plus Jakarta Sans', sans-serif;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: var(--font-body);
-      color: var(--color-text);
-      background: var(--color-bg);
-      line-height: 1.6;
+      font-family: var(--font);
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.5;
       overflow-x: hidden;
     }
-    h1, h2, h3, h4 {
-      font-family: var(--font-heading);
-      font-weight: 700;
-      line-height: 1.2;
-      color: var(--color-text);
-    }
-    h1 { font-size: clamp(2.8rem, 6vw, 5rem); letter-spacing: -0.02em; }
-    h2 { font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: -0.01em; }
-    h3 { font-size: 1.5rem; }
-    p { color: var(--color-text-light); font-size: 1.1rem; max-width: 600px; }
-    a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
 
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 20px;
-      position: relative;
-      z-index: 1;
-    }
+    h1 { font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; }
+    h2 { font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; }
+    h3 { font-size: 1.5rem; font-weight: 700; }
+    p { font-size: 1.15rem; color: var(--text-light); max-width: 600px; }
 
-    /* ========== BUTTONS ========== */
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+    .section { padding: 100px 24px; }
+
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
-      padding: 16px 32px;
-      font-family: var(--font-heading); font-weight: 700; font-size: 1rem;
-      border-radius: 50px;
-      border: none; cursor: pointer;
-      transition: var(--transition);
-      background: var(--color-primary);
-      color: white;
-      box-shadow: 0 8px 20px rgba(79, 124, 255, 0.25);
-      position: relative; overflow: hidden; z-index: 1;
+      padding: 18px 36px; border-radius: 40px; font-weight: 700; font-size: 1rem;
+      transition: all 0.25s ease; cursor: pointer; text-decoration: none; border: none;
     }
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 28px rgba(79, 124, 255, 0.35);
+    .btn-primary {
+      background: var(--blue); color: white; box-shadow: 0 10px 25px rgba(79,124,255,0.3);
     }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(79,124,255,0.4); }
     .btn-outline {
-      background: transparent;
-      color: var(--color-primary);
-      border: 2px solid var(--color-primary);
-      box-shadow: none;
+      background: transparent; color: var(--blue); border: 2px solid var(--blue);
     }
-    .btn-outline:hover {
-      background: var(--color-primary);
-      color: white;
-    }
+    .btn-outline:hover { background: var(--blue); color: white; }
 
-    /* ========== NAVIGATION ========== */
+    /* ----- NAVIGATION ----- */
     .nav {
-      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
-      background: white;    /* solid from start so it's always visible */
-      padding: 0 20px; height: var(--nav-height);
-      display: flex; align-items: center;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      background: rgba(255,255,255,0.85); backdrop-filter: blur(12px);
+      padding: 0 24px; height: 80px; display: flex; align-items: center;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
     }
-    .nav-container {
-      width: 100%; max-width: var(--max-width); margin: 0 auto;
+    .nav-inner {
+      width: 100%; max-width: 1200px; margin: 0 auto;
       display: flex; justify-content: space-between; align-items: center;
     }
-    .logo {
-      display: flex; align-items: center; gap: 10px;
-      font-family: var(--font-heading); font-weight: 800; font-size: 1.8rem;
-      color: var(--color-text);
-    }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.8rem; color: var(--text); }
     .logo-icon {
-      width: 40px; height: 40px; background: var(--color-primary);
-      border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      color: white; font-size: 20px;
+      width: 40px; height: 40px; background: var(--blue); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; color: white;
     }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a {
-      font-weight: 600; color: var(--color-text);
-      transition: color 0.3s; font-size: 1rem;
-    }
-    .nav-links a:hover { color: var(--color-primary); }
-    .menu-toggle {
-      display: none; flex-direction: column; gap: 5px;
-      background: none; border: none; cursor: pointer;
-    }
-    .menu-toggle span {
-      width: 25px; height: 3px; background: var(--color-text);
-      border-radius: 3px; transition: var(--transition);
-    }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a { font-weight: 600; color: var(--text); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--blue); }
 
-    /* ========== HERO ========== */
+    /* ----- HERO (asymmetric, no circles) ----- */
     .hero {
-      padding: calc(var(--nav-height) + 60px) 20px 120px;
-      background: linear-gradient(135deg, #EEF2FF 0%, #F7F9FC 100%);
-      overflow: hidden;
+      padding: 160px 24px 120px;
+      background: linear-gradient(135deg, #EEF2FF 0%, #F9FAFB 100%);
+      position: relative; overflow: hidden;
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+      align-items: center; max-width: 1200px; margin: 0 auto;
+    }
+    .hero-text { z-index: 2; }
+    .hero-text h1 { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 24px; }
+    .hero-illustration {
       position: relative;
-    }
-    .hero-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-    .hero-text { position: relative; z-index: 2; }
-    .hero-text h1 {
-      background: linear-gradient(to right, var(--color-primary), var(--color-purple));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 24px;
-    }
-    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
-
-    .hero-illustration { position: relative; z-index: 2; }
-    .illustration-squircle {
-      width: 100%; max-width: 500px; margin: 0 auto;
-      aspect-ratio: 1 / 1;
-      background: linear-gradient(135deg, var(--color-sun), var(--color-coral));
-      border-radius: 48px;
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-      box-shadow: 0 30px 50px rgba(255, 107, 122, 0.35);
-      position: relative;
-    }
-    .illustration-squircle img { width: 80%; height: auto; }
-    .illustration-caption {
-      position: absolute; bottom: 20px; color: rgba(255,255,255,0.85);
-      font-size: 0.9rem; font-weight: 600;
-    }
-
-    .hero-shapes .shape {
-      position: absolute; border-radius: 50%; opacity: 0.7; z-index: 0;
-      pointer-events: none; animation: float 8s infinite ease-in-out;
-    }
-    .shape-1 { width: 140px; height: 140px; background: var(--color-sun); top: 10%; left: 5%; animation-delay: 0s; }
-    .shape-2 { width: 90px; height: 90px; background: var(--color-mint); top: 65%; left: 85%; animation-delay: 1s; }
-    .shape-3 { width: 70px; height: 70px; background: var(--color-coral); bottom: 15%; left: 15%; animation-delay: 2s; }
-    .shape-4 { width: 120px; height: 120px; background: var(--color-purple); top: 25%; right: 5%; border-radius: 36px; transform: rotate(45deg); animation-delay: 0.5s; }
-    .hero-bg-squircle {
-      position: absolute;
-      width: 650px; height: 650px;
-      background: rgba(255, 166, 140, 0.2);
-      border-radius: 100px;
-      transform: rotate(45deg);
-      top: -250px; right: -250px;
-      z-index: 1;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-25px) rotate(3deg); }
-    }
-
-    /* ========== SECTIONS & BACKGROUNDS ========== */
-    .section { padding: var(--section-padding); }
-    .section-header { text-align: center; margin-bottom: 60px; }
-    .section-header h2 { margin-bottom: 16px; }
-    .section-label {
-      display: inline-block; font-weight: 700; font-size: 0.9rem;
-      text-transform: uppercase; letter-spacing: 1.5px;
-      color: var(--color-primary); margin-bottom: 12px;
-    }
-
-    .bg-white { background: white; }
-    .bg-mint { background-color: #E6FFF8; }
-    .bg-purple { background-color: #F3F0FF; }
-    .bg-coral { background-color: #FFF0EE; }
-    .bg-peach { background-color: #FFF4F0; }
-
-    /* ========== FEATURED BLOCK ========== */
-    .featured-block {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-    .featured-image { position: relative; }
-    .img-squircle {
-      width: 100%;
-      aspect-ratio: 1 / 1;
+      width: 100%; max-width: 520px; margin: 0 auto;
+      background: linear-gradient(135deg, var(--sun), var(--coral));
       border-radius: 40px;
-      background: white;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+      aspect-ratio: 1 / 1;
       display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(255,107,122,0.3);
     }
-    .img-squircle img { width: 70%; height: auto; }
-    .featured-text { position: relative; }
-    .featured-text::before {
-      content: '';
-      position: absolute;
-      width: 140px; height: 140px;
-      background: var(--color-sun);
-      border-radius: 50px;
-      top: -50px; left: -50px;
-      z-index: -1;
-      opacity: 0.9;
+    .hero-illustration img { width: 75%; }
+    .hero-bg-shape {
+      position: absolute; top: -120px; right: -60px; width: 500px; height: 500px;
+      background: rgba(255,166,140,0.25); border-radius: 80px;
+      transform: rotate(45deg); z-index: 0;
     }
 
-    /* ========== CARDS ========== */
+    /* ----- ALTERNATING BACKGROUNDS ----- */
+    .bg-soft-blue { background: #F0F4FF; }
+    .bg-soft-mint { background: #E6FFF8; }
+    .bg-soft-purple { background: #F3F0FF; }
+    .bg-soft-coral { background: #FFF0EE; }
+    .bg-white { background: white; }
+
+    /* ----- FEATURED BLOCK (editorial) ----- */
+    .featured-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+    }
+    .featured-image {
+      background: linear-gradient(135deg, var(--mint), #FFF);
+      border-radius: 36px; aspect-ratio: 1 / 1;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+    }
+    .featured-image span { font-size: 5rem; }
+
+    /* ----- CARDS (no circles) ----- */
     .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 40px;
-      margin-top: 40px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 36px; margin-top: 48px;
     }
     .card {
-      background: white;
-      border-radius: 32px;
-      padding: 40px 30px;
-      box-shadow: var(--card-shadow);
-      transition: var(--transition);
-      border: 1px solid var(--color-border);
+      background: white; border-radius: var(--radius); padding: 36px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.04); transition: all 0.3s ease;
     }
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--card-hover-shadow);
-      background: var(--color-primary);
-      color: white;
-      border-color: transparent;
-    }
-    .card:hover h3, .card:hover p { color: white; }
-    .card-icon {
-      width: 60px; height: 60px; border-radius: 18px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 28px; margin-bottom: 20px;
-    }
-    .card h3 { margin-bottom: 12px; }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 16px 32px rgba(0,0,0,0.08); }
+    .card-icon { width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 20px; }
 
-    .staggered-grid .card:nth-child(even) { transform: translateY(30px); }
-
-    /* ========== TESTIMONIALS ========== */
-    .testimonial-card {
-      background: white;
-      border-radius: 32px;
-      padding: 40px;
-      box-shadow: var(--card-shadow);
-      text-align: center;
-    }
-    .testimonial-text {
-      font-size: 1.2rem; font-style: italic;
-      color: var(--color-text); margin-bottom: 20px;
-    }
-    .testimonial-author { font-weight: 700; color: var(--color-primary); }
-
-    /* ========== EVENTS ========== */
+    /* ----- EVENTS (timeline style) ----- */
     .events-list { display: flex; flex-direction: column; gap: 20px; }
     .event-item {
-      display: flex; align-items: center; gap: 24px;
-      background: white; padding: 24px;
-      border-radius: 24px; box-shadow: var(--card-shadow);
+      display: flex; align-items: center; gap: 24px; background: white;
+      padding: 24px; border-radius: 24px; box-shadow: 0 6px 20px rgba(0,0,0,0.03);
     }
     .event-date {
-      background: var(--color-primary);
-      color: white; border-radius: 16px;
-      padding: 12px 20px; text-align: center;
-      font-weight: 700; min-width: 70px;
-      font-size: 1.2rem;
+      background: var(--blue); color: white; border-radius: 16px;
+      padding: 10px 20px; text-align: center; font-weight: 700;
+      min-width: 70px; font-size: 1.2rem;
     }
 
-    /* ========== MEMBERSHIP ========== */
-    .membership-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
+    /* ----- MEMBERSHIP ----- */
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;
     }
-    .membership-card {
-      background: white;
-      border-radius: 32px;
-      padding: 40px 30px;
-      box-shadow: var(--card-shadow);
-      text-align: center;
-      transition: var(--transition);
+    .pricing-card {
+      background: white; border-radius: var(--radius); padding: 40px 30px;
+      text-align: center; box-shadow: 0 6px 20px rgba(0,0,0,0.04);
     }
-    .membership-card.featured {
-      border: 2px solid var(--color-primary);
-      transform: scale(1.05);
+    .pricing-card.featured {
+      border: 2px solid var(--blue);
       background: linear-gradient(white, #F0F4FF);
+      transform: scale(1.05);
     }
-    .price {
-      font-size: 2.8rem; font-weight: 800;
-      color: var(--color-primary); margin: 20px 0;
-    }
+    .price { font-size: 3rem; font-weight: 800; color: var(--blue); margin: 20px 0; }
 
-    /* ========== NEWSLETTER ========== */
+    /* ----- NEWSLETTER ----- */
     .newsletter-form {
       display: flex; gap: 12px; max-width: 500px; margin: 0 auto;
     }
     .newsletter-form input {
-      flex: 1; padding: 16px 24px;
-      border: 2px solid var(--color-border);
-      border-radius: 50px;
-      font-family: var(--font-body); font-size: 1rem;
+      flex: 1; padding: 16px 24px; border: 2px solid var(--border);
+      border-radius: 40px; font-family: var(--font); font-size: 1rem;
     }
-    .newsletter-form input:focus { outline: none; border-color: var(--color-primary); }
+    .newsletter-form input:focus { outline: none; border-color: var(--blue); }
 
-    /* ========== FOOTER ========== */
+    /* ----- FOOTER ----- */
     .footer {
-      background: var(--color-text);
-      color: white; padding: 60px 20px 30px;
+      background: var(--text); color: white; padding: 60px 24px 30px;
     }
     .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
       gap: 40px; margin-bottom: 40px;
     }
-    .footer a { color: #BCC4D4; transition: color 0.3s; }
+    .footer a { color: #BCC4D4; transition: color 0.2s; }
     .footer a:hover { color: white; }
-    .footer-logo {
-      font-family: var(--font-heading); font-weight: 800;
-      font-size: 1.8rem; margin-bottom: 16px;
-      display: flex; align-items: center; gap: 10px;
+
+    /* ----- ANIMATIONS (more dynamic) ----- */
+    .reveal {
+      opacity: 0; transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
     }
-    .footer-bottom {
-      text-align: center; border-top: 1px solid rgba(255,255,255,0.1);
-      padding-top: 30px; color: #BCC4D4;
+    .reveal.from-left { transform: translateX(-40px); }
+    .reveal.from-right { transform: translateX(40px); }
+    .reveal.from-bottom { transform: translateY(40px); }
+    .reveal.scale-in { transform: scale(0.95); }
+    .reveal.visible {
+      opacity: 1; transform: translate(0) scale(1);
     }
 
-    /* ========== RESPONSIVE ========== */
     @media (max-width: 768px) {
-      .hero-content, .featured-block {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .hero-illustration { order: -1; }
-      .nav-links {
-        position: fixed; top: var(--nav-height); left: 0; width: 100%;
-        background: white; flex-direction: column; align-items: center;
-        padding: 40px 20px; gap: 24px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        transform: translateY(-110%); transition: transform 0.3s ease;
-      }
-      .nav-links.active { transform: translateY(0); }
-      .menu-toggle { display: flex; }
-      .hero-shapes .shape { transform: scale(0.6); }
-      .staggered-grid .card:nth-child(even) { transform: none; }
+      .hero-grid, .featured-grid { grid-template-columns: 1fr; text-align: center; }
+      .hero-illustration { order: -1; max-width: 320px; }
+      .nav-links { display: none; }
     }
   </style>
 </head>
@@ -387,129 +205,113 @@
 
   <!-- Navigation -->
   <nav class="nav">
-    <div class="nav-container">
-      <a href="index.html" class="logo">
-        <div class="logo-icon">
-          <!-- LOGO PLACEHOLDER – replace with your logo image later -->
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6H20V18H4V6Z" fill="white" opacity="0.8"/><path d="M12 6V18M4 12H20" stroke="white" stroke-width="2"/></svg>
-        </div>
-        <span>Nookly</span>
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <div class="logo-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" fill="white" opacity=".8"/><path d="M12 6v12M4 12h16" stroke="white" stroke-width="2"/></svg></div>
+        Nookly
       </a>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="library.html">Library</a></li>
-        <li><a href="bookclub.html">Book Club</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Library</a></li>
+        <li><a href="#">Book Club</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Contact</a></li>
       </ul>
-      <a href="#" class="btn nav-cta">Become a Member</a>
-      <button class="menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      <a href="#" class="btn btn-primary">Become a Member</a>
     </div>
   </nav>
 
-  <!-- Hero (Editorial spread) -->
+  <!-- Hero (asymmetric, clean) -->
   <section class="hero">
-    <div class="hero-shapes">
-      <div class="shape shape-1"></div>
-      <div class="shape shape-2"></div>
-      <div class="shape shape-3"></div>
-      <div class="shape shape-4"></div>
-      <div class="hero-bg-squircle"></div>
-    </div>
-    <div class="container hero-content">
-      <div class="hero-text">
+    <div class="hero-bg-shape"></div>
+    <div class="hero-grid">
+      <div class="hero-text reveal from-left">
         <h1>Every Great Adventure Begins With a Story.</h1>
-        <p>Nookly opens the door to imagination, curiosity, and lifelong learning for children aged 4–12. Join our reading club and community library today.</p>
-        <div class="hero-buttons">
-          <a href="#" class="btn">Become a Member</a>
-          <a href="library.html" class="btn btn-outline">Explore Books</a>
+        <p style="margin-bottom: 32px;">Nookly opens the door to imagination, curiosity, and lifelong learning for children aged 4–12. Join our reading club and community library today.</p>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="#" class="btn btn-primary">Become a Member</a>
+          <a href="#" class="btn btn-outline">Explore Books</a>
         </div>
       </div>
-      <div class="hero-illustration">
-        <div class="illustration-squircle">
-          <!-- Illustration placeholder -->
-          <img src="assets/images/hero-reading.svg" alt="Children reading" onerror="this.style.display='none'; this.parentNode.style.background='linear-gradient(135deg, #FFD166, #FF6B7A)';">
-          <p class="illustration-caption">Illustration: Children reading together</p>
+      <div class="hero-illustration reveal from-right">
+        <!-- illustration placeholder -->
+        <span style="font-size: 5rem; color: white;">📚</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Programme (editorial) -->
+  <section class="section bg-soft-peach">
+    <div class="container">
+      <div class="featured-grid">
+        <div class="featured-image reveal scale-in">
+          <span>📖</span>
+        </div>
+        <div class="reveal from-right">
+          <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue);">Featured Programme</span>
+          <h2 style="margin: 16px 0 24px;">Weekly Reading Club</h2>
+          <p>A fun, guided reading experience where kids discuss books, share ideas, and make friends. Every Saturday with a new theme each month.</p>
+          <a href="#" class="btn btn-primary" style="margin-top: 32px;">Join the Club</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Featured Programme -->
-  <section class="section bg-peach">
+  <!-- Programmes (cards with varied animations) -->
+  <section class="section bg-soft-mint">
     <div class="container">
-      <div class="featured-block">
-        <div class="featured-image">
-          <div class="img-squircle" style="background: linear-gradient(135deg, #3DD6B5, #FFF);">
-            <img src="assets/images/reading-club.svg" alt="Reading Club" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=font-size:3rem;>📚</span>';">
-          </div>
-        </div>
-        <div class="featured-text">
-          <span class="section-label">Featured Programme</span>
-          <h2>Weekly Reading Club</h2>
-          <p>A fun, guided reading experience where kids discuss books, share ideas, and make friends. Our club meets every Saturday with a new theme each month.</p>
-          <a href="#" class="btn" style="margin-top:24px;">Join the Club</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Programmes -->
-  <section class="section bg-mint">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-label">What We Offer</span>
+      <div class="section-header reveal from-bottom" style="text-align: center; margin-bottom: 48px;">
+        <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue);">What We Offer</span>
         <h2>Programmes Designed to Inspire</h2>
-        <p>From storytime to creative workshops, every programme sparks curiosity and builds confidence.</p>
       </div>
-      <div class="cards-grid staggered-grid">
-        <div class="card">
-          <div class="card-icon" style="background:#FFEECC;"><span style="color:#FFB800;">📚</span></div>
+      <div class="cards-grid">
+        <div class="card reveal from-bottom">
+          <div class="card-icon" style="background:#FFEECC;">📚</div>
           <h3>Weekly Reading Club</h3>
-          <p>A fun, guided reading experience where kids discuss books, share ideas, and make friends.</p>
+          <p>Guided reading, discussions, and friendship every Saturday.</p>
         </div>
-        <div class="card">
-          <div class="card-icon" style="background:#E8F5FF;"><span style="color:#4F7CFF;">🎨</span></div>
+        <div class="card reveal from-bottom" style="transition-delay: 0.1s;">
+          <div class="card-icon" style="background:#E8F5FF;">🎨</div>
           <h3>Creative Workshops</h3>
-          <p>Arts, crafts, and storytelling sessions that bring stories to life through imagination and play.</p>
+          <p>Arts & crafts that bring stories to life.</p>
         </div>
-        <div class="card">
-          <div class="card-icon" style="background:#E6FFFA;"><span style="color:#55D6BE;">🏆</span></div>
+        <div class="card reveal from-bottom" style="transition-delay: 0.2s;">
+          <div class="card-icon" style="background:#E6FFFA;">🏆</div>
           <h3>Monthly Challenges</h3>
-          <p>Incentive-based reading challenges that reward curiosity and build a love for books.</p>
+          <p>Reading challenges with exciting rewards.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Why Nookly -->
-  <section class="section bg-purple">
+  <!-- Why Nookly (staggered animations) -->
+  <section class="section bg-soft-purple">
     <div class="container">
-      <div class="section-header">
-        <span class="section-label">Why Nookly</span>
+      <div class="section-header reveal from-bottom" style="text-align: center; margin-bottom: 48px;">
+        <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue);">Why Nookly</span>
         <h2>A Reading Space Kids Love,<br>Parents Trust</h2>
       </div>
       <div class="cards-grid">
-        <div class="card"><h3>🧠 Curated Collections</h3><p>Every book is handpicked by educators to match age, interest, and reading level.</p></div>
-        <div class="card"><h3>👨‍👩‍👧‍👦 Parent Dashboard</h3><p>Track progress, discover new recommendations, and stay involved.</p></div>
-        <div class="card"><h3>🌈 Inclusive Community</h3><p>A warm, welcoming environment where every child feels seen, heard, and inspired.</p></div>
+        <div class="card reveal from-left"><h3>🧠 Curated Collections</h3><p>Handpicked by educators for age & interest.</p></div>
+        <div class="card reveal scale-in"><h3>👨‍👩‍👧‍👦 Parent Dashboard</h3><p>Track progress, get recommendations.</p></div>
+        <div class="card reveal from-right"><h3>🌈 Inclusive Community</h3><p>Every child feels seen and inspired.</p></div>
       </div>
     </div>
   </section>
 
   <!-- Reading Categories -->
-  <section class="section bg-coral">
+  <section class="section bg-soft-coral">
     <div class="container">
-      <div class="section-header">
-        <span class="section-label">Explore</span>
+      <div class="section-header reveal from-bottom" style="text-align: center; margin-bottom: 48px;">
+        <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue);">Explore</span>
         <h2>Reading Categories</h2>
       </div>
       <div class="cards-grid">
-        <div class="card" style="border-top:5px solid var(--color-primary);"><h3>Adventure</h3><p>Epic quests and daring tales.</p></div>
-        <div class="card" style="border-top:5px solid var(--color-mint);"><h3>Fantasy</h3><p>Magical worlds and mythical creatures.</p></div>
-        <div class="card" style="border-top:5px solid var(--color-coral);"><h3>Science &amp; Nature</h3><p>Discover how the world works.</p></div>
-        <div class="card" style="border-top:5px solid var(--color-sun);"><h3>Friendship</h3><p>Heartwarming stories about connection.</p></div>
+        <div class="card reveal scale-in" style="border-top:5px solid var(--blue);"><h3>Adventure</h3><p>Epic quests and daring tales.</p></div>
+        <div class="card reveal scale-in" style="border-top:5px solid var(--mint);"><h3>Fantasy</h3><p>Magical worlds and mythical creatures.</p></div>
+        <div class="card reveal scale-in" style="border-top:5px solid var(--coral);"><h3>Science & Nature</h3><p>Discover how the world works.</p></div>
+        <div class="card reveal scale-in" style="border-top:5px solid var(--sun);"><h3>Friendship</h3><p>Heartwarming stories about connection.</p></div>
       </div>
     </div>
   </section>
@@ -517,66 +319,68 @@
   <!-- Events -->
   <section class="section bg-white">
     <div class="container">
-      <div class="section-header">
-        <span class="section-label">Events</span>
-        <h2>What&apos;s Happening at Nookly</h2>
+      <div class="section-header reveal from-bottom" style="text-align: center; margin-bottom: 48px;">
+        <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue);">Events</span>
+        <h2>What's Happening at Nookly</h2>
       </div>
       <div class="events-list">
-        <div class="event-item">
+        <div class="event-item reveal from-left">
           <div class="event-date"><strong>12</strong><br>Jul</div>
-          <div><h3>Storytelling Under the Stars</h3><p>An outdoor evening of magical tales for ages 4–8.</p></div>
+          <div><h3>Storytelling Under the Stars</h3><p>Outdoor evening tales for ages 4–8.</p></div>
         </div>
-        <div class="event-item">
+        <div class="event-item reveal from-right">
           <div class="event-date"><strong>24</strong><br>Jul</div>
-          <div><h3>Creative Writing Camp</h3><p>A half-day workshop to unleash your child&apos;s inner author.</p></div>
+          <div><h3>Creative Writing Camp</h3><p>Unleash your child's inner author.</p></div>
         </div>
-        <div class="event-item">
+        <div class="event-item reveal from-left">
           <div class="event-date"><strong>5</strong><br>Aug</div>
-          <div><h3>Book Character Parade</h3><p>Dress up as your favorite character and march through the library.</p></div>
+          <div><h3>Book Character Parade</h3><p>Dress up & march through the library!</p></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Membership -->
-  <section class="section bg-mint">
+  <section class="section bg-soft-mint">
     <div class="container">
-      <div class="section-header">
-        <span class="section-label">Membership</span>
+      <div class="section-header reveal from-bottom" style="text-align: center; margin-bottom: 48px;">
+        <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue);">Membership</span>
         <h2>Join the Nookly Family</h2>
       </div>
-      <div class="membership-cards">
-        <div class="membership-card">
+      <div class="pricing-grid">
+        <div class="pricing-card reveal scale-in">
           <h3>Explorer</h3><div class="price">$9<span style="font-size:1rem;">/mo</span></div>
-          <ul style="list-style:none;color:var(--color-text-light);"><li>✓ 2 books/month</li><li>✓ Club access</li><li>✓ Weekly newsletter</li></ul>
-          <a href="#" class="btn btn-outline" style="margin-top:20px;">Get Started</a>
+          <ul style="list-style:none; color:var(--text-light);"><li>✓ 2 books/month</li><li>✓ Club access</li><li>✓ Newsletter</li></ul>
+          <a href="#" class="btn btn-outline" style="margin-top:24px;">Get Started</a>
         </div>
-        <div class="membership-card featured">
+        <div class="pricing-card featured reveal scale-in" style="transition-delay:0.1s;">
           <h3>Adventurer</h3><div class="price">$19<span style="font-size:1rem;">/mo</span></div>
-          <ul style="list-style:none;color:var(--color-text-light);"><li>✓ 5 books/month</li><li>✓ All events free</li><li>✓ Parent dashboard</li><li>✓ Birthday surprise</li></ul>
-          <a href="#" class="btn" style="margin-top:20px;">Most Popular</a>
+          <ul style="list-style:none; color:var(--text-light);"><li>✓ 5 books/month</li><li>✓ All events free</li><li>✓ Parent dashboard</li><li>✓ Birthday surprise</li></ul>
+          <a href="#" class="btn btn-primary" style="margin-top:24px;">Most Popular</a>
         </div>
-        <div class="membership-card">
+        <div class="pricing-card reveal scale-in" style="transition-delay:0.2s;">
           <h3>Dreamer</h3><div class="price">$29<span style="font-size:1rem;">/mo</span></div>
-          <ul style="list-style:none;color:var(--color-text-light);"><li>✓ Unlimited books</li><li>✓ 1-on-1 reading coach</li><li>✓ Exclusive workshops</li></ul>
-          <a href="#" class="btn btn-outline" style="margin-top:20px;">Go Premium</a>
+          <ul style="list-style:none; color:var(--text-light);"><li>✓ Unlimited books</li><li>✓ 1-on-1 coach</li><li>✓ Exclusive workshops</li></ul>
+          <a href="#" class="btn btn-outline" style="margin-top:24px;">Go Premium</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Testimonials -->
-  <section class="section bg-peach">
+  <section class="section bg-soft-peach">
     <div class="container">
-      <div class="section-header"><h2>What Parents Say</h2></div>
+      <div class="section-header reveal from-bottom" style="text-align: center; margin-bottom: 48px;">
+        <h2>What Parents Say</h2>
+      </div>
       <div class="cards-grid">
-        <div class="testimonial-card">
-          <p class="testimonial-text">"My daughter used to hate reading. Nookly turned it into her favorite part of the day. The community is so warm and encouraging."</p>
-          <div class="testimonial-author">— Sarah M., Parent</div>
+        <div class="card reveal from-left" style="text-align: center;">
+          <p style="font-style:italic;">"My daughter used to hate reading. Nookly turned it into her favorite part of the day."</p>
+          <p style="font-weight: 700; color: var(--blue);">— Sarah M., Parent</p>
         </div>
-        <div class="testimonial-card">
-          <p class="testimonial-text">"As a teacher, I love the curated book lists and how inclusive the environment is. Nookly truly understands children."</p>
-          <div class="testimonial-author">— Mr. David, 3rd Grade Teacher</div>
+        <div class="card reveal from-right" style="text-align: center;">
+          <p style="font-style:italic;">"As a teacher, I love the curated lists and inclusive environment."</p>
+          <p style="font-weight: 700; color: var(--blue);">— Mr. David, 3rd Grade Teacher</p>
         </div>
       </div>
     </div>
@@ -584,15 +388,15 @@
 
   <!-- Newsletter -->
   <section class="section bg-white">
-    <div class="container" style="text-align:center;">
-      <div class="section-header">
+    <div class="container" style="text-align: center;">
+      <div class="reveal from-bottom">
         <h2>Stay Curious</h2>
-        <p>Sign up for reading tips, event updates, and magical stories delivered to your inbox.</p>
+        <p style="margin: 16px auto;">Reading tips, event updates, and magical stories delivered to your inbox.</p>
+        <form class="newsletter-form" style="margin-top: 32px;">
+          <input type="email" placeholder="Your email address" required>
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
       </div>
-      <form class="newsletter-form">
-        <input type="email" placeholder="Your email address" required>
-        <button type="submit" class="btn">Subscribe</button>
-      </form>
     </div>
   </section>
 
@@ -601,693 +405,42 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <div class="footer-logo">
-            <div class="logo-icon" style="background:var(--color-mint);">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><rect x="4" y="6" width="16" height="12" rx="2"/></svg>
-            </div>
-            Nookly
+          <div style="display:flex; align-items:center; gap:10px; font-weight:800; font-size:1.8rem; margin-bottom:16px;">
+            <div class="logo-icon" style="background:var(--mint);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" fill="white" opacity=".8"/><path d="M12 6v12M4 12h16" stroke="white" stroke-width="2"/></svg></div> Nookly
           </div>
           <p style="color:#BCC4D4;">Where curious minds grow.</p>
         </div>
         <div>
-          <h4 style="color:white;margin-bottom:16px;">Explore</h4>
-          <a href="about.html">About</a><br>
-          <a href="library.html">Library</a><br>
-          <a href="bookclub.html">Book Club</a>
+          <h4 style="color:white; margin-bottom:16px;">Explore</h4>
+          <a href="#">About</a><br><a href="#">Library</a><br><a href="#">Book Club</a>
         </div>
         <div>
-          <h4 style="color:white;margin-bottom:16px;">Connect</h4>
-          <a href="events.html">Events</a><br>
-          <a href="contact.html">Contact</a><br>
-          <a href="#">Instagram</a>
+          <h4 style="color:white; margin-bottom:16px;">Connect</h4>
+          <a href="#">Events</a><br><a href="#">Contact</a><br><a href="#">Instagram</a>
         </div>
         <div>
-          <h4 style="color:white;margin-bottom:16px;">Visit</h4>
+          <h4 style="color:white; margin-bottom:16px;">Visit</h4>
           <p style="color:#BCC4D4;">123 Storybook Lane<br>Imagination City, IC 00000</p>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>© 2026 Nookly. All rights reserved.</p>
+      <div style="text-align:center; border-top:1px solid rgba(255,255,255,0.1); padding-top:30px; color:#BCC4D4;">
+        © 2026 Nookly. All rights reserved.
       </div>
     </div>
   </footer>
 
-  <!-- Simple JavaScript (inline) for mobile menu toggle -->
+  <!-- Inline JS for reveal animations -->
   <script>
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => navLinks.classList.remove('active'));
-    });
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(el => observer.observe(el));
   </script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Nookly - Where curious minds grow. A modern children's reading club and community library.">
-  <title>Nookly - Where Curious Minds Grow</title>
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    /* ========== DESIGN SYSTEM ========== */
-    :root {
-      --color-primary: #4F7CFF;
-      --color-mint: #3DD6B5;
-      --color-purple: #8B6DFF;
-      --color-coral: #FF6B7A;
-      --color-sun: #FFD166;
-      --color-peach: #FFA58C;
-      --color-bg: #F7F9FC;
-      --color-white: #FFFFFF;
-      --color-text: #1D2939;
-      --color-text-light: #667085;
-      --color-border: #E6ECF5;
 
-      --font-heading: 'Plus Jakarta Sans', sans-serif;
-      --font-body: 'Nunito', sans-serif;
-      --max-width: 1200px;
-      --nav-height: 80px;
-      --section-padding: 100px 20px;
-      --border-radius: 32px;
-      --card-shadow: 0 4px 20px rgba(0,0,0,0.04);
-      --card-hover-shadow: 0 16px 36px rgba(0,0,0,0.08);
-      --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font-body);
-      color: var(--color-text);
-      background: var(--color-bg);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    h1, h2, h3, h4 {
-      font-family: var(--font-heading);
-      font-weight: 700;
-      line-height: 1.2;
-      color: var(--color-text);
-    }
-    h1 { font-size: clamp(2.8rem, 6vw, 5rem); letter-spacing: -0.02em; }
-    h2 { font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: -0.01em; }
-    h3 { font-size: 1.5rem; }
-    p { color: var(--color-text-light); font-size: 1.1rem; max-width: 600px; }
-    a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
-
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 20px;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* ========== BUTTONS ========== */
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      padding: 16px 32px;
-      font-family: var(--font-heading); font-weight: 700; font-size: 1rem;
-      border-radius: 50px;
-      border: none; cursor: pointer;
-      transition: var(--transition);
-      background: var(--color-primary);
-      color: white;
-      box-shadow: 0 8px 20px rgba(79, 124, 255, 0.25);
-      position: relative; overflow: hidden; z-index: 1;
-    }
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 28px rgba(79, 124, 255, 0.35);
-    }
-    .btn-outline {
-      background: transparent;
-      color: var(--color-primary);
-      border: 2px solid var(--color-primary);
-      box-shadow: none;
-    }
-    .btn-outline:hover {
-      background: var(--color-primary);
-      color: white;
-    }
-
-    /* ========== NAVIGATION ========== */
-    .nav {
-      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
-      background: white;    /* solid from start so it's always visible */
-      padding: 0 20px; height: var(--nav-height);
-      display: flex; align-items: center;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.04);
-    }
-    .nav-container {
-      width: 100%; max-width: var(--max-width); margin: 0 auto;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .logo {
-      display: flex; align-items: center; gap: 10px;
-      font-family: var(--font-heading); font-weight: 800; font-size: 1.8rem;
-      color: var(--color-text);
-    }
-    .logo-icon {
-      width: 40px; height: 40px; background: var(--color-primary);
-      border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      color: white; font-size: 20px;
-    }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a {
-      font-weight: 600; color: var(--color-text);
-      transition: color 0.3s; font-size: 1rem;
-    }
-    .nav-links a:hover { color: var(--color-primary); }
-    .menu-toggle {
-      display: none; flex-direction: column; gap: 5px;
-      background: none; border: none; cursor: pointer;
-    }
-    .menu-toggle span {
-      width: 25px; height: 3px; background: var(--color-text);
-      border-radius: 3px; transition: var(--transition);
-    }
-
-    /* ========== HERO ========== */
-    .hero {
-      padding: calc(var(--nav-height) + 60px) 20px 120px;
-      background: linear-gradient(135deg, #EEF2FF 0%, #F7F9FC 100%);
-      overflow: hidden;
-      position: relative;
-    }
-    .hero-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-    .hero-text { position: relative; z-index: 2; }
-    .hero-text h1 {
-      background: linear-gradient(to right, var(--color-primary), var(--color-purple));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 24px;
-    }
-    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
-
-    .hero-illustration { position: relative; z-index: 2; }
-    .illustration-squircle {
-      width: 100%; max-width: 500px; margin: 0 auto;
-      aspect-ratio: 1 / 1;
-      background: linear-gradient(135deg, var(--color-sun), var(--color-coral));
-      border-radius: 48px;
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-      box-shadow: 0 30px 50px rgba(255, 107, 122, 0.35);
-      position: relative;
-    }
-    .illustration-squircle img { width: 80%; height: auto; }
-    .illustration-caption {
-      position: absolute; bottom: 20px; color: rgba(255,255,255,0.85);
-      font-size: 0.9rem; font-weight: 600;
-    }
-
-    .hero-shapes .shape {
-      position: absolute; border-radius: 50%; opacity: 0.7; z-index: 0;
-      pointer-events: none; animation: float 8s infinite ease-in-out;
-    }
-    .shape-1 { width: 140px; height: 140px; background: var(--color-sun); top: 10%; left: 5%; animation-delay: 0s; }
-    .shape-2 { width: 90px; height: 90px; background: var(--color-mint); top: 65%; left: 85%; animation-delay: 1s; }
-    .shape-3 { width: 70px; height: 70px; background: var(--color-coral); bottom: 15%; left: 15%; animation-delay: 2s; }
-    .shape-4 { width: 120px; height: 120px; background: var(--color-purple); top: 25%; right: 5%; border-radius: 36px; transform: rotate(45deg); animation-delay: 0.5s; }
-    .hero-bg-squircle {
-      position: absolute;
-      width: 650px; height: 650px;
-      background: rgba(255, 166, 140, 0.2);
-      border-radius: 100px;
-      transform: rotate(45deg);
-      top: -250px; right: -250px;
-      z-index: 1;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-25px) rotate(3deg); }
-    }
-
-    /* ========== SECTIONS & BACKGROUNDS ========== */
-    .section { padding: var(--section-padding); }
-    .section-header { text-align: center; margin-bottom: 60px; }
-    .section-header h2 { margin-bottom: 16px; }
-    .section-label {
-      display: inline-block; font-weight: 700; font-size: 0.9rem;
-      text-transform: uppercase; letter-spacing: 1.5px;
-      color: var(--color-primary); margin-bottom: 12px;
-    }
-
-    .bg-white { background: white; }
-    .bg-mint { background-color: #E6FFF8; }
-    .bg-purple { background-color: #F3F0FF; }
-    .bg-coral { background-color: #FFF0EE; }
-    .bg-peach { background-color: #FFF4F0; }
-
-    /* ========== FEATURED BLOCK ========== */
-    .featured-block {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-    .featured-image { position: relative; }
-    .img-squircle {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      border-radius: 40px;
-      background: white;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-    }
-    .img-squircle img { width: 70%; height: auto; }
-    .featured-text { position: relative; }
-    .featured-text::before {
-      content: '';
-      position: absolute;
-      width: 140px; height: 140px;
-      background: var(--color-sun);
-      border-radius: 50px;
-      top: -50px; left: -50px;
-      z-index: -1;
-      opacity: 0.9;
-    }
-
-    /* ========== CARDS ========== */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 40px;
-      margin-top: 40px;
-    }
-    .card {
-      background: white;
-      border-radius: 32px;
-      padding: 40px 30px;
-      box-shadow: var(--card-shadow);
-      transition: var(--transition);
-      border: 1px solid var(--color-border);
-    }
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--card-hover-shadow);
-      background: var(--color-primary);
-      color: white;
-      border-color: transparent;
-    }
-    .card:hover h3, .card:hover p { color: white; }
-    .card-icon {
-      width: 60px; height: 60px; border-radius: 18px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 28px; margin-bottom: 20px;
-    }
-    .card h3 { margin-bottom: 12px; }
-
-    .staggered-grid .card:nth-child(even) { transform: translateY(30px); }
-
-    /* ========== TESTIMONIALS ========== */
-    .testimonial-card {
-      background: white;
-      border-radius: 32px;
-      padding: 40px;
-      box-shadow: var(--card-shadow);
-      text-align: center;
-    }
-    .testimonial-text {
-      font-size: 1.2rem; font-style: italic;
-      color: var(--color-text); margin-bottom: 20px;
-    }
-    .testimonial-author { font-weight: 700; color: var(--color-primary); }
-
-    /* ========== EVENTS ========== */
-    .events-list { display: flex; flex-direction: column; gap: 20px; }
-    .event-item {
-      display: flex; align-items: center; gap: 24px;
-      background: white; padding: 24px;
-      border-radius: 24px; box-shadow: var(--card-shadow);
-    }
-    .event-date {
-      background: var(--color-primary);
-      color: white; border-radius: 16px;
-      padding: 12px 20px; text-align: center;
-      font-weight: 700; min-width: 70px;
-      font-size: 1.2rem;
-    }
-
-    /* ========== MEMBERSHIP ========== */
-    .membership-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
-    }
-    .membership-card {
-      background: white;
-      border-radius: 32px;
-      padding: 40px 30px;
-      box-shadow: var(--card-shadow);
-      text-align: center;
-      transition: var(--transition);
-    }
-    .membership-card.featured {
-      border: 2px solid var(--color-primary);
-      transform: scale(1.05);
-      background: linear-gradient(white, #F0F4FF);
-    }
-    .price {
-      font-size: 2.8rem; font-weight: 800;
-      color: var(--color-primary); margin: 20px 0;
-    }
-
-    /* ========== NEWSLETTER ========== */
-    .newsletter-form {
-      display: flex; gap: 12px; max-width: 500px; margin: 0 auto;
-    }
-    .newsletter-form input {
-      flex: 1; padding: 16px 24px;
-      border: 2px solid var(--color-border);
-      border-radius: 50px;
-      font-family: var(--font-body); font-size: 1rem;
-    }
-    .newsletter-form input:focus { outline: none; border-color: var(--color-primary); }
-
-    /* ========== FOOTER ========== */
-    .footer {
-      background: var(--color-text);
-      color: white; padding: 60px 20px 30px;
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 40px; margin-bottom: 40px;
-    }
-    .footer a { color: #BCC4D4; transition: color 0.3s; }
-    .footer a:hover { color: white; }
-    .footer-logo {
-      font-family: var(--font-heading); font-weight: 800;
-      font-size: 1.8rem; margin-bottom: 16px;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .footer-bottom {
-      text-align: center; border-top: 1px solid rgba(255,255,255,0.1);
-      padding-top: 30px; color: #BCC4D4;
-    }
-
-    /* ========== RESPONSIVE ========== */
-    @media (max-width: 768px) {
-      .hero-content, .featured-block {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .hero-illustration { order: -1; }
-      .nav-links {
-        position: fixed; top: var(--nav-height); left: 0; width: 100%;
-        background: white; flex-direction: column; align-items: center;
-        padding: 40px 20px; gap: 24px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        transform: translateY(-110%); transition: transform 0.3s ease;
-      }
-      .nav-links.active { transform: translateY(0); }
-      .menu-toggle { display: flex; }
-      .hero-shapes .shape { transform: scale(0.6); }
-      .staggered-grid .card:nth-child(even) { transform: none; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Navigation -->
-  <nav class="nav">
-    <div class="nav-container">
-      <a href="index.html" class="logo">
-        <div class="logo-icon">
-          <!-- LOGO PLACEHOLDER – replace with your logo image later -->
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6H20V18H4V6Z" fill="white" opacity="0.8"/><path d="M12 6V18M4 12H20" stroke="white" stroke-width="2"/></svg>
-        </div>
-        <span>Nookly</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="library.html">Library</a></li>
-        <li><a href="bookclub.html">Book Club</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <a href="#" class="btn nav-cta">Become a Member</a>
-      <button class="menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-    </div>
-  </nav>
-
-  <!-- Hero (Editorial spread) -->
-  <section class="hero">
-    <div class="hero-shapes">
-      <div class="shape shape-1"></div>
-      <div class="shape shape-2"></div>
-      <div class="shape shape-3"></div>
-      <div class="shape shape-4"></div>
-      <div class="hero-bg-squircle"></div>
-    </div>
-    <div class="container hero-content">
-      <div class="hero-text">
-        <h1>Every Great Adventure Begins With a Story.</h1>
-        <p>Nookly opens the door to imagination, curiosity, and lifelong learning for children aged 4–12. Join our reading club and community library today.</p>
-        <div class="hero-buttons">
-          <a href="#" class="btn">Become a Member</a>
-          <a href="library.html" class="btn btn-outline">Explore Books</a>
-        </div>
-      </div>
-      <div class="hero-illustration">
-        <div class="illustration-squircle">
-          <!-- Illustration placeholder -->
-          <img src="assets/images/hero-reading.svg" alt="Children reading" onerror="this.style.display='none'; this.parentNode.style.background='linear-gradient(135deg, #FFD166, #FF6B7A)';">
-          <p class="illustration-caption">Illustration: Children reading together</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured Programme -->
-  <section class="section bg-peach">
-    <div class="container">
-      <div class="featured-block">
-        <div class="featured-image">
-          <div class="img-squircle" style="background: linear-gradient(135deg, #3DD6B5, #FFF);">
-            <img src="assets/images/reading-club.svg" alt="Reading Club" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=font-size:3rem;>📚</span>';">
-          </div>
-        </div>
-        <div class="featured-text">
-          <span class="section-label">Featured Programme</span>
-          <h2>Weekly Reading Club</h2>
-          <p>A fun, guided reading experience where kids discuss books, share ideas, and make friends. Our club meets every Saturday with a new theme each month.</p>
-          <a href="#" class="btn" style="margin-top:24px;">Join the Club</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Programmes -->
-  <section class="section bg-mint">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-label">What We Offer</span>
-        <h2>Programmes Designed to Inspire</h2>
-        <p>From storytime to creative workshops, every programme sparks curiosity and builds confidence.</p>
-      </div>
-      <div class="cards-grid staggered-grid">
-        <div class="card">
-          <div class="card-icon" style="background:#FFEECC;"><span style="color:#FFB800;">📚</span></div>
-          <h3>Weekly Reading Club</h3>
-          <p>A fun, guided reading experience where kids discuss books, share ideas, and make friends.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon" style="background:#E8F5FF;"><span style="color:#4F7CFF;">🎨</span></div>
-          <h3>Creative Workshops</h3>
-          <p>Arts, crafts, and storytelling sessions that bring stories to life through imagination and play.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon" style="background:#E6FFFA;"><span style="color:#55D6BE;">🏆</span></div>
-          <h3>Monthly Challenges</h3>
-          <p>Incentive-based reading challenges that reward curiosity and build a love for books.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Why Nookly -->
-  <section class="section bg-purple">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-label">Why Nookly</span>
-        <h2>A Reading Space Kids Love,<br>Parents Trust</h2>
-      </div>
-      <div class="cards-grid">
-        <div class="card"><h3>🧠 Curated Collections</h3><p>Every book is handpicked by educators to match age, interest, and reading level.</p></div>
-        <div class="card"><h3>👨‍👩‍👧‍👦 Parent Dashboard</h3><p>Track progress, discover new recommendations, and stay involved.</p></div>
-        <div class="card"><h3>🌈 Inclusive Community</h3><p>A warm, welcoming environment where every child feels seen, heard, and inspired.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Reading Categories -->
-  <section class="section bg-coral">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-label">Explore</span>
-        <h2>Reading Categories</h2>
-      </div>
-      <div class="cards-grid">
-        <div class="card" style="border-top:5px solid var(--color-primary);"><h3>Adventure</h3><p>Epic quests and daring tales.</p></div>
-        <div class="card" style="border-top:5px solid var(--color-mint);"><h3>Fantasy</h3><p>Magical worlds and mythical creatures.</p></div>
-        <div class="card" style="border-top:5px solid var(--color-coral);"><h3>Science &amp; Nature</h3><p>Discover how the world works.</p></div>
-        <div class="card" style="border-top:5px solid var(--color-sun);"><h3>Friendship</h3><p>Heartwarming stories about connection.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Events -->
-  <section class="section bg-white">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-label">Events</span>
-        <h2>What&apos;s Happening at Nookly</h2>
-      </div>
-      <div class="events-list">
-        <div class="event-item">
-          <div class="event-date"><strong>12</strong><br>Jul</div>
-          <div><h3>Storytelling Under the Stars</h3><p>An outdoor evening of magical tales for ages 4–8.</p></div>
-        </div>
-        <div class="event-item">
-          <div class="event-date"><strong>24</strong><br>Jul</div>
-          <div><h3>Creative Writing Camp</h3><p>A half-day workshop to unleash your child&apos;s inner author.</p></div>
-        </div>
-        <div class="event-item">
-          <div class="event-date"><strong>5</strong><br>Aug</div>
-          <div><h3>Book Character Parade</h3><p>Dress up as your favorite character and march through the library.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Membership -->
-  <section class="section bg-mint">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-label">Membership</span>
-        <h2>Join the Nookly Family</h2>
-      </div>
-      <div class="membership-cards">
-        <div class="membership-card">
-          <h3>Explorer</h3><div class="price">$9<span style="font-size:1rem;">/mo</span></div>
-          <ul style="list-style:none;color:var(--color-text-light);"><li>✓ 2 books/month</li><li>✓ Club access</li><li>✓ Weekly newsletter</li></ul>
-          <a href="#" class="btn btn-outline" style="margin-top:20px;">Get Started</a>
-        </div>
-        <div class="membership-card featured">
-          <h3>Adventurer</h3><div class="price">$19<span style="font-size:1rem;">/mo</span></div>
-          <ul style="list-style:none;color:var(--color-text-light);"><li>✓ 5 books/month</li><li>✓ All events free</li><li>✓ Parent dashboard</li><li>✓ Birthday surprise</li></ul>
-          <a href="#" class="btn" style="margin-top:20px;">Most Popular</a>
-        </div>
-        <div class="membership-card">
-          <h3>Dreamer</h3><div class="price">$29<span style="font-size:1rem;">/mo</span></div>
-          <ul style="list-style:none;color:var(--color-text-light);"><li>✓ Unlimited books</li><li>✓ 1-on-1 reading coach</li><li>✓ Exclusive workshops</li></ul>
-          <a href="#" class="btn btn-outline" style="margin-top:20px;">Go Premium</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section class="section bg-peach">
-    <div class="container">
-      <div class="section-header"><h2>What Parents Say</h2></div>
-      <div class="cards-grid">
-        <div class="testimonial-card">
-          <p class="testimonial-text">"My daughter used to hate reading. Nookly turned it into her favorite part of the day. The community is so warm and encouraging."</p>
-          <div class="testimonial-author">— Sarah M., Parent</div>
-        </div>
-        <div class="testimonial-card">
-          <p class="testimonial-text">"As a teacher, I love the curated book lists and how inclusive the environment is. Nookly truly understands children."</p>
-          <div class="testimonial-author">— Mr. David, 3rd Grade Teacher</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Newsletter -->
-  <section class="section bg-white">
-    <div class="container" style="text-align:center;">
-      <div class="section-header">
-        <h2>Stay Curious</h2>
-        <p>Sign up for reading tips, event updates, and magical stories delivered to your inbox.</p>
-      </div>
-      <form class="newsletter-form">
-        <input type="email" placeholder="Your email address" required>
-        <button type="submit" class="btn">Subscribe</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="footer-logo">
-            <div class="logo-icon" style="background:var(--color-mint);">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><rect x="4" y="6" width="16" height="12" rx="2"/></svg>
-            </div>
-            Nookly
-          </div>
-          <p style="color:#BCC4D4;">Where curious minds grow.</p>
-        </div>
-        <div>
-          <h4 style="color:white;margin-bottom:16px;">Explore</h4>
-          <a href="about.html">About</a><br>
-          <a href="library.html">Library</a><br>
-          <a href="bookclub.html">Book Club</a>
-        </div>
-        <div>
-          <h4 style="color:white;margin-bottom:16px;">Connect</h4>
-          <a href="events.html">Events</a><br>
-          <a href="contact.html">Contact</a><br>
-          <a href="#">Instagram</a>
-        </div>
-        <div>
-          <h4 style="color:white;margin-bottom:16px;">Visit</h4>
-          <p style="color:#BCC4D4;">123 Storybook Lane<br>Imagination City, IC 00000</p>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2026 Nookly. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Simple JavaScript (inline) for mobile menu toggle -->
-  <script>
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => navLinks.classList.remove('active'));
-    });
-  </script>
 </body>
 </html>
