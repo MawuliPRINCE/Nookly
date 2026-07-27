@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore the Nookly Library – A collection of magical stories, categorized adventures, and cozy reading nooks.">
+    <meta name="description" content="Explore the Nookly Library – Handpicked books, age‑appropriate collections, cozy reading spaces, and more.">
     <title>Library – Nookly</title>
 
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
@@ -44,15 +46,15 @@
                         'fun-blue': '0 8px 0px 0px #3B6FFF',
                         'fun-yellow': '0 8px 0px 0px #FFD23F',
                     },
-                    animation: {
-                        'wiggle': 'wiggle 2s ease-in-out infinite',
-                        'float-slow': 'floatSlow 5s ease-in-out infinite',
-                        'float-fast': 'floatFast 3.5s ease-in-out infinite',
-                    },
                     keyframes: {
                         wiggle: { '0%, 100%': { transform: 'rotate(-3deg)' }, '50%': { transform: 'rotate(3deg)' } },
                         floatSlow: { '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' }, '50%': { transform: 'translateY(-14px) rotate(2deg)' } },
                         floatFast: { '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' }, '50%': { transform: 'translateY(-8px) rotate(-3deg)' } },
+                    },
+                    animation: {
+                        'wiggle': 'wiggle 2s ease-in-out infinite',
+                        'float-slow': 'floatSlow 5s ease-in-out infinite',
+                        'float-fast': 'floatFast 3.5s ease-in-out infinite',
                     }
                 }
             }
@@ -60,133 +62,442 @@
     </script>
 
     <style>
-        .bg-noise { background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E"); }
-        .paper-card { background-color: #FFFFFF; border: 3px solid #1E1B2E; box-shadow: 6px 6px 0px 0px #1E1B2E; transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1); }
-        .paper-card:hover { transform: translate(-4px, -4px); box-shadow: 10px 10px 0px 0px #1E1B2E; }
-        .btn-bounce { transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1); border: 3px solid #1E1B2E; }
-        .btn-bounce:hover { transform: translate(-3px, -3px) scale(1.02); box-shadow: 7px 7px 0px 0px #1E1B2E; }
-        .reveal-pop { opacity: 0; transform: scale(0.85) translateY(30px); transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1); }
-        .reveal-pop.visible { opacity: 1; transform: scale(1) translateY(0); }
-        .magic-particle { pointer-events: none; position: fixed; border-radius: 50%; animation: particleFade 0.8s forwards ease-out; z-index: 9999; }
-        @keyframes particleFade { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0.2) translateY(-20px); } }
+        /* Texture overlay */
+        .bg-noise {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+        }
+
+        /* Paper card style */
+        .paper-card {
+            background-color: #FFFFFF;
+            border: 3px solid #1E1B2E;
+            box-shadow: 6px 6px 0px 0px #1E1B2E;
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .paper-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0px 0px #1E1B2E;
+        }
+
+        /* Bouncy button */
+        .btn-bounce {
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 3px solid #1E1B2E;
+        }
+        .btn-bounce:hover {
+            transform: translate(-3px, -3px) scale(1.02);
+            box-shadow: 7px 7px 0px 0px #1E1B2E;
+        }
+        .btn-bounce:active {
+            transform: translate(2px, 2px) scale(0.98);
+            box-shadow: 2px 2px 0px 0px #1E1B2E;
+        }
+
+        /* Reveal animations */
+        .reveal-pop {
+            opacity: 0;
+            transform: scale(0.85) translateY(30px);
+            transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .reveal-pop.visible {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        /* Magic particle trail */
+        .magic-particle {
+            pointer-events: none;
+            position: fixed;
+            border-radius: 50%;
+            animation: particleFade 0.8s forwards ease-out;
+            z-index: 9999;
+        }
+        @keyframes particleFade {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0.2) translateY(-20px); }
+        }
     </style>
 </head>
 <body class="bg-brand-cream text-brand-dark font-sans bg-noise selection:bg-brand-yellow selection:text-brand-dark overflow-x-hidden">
 
-    <nav class="fixed top-0 left-0 right-0 z-50 px-4 py-3" id="navbar">
+    <!-- ===== NAVIGATION (same as index) ===== -->
+    <nav class="fixed top-0 left-0 right-0 z-50 px-4 py-3 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto">
             <div class="bg-white/90 backdrop-blur-md border-3 border-brand-dark rounded-full px-6 py-3 shadow-fun flex items-center justify-between">
                 <a href="index.html" class="flex items-center gap-3 group">
                     <div class="w-11 h-11 bg-brand-blue border-2 border-brand-dark rounded-2xl flex items-center justify-center text-white shadow-[3px_3px_0px_0px_#1E1B2E] group-hover:rotate-12 transition-transform duration-300">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="transform -rotate-6"><path d="M4 6h16v12H4z" fill="white" opacity=".9"/><path d="M12 6v12M4 12h16" stroke="#1E1B2E" stroke-width="2.5" stroke-linecap="round"/></svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="transform -rotate-6">
+                            <path d="M4 6h16v12H4z" fill="white" opacity=".9"/>
+                            <path d="M12 6v12M4 12h16" stroke="#1E1B2E" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
                     </div>
                     <span class="font-display font-bold text-2xl tracking-wide text-brand-dark">Nookly<span class="text-brand-coral">.</span></span>
                 </a>
                 <ul class="hidden md:flex items-center gap-7 font-bold text-sm text-brand-dark">
-                    <li><a href="index.html" class="hover:text-brand-blue">Home</a></li>
-                    <li><a href="about.html" class="hover:text-brand-blue">About</a></li>
+                    <li><a href="index.html" class="hover:text-brand-blue transition-colors">Home</a></li>
+                    <li><a href="about.html" class="hover:text-brand-blue transition-colors">About</a></li>
                     <li><a href="library.html" class="text-brand-blue underline decoration-brand-lime decoration-4 underline-offset-4">Library</a></li>
-                    <li><a href="bookclub.html" class="hover:text-brand-blue">Book Club</a></li>
-                    <li><a href="contact.html" class="hover:text-brand-blue">Contact</a></li>
+                    <li><a href="bookclub.html" class="hover:text-brand-blue transition-colors">Book Club</a></li>
+                    <li><a href="events.html" class="hover:text-brand-blue transition-colors">Events</a></li>
+                    <li><a href="contact.html" class="hover:text-brand-blue transition-colors">Contact</a></li>
                 </ul>
                 <div class="hidden sm:block">
-                    <a href="#membership" class="btn-bounce bg-brand-coral text-white font-display font-bold text-sm py-2.5 px-6 rounded-full shadow-fun-coral">Become a Member</a>
+                    <a href="#membership" class="btn-bounce bg-brand-coral text-white font-display font-bold text-sm py-2.5 px-6 rounded-full shadow-fun-coral flex items-center gap-2">
+                        <span>Become a Member</span>
+                        <span>✨</span>
+                    </a>
                 </div>
+                <button class="md:hidden w-10 h-10 border-2 border-brand-dark rounded-xl bg-brand-yellow flex items-center justify-center font-bold">
+                    🍔
+                </button>
             </div>
         </div>
     </nav>
 
-    <section class="relative pt-44 pb-24 bg-brand-lime/20 border-b-4 border-brand-dark text-center">
-        <div class="absolute top-32 left-10 text-6xl animate-float-slow">📚</div>
-        <div class="absolute bottom-20 right-10 text-6xl animate-float-fast">🔍</div>
+    <!-- ===== HERO – Library Welcome ===== -->
+    <section class="relative pt-44 pb-24 bg-brand-lime/20 border-b-4 border-brand-dark text-center overflow-hidden">
+        <!-- Floating doodles -->
+        <div class="absolute top-32 left-10 text-6xl animate-float-slow opacity-80 pointer-events-none select-none">📚</div>
+        <div class="absolute bottom-20 right-10 text-6xl animate-float-fast opacity-80 pointer-events-none select-none">🔍</div>
+        <div class="absolute top-20 right-1/4 text-5xl animate-wiggle opacity-70 pointer-events-none select-none">✨</div>
+
         <div class="max-w-4xl mx-auto px-6 reveal-pop">
-            <span class="inline-block bg-brand-yellow border-2 border-brand-dark px-4 py-1.5 rounded-full font-display font-bold mb-6">Explore Our Collection</span>
-            <h1 class="font-display font-extrabold text-6xl lg:text-8xl text-brand-dark mb-8">
-                Your Next <span class="text-brand-blue">Adventure</span> <br> Is Waiting
+            <span class="inline-block bg-brand-yellow border-2 border-brand-dark px-5 py-2 rounded-full font-display font-bold text-sm uppercase tracking-wider shadow-[3px_3px_0px_0px_#1E1B2E] mb-6">
+                Explore Our Collection
+            </span>
+            <h1 class="font-display font-extrabold text-5xl sm:text-6xl lg:text-7xl text-brand-dark mb-8">
+                Your Next <span class="text-brand-blue relative inline-block">
+                    Adventure
+                    <svg class="absolute -bottom-2 left-0 w-full h-4 text-brand-coral" viewBox="0 0 200 15" fill="none">
+                        <path d="M2 11C50 3 150 3 198 11" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+                    </svg>
+                </span><br>Is Waiting
             </h1>
             <div class="max-w-xl mx-auto">
-                <input type="text" placeholder="Search for books, genres, or authors..." class="w-full bg-white border-3 border-brand-dark rounded-full px-8 py-5 shadow-fun text-lg font-medium outline-none focus:border-brand-blue">
+                <input type="text" placeholder="Search for books, genres, or authors..." 
+                       class="w-full bg-white border-3 border-brand-dark rounded-full px-8 py-5 shadow-fun text-lg font-medium outline-none focus:ring-4 focus:ring-brand-blue/30 focus:border-brand-blue transition-all">
             </div>
         </div>
     </section>
 
-    <section class="py-24 max-w-7xl mx-auto px-6">
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="paper-card p-6 bg-brand-peach rounded-[2.5rem] reveal-pop">
-                <div class="text-5xl mb-4">🐉</div>
-                <h3 class="font-display text-2xl font-bold mb-2">Fantasy</h3>
-                <p class="text-brand-dark/70 text-sm">Dragons, magic, and epic quests.</p>
-            </div>
-            <div class="paper-card p-6 bg-brand-mint rounded-[2.5rem] reveal-pop delay-75">
-                <div class="text-5xl mb-4">🚀</div>
-                <h3 class="font-display text-2xl font-bold mb-2">Sci-Fi</h3>
-                <p class="text-brand-dark/70 text-sm">Space travel and futuristic tales.</p>
-            </div>
-            <div class="paper-card p-6 bg-brand-purple rounded-[2.5rem] reveal-pop delay-150">
-                <div class="text-5xl mb-4">🕵️</div>
-                <h3 class="font-display text-2xl font-bold mb-2">Mystery</h3>
-                <p class="text-brand-dark/70 text-sm">Solve puzzles and uncover secrets.</p>
-            </div>
-            <div class="paper-card p-6 bg-brand-yellow rounded-[2.5rem] reveal-pop delay-225">
-                <div class="text-5xl mb-4">🐾</div>
-                <h3 class="font-display text-2xl font-bold mb-2">Nature</h3>
-                <p class="text-brand-dark/70 text-sm">Animals and the wonders of Earth.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-12 bg-white border-y-4 border-brand-dark">
+    <!-- ===== READING COLLECTIONS – Playful Pills ===== -->
+    <section class="py-24 bg-brand-cream relative border-b-4 border-brand-dark">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="font-display font-extrabold text-4xl mb-12 text-center">Staff Picks & Favorites</h2>
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="text-center mb-14 reveal-pop">
+                <span class="bg-brand-purple text-white font-display font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full border-2 border-brand-dark shadow-[2px_2px_0px_0px_#1E1B2E] inline-block mb-3">
+                    Browse by Genre
+                </span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark">
+                    Reading Collections
+                </h2>
+            </div>
+
+            <!-- Genre pills -->
+            <div class="flex flex-wrap justify-center gap-5 max-w-4xl mx-auto">
+                <button class="btn-bounce bg-white text-brand-dark font-display font-bold text-lg px-7 py-4 rounded-full flex items-center gap-3 shadow-fun group">
+                    <span class="text-3xl group-hover:scale-125 transition-transform">🐉</span> Fantasy
+                </button>
+                <button class="btn-bounce bg-white text-brand-dark font-display font-bold text-lg px-7 py-4 rounded-full flex items-center gap-3 shadow-fun group">
+                    <span class="text-3xl group-hover:scale-125 transition-transform">🚀</span> Sci‑Fi
+                </button>
+                <button class="btn-bounce bg-white text-brand-dark font-display font-bold text-lg px-7 py-4 rounded-full flex items-center gap-3 shadow-fun group">
+                    <span class="text-3xl group-hover:scale-125 transition-transform">🕵️</span> Mystery
+                </button>
+                <button class="btn-bounce bg-white text-brand-dark font-display font-bold text-lg px-7 py-4 rounded-full flex items-center gap-3 shadow-fun group">
+                    <span class="text-3xl group-hover:scale-125 transition-transform">🐾</span> Nature
+                </button>
+                <button class="btn-bounce bg-white text-brand-dark font-display font-bold text-lg px-7 py-4 rounded-full flex items-center gap-3 shadow-fun group">
+                    <span class="text-3xl group-hover:scale-125 transition-transform">🤝</span> Friendship
+                </button>
+                <button class="btn-bounce bg-white text-brand-dark font-display font-bold text-lg px-7 py-4 rounded-full flex items-center gap-3 shadow-fun group">
+                    <span class="text-3xl group-hover:scale-125 transition-transform">😂</span> Humour
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== AGE CATEGORIES – Toggleable Pills ===== -->
+    <section class="py-24 bg-brand-purple/10 border-b-4 border-brand-dark">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="reveal-pop mb-12">
+                <span class="bg-brand-blue text-white font-display font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full border-2 border-brand-dark shadow-[2px_2px_0px_0px_#1E1B2E] inline-block mb-3">
+                    For Every Reader
+                </span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark mb-4">
+                    Age Categories
+                </h2>
+                <p class="text-lg text-brand-dark/70 font-medium max-w-xl mx-auto">
+                    Hand‑picked books matched perfectly to your child’s reading level and interests.
+                </p>
+            </div>
+
+            <!-- Age group pills (pretend to be interactive) -->
+            <div class="flex flex-wrap justify-center gap-5">
+                <button class="btn-bounce bg-white text-brand-dark font-display font-bold text-xl px-8 py-5 rounded-full shadow-fun hover:bg-brand-blue hover:text-white transition-colors group">
+                    <span class="block text-3xl mb-1">🧒</span>
+                    Ages 4‑6
+                </button>
+                <button class="btn-bounce bg-white text-brand-dark font-display font-bold text-xl px-8 py-5 rounded-full shadow-fun hover:bg-brand-lime hover:text-brand-dark transition-colors group">
+                    <span class="block text-3xl mb-1">👧</span>
+                    Ages 7‑9
+                </button>
+                <button class="btn-bounce bg-white text-brand-dark font-display font-bold text-xl px-8 py-5 rounded-full shadow-fun hover:bg-brand-yellow hover:text-brand-dark transition-colors group">
+                    <span class="block text-3xl mb-1">🧑</span>
+                    Ages 10‑12
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURED BOOKS – Staff Picks ===== -->
+    <section class="py-24 bg-white border-b-4 border-brand-dark">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-14 reveal-pop">
+                <span class="bg-brand-coral text-white font-display font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full border-2 border-brand-dark shadow-[2px_2px_0px_0px_#1E1B2E] inline-block mb-3">
+                    Staff Picks
+                </span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark">
+                    Featured Books This Month
+                </h2>
+                <p class="text-lg text-brand-dark/70 font-medium max-w-xl mx-auto mt-4">
+                    Our storytellers’ absolute favourites – picked just for you.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Book 1 -->
-                <div class="paper-card group p-4 rounded-[2.5rem] reveal-pop">
-                    <div class="bg-brand-blue/10 h-64 rounded-2xl mb-4 flex items-center justify-center text-8xl">📕</div>
-                    <h3 class="font-bold text-xl px-2">The Magic Tree</h3>
-                    <p class="text-sm px-2 text-brand-dark/60">Ms. Priya's favorite.</p>
+                <div class="paper-card rounded-[2.5rem] overflow-hidden bg-white reveal-pop group">
+                    <div class="h-52 bg-brand-blue/20 flex items-center justify-center text-7xl relative overflow-hidden">
+                        📘
+                        <div class="absolute bottom-2 left-2 bg-brand-yellow border-2 border-brand-dark text-xs font-display font-bold px-3 py-1 rounded-full shadow-[2px_2px_0px_0px_#1E1B2E]">Ages 6‑8</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display font-bold text-2xl text-brand-dark mb-1">The Starry Forest</h3>
+                        <p class="text-sm text-brand-dark/60 mb-2">A magical journey through a glowing woodland.</p>
+                        <p class="text-xs font-bold text-brand-blue">– Ms. Priya</p>
+                    </div>
                 </div>
+
                 <!-- Book 2 -->
-                <div class="paper-card group p-4 rounded-[2.5rem] reveal-pop delay-75">
-                    <div class="bg-brand-coral/10 h-64 rounded-2xl mb-4 flex items-center justify-center text-8xl">📗</div>
-                    <h3 class="font-bold text-xl px-2">Cosmic Cat</h3>
-                    <p class="text-sm px-2 text-brand-dark/60">Adventure seeker.</p>
+                <div class="paper-card rounded-[2.5rem] overflow-hidden bg-white reveal-pop delay-100 group">
+                    <div class="h-52 bg-brand-coral/20 flex items-center justify-center text-7xl">
+                        📗
+                        <div class="absolute bottom-2 left-2 bg-brand-lime border-2 border-brand-dark text-xs font-display font-bold px-3 py-1 rounded-full shadow-[2px_2px_0px_0px_#1E1B2E]">Ages 7‑10</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display font-bold text-2xl text-brand-dark mb-1">Captain Curiosity</h3>
+                        <p class="text-sm text-brand-dark/60 mb-2">An inventor’s tale full of wild experiments.</p>
+                        <p class="text-xs font-bold text-brand-coral">– Mr. James</p>
+                    </div>
                 </div>
+
                 <!-- Book 3 -->
-                <div class="paper-card group p-4 rounded-[2.5rem] reveal-pop delay-150">
-                    <div class="bg-brand-yellow/10 h-64 rounded-2xl mb-4 flex items-center justify-center text-8xl">📘</div>
-                    <h3 class="font-bold text-xl px-2">Lost in Time</h3>
-                    <p class="text-sm px-2 text-brand-dark/60">A mystery journey.</p>
+                <div class="paper-card rounded-[2.5rem] overflow-hidden bg-white reveal-pop delay-200 group">
+                    <div class="h-52 bg-brand-yellow/30 flex items-center justify-center text-7xl">
+                        📙
+                        <div class="absolute bottom-2 left-2 bg-brand-purple border-2 border-brand-dark text-white text-xs font-display font-bold px-3 py-1 rounded-full shadow-[2px_2px_0px_0px_#1E1B2E]">Ages 4‑7</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display font-bold text-2xl text-brand-dark mb-1">The Friendship Puzzle</h3>
+                        <p class="text-sm text-brand-dark/60 mb-2">Heartwarming story about building bridges.</p>
+                        <p class="text-xs font-bold text-brand-purple">– Dr. Aisha</p>
+                    </div>
+                </div>
+
+                <!-- Book 4 -->
+                <div class="paper-card rounded-[2.5rem] overflow-hidden bg-white reveal-pop delay-300 group">
+                    <div class="h-52 bg-brand-mint/30 flex items-center justify-center text-7xl">
+                        📕
+                        <div class="absolute bottom-2 left-2 bg-brand-peach border-2 border-brand-dark text-xs font-display font-bold px-3 py-1 rounded-full shadow-[2px_2px_0px_0px_#1E1B2E]">Ages 8‑12</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display font-bold text-2xl text-brand-dark mb-1">Luna & the Lost Moon</h3>
+                        <p class="text-sm text-brand-dark/60 mb-2">A whimsical space adventure.</p>
+                        <p class="text-xs font-bold text-brand-mint">– Ms. Sofia</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-brand-dark text-white pt-20 pb-12">
+    <!-- ===== READING SPACES ===== -->
+    <section class="py-24 bg-brand-peach/10 border-b-4 border-brand-dark">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-14 reveal-pop">
+                <span class="bg-brand-lime text-brand-dark font-display font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full border-2 border-brand-dark shadow-[2px_2px_0px_0px_#1E1B2E] inline-block mb-3">
+                    Our Spaces
+                </span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark">
+                    Reading Nooks & Rooms
+                </h2>
+                <p class="text-lg text-brand-dark/70 font-medium max-w-xl mx-auto mt-4">
+                    Cosy corners, imagination tents, and outdoor gardens – every spot invites a story.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="paper-card rounded-[2.5rem] p-8 bg-white reveal-pop group text-center">
+                    <div class="text-6xl mb-4">🛋️</div>
+                    <h3 class="font-display font-bold text-2xl text-brand-dark mb-2">The Cozy Corner</h3>
+                    <p class="text-brand-dark/70 text-sm">Soft cushions, warm light – perfect for quiet reading.</p>
+                </div>
+                <div class="paper-card rounded-[2.5rem] p-8 bg-white reveal-pop delay-100 group text-center">
+                    <div class="text-6xl mb-4">🌳</div>
+                    <h3 class="font-display font-bold text-2xl text-brand-dark mb-2">Outdoor Story Garden</h3>
+                    <p class="text-brand-dark/70 text-sm">Read under the trees in our fresh‑air space.</p>
+                </div>
+                <div class="paper-card rounded-[2.5rem] p-8 bg-white reveal-pop delay-200 group text-center">
+                    <div class="text-6xl mb-4">🎪</div>
+                    <h3 class="font-display font-bold text-2xl text-brand-dark mb-2">Imagination Tent</h3>
+                    <p class="text-brand-dark/70 text-sm">A playful corner for acting out stories and puppet shows.</p>
+                </div>
+                <div class="paper-card rounded-[2.5rem] p-8 bg-white reveal-pop delay-300 group text-center">
+                    <div class="text-6xl mb-4">🎧</div>
+                    <h3 class="font-display font-bold text-2xl text-brand-dark mb-2">Audio Nook</h3>
+                    <p class="text-brand-dark/70 text-sm">Listen to narrated tales and audiobooks in a calm setting.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FACILITIES ===== -->
+    <section class="py-20 bg-brand-cream border-b-4 border-brand-dark">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <h3 class="font-display text-3xl mb-4">Ready to read?</h3>
-            <p class="mb-8 opacity-70">Join our library today and unlock thousands of adventures.</p>
-            <a href="#" class="btn-bounce inline-block bg-brand-coral px-8 py-4 rounded-2xl font-bold shadow-fun-coral">Become a Member</a>
+            <div class="reveal-pop mb-12">
+                <span class="bg-brand-yellow text-brand-dark font-display font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full border-2 border-brand-dark shadow-[2px_2px_0px_0px_#1E1B2E] inline-block mb-3">
+                    More than Books
+                </span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark mb-4">
+                    Facilities & Extras
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+                <div class="paper-card p-6 bg-white reveal-pop group">
+                    <div class="text-4xl mb-2">☕</div>
+                    <h4 class="font-display font-bold text-lg">Parent Café</h4>
+                    <p class="text-xs text-brand-dark/60">Free coffee & Wi‑Fi</p>
+                </div>
+                <div class="paper-card p-6 bg-white reveal-pop delay-75 group">
+                    <div class="text-4xl mb-2">🧸</div>
+                    <h4 class="font-display font-bold text-lg">Toddler Play</h4>
+                    <p class="text-xs text-brand-dark/60">Safe area for little siblings</p>
+                </div>
+                <div class="paper-card p-6 bg-white reveal-pop delay-150 group">
+                    <div class="text-4xl mb-2">🎒</div>
+                    <h4 class="font-display font-bold text-lg">Homework Help</h4>
+                    <p class="text-xs text-brand-dark/60">After‑school tutors</p>
+                </div>
+                <div class="paper-card p-6 bg-white reveal-pop delay-225 group">
+                    <div class="text-4xl mb-2">🎉</div>
+                    <h4 class="font-display font-bold text-lg">Party Room</h4>
+                    <p class="text-xs text-brand-dark/60">Book‑themed birthdays</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA – Membership Banner ===== -->
+    <section class="py-20 bg-brand-mint/20 relative overflow-hidden" id="membership">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="paper-card rounded-[3rem] p-10 md:p-14 bg-brand-yellow/30 text-center reveal-pop relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 text-8xl opacity-20 pointer-events-none select-none">📚</div>
+                <div class="text-5xl mb-4">🚀</div>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark mb-4">
+                    Ready to Explore the Library?
+                </h2>
+                <p class="text-lg text-brand-dark/80 font-medium max-w-lg mx-auto mb-8">
+                    Become a member and unlock unlimited access to all collections, spaces, and events.
+                </p>
+                <a href="#" class="btn-bounce bg-brand-coral text-white font-display font-bold text-lg py-4 px-8 rounded-2xl shadow-fun-coral inline-flex items-center gap-2">
+                    <span>Become a Member</span>
+                    <span>✨</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER (same as index) ===== -->
+    <footer class="bg-brand-dark text-white pt-20 pb-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div>
+                    <a href="index.html" class="flex items-center gap-3 mb-4 group">
+                        <div class="w-10 h-10 bg-brand-coral border-2 border-white rounded-xl flex items-center justify-center text-white shadow-[3px_3px_0px_0px_#FFF]">
+                            📚
+                        </div>
+                        <span class="font-display font-bold text-2xl tracking-wide text-white">Nookly</span>
+                    </a>
+                    <p class="text-slate-300 font-medium leading-relaxed">
+                        Where curious minds grow. Fostering a love for reading in children worldwide.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-display font-bold text-lg mb-4 text-brand-yellow">Explore</h4>
+                    <ul class="space-y-3 font-medium text-slate-300">
+                        <li><a href="about.html" class="hover:text-brand-coral transition-colors">About</a></li>
+                        <li><a href="library.html" class="hover:text-brand-coral transition-colors">Library</a></li>
+                        <li><a href="bookclub.html" class="hover:text-brand-coral transition-colors">Book Club</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-display font-bold text-lg mb-4 text-brand-mint">Connect</h4>
+                    <ul class="space-y-3 font-medium text-slate-300">
+                        <li><a href="events.html" class="hover:text-brand-coral transition-colors">Events</a></li>
+                        <li><a href="contact.html" class="hover:text-brand-coral transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-brand-coral transition-colors">Instagram</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-display font-bold text-lg mb-4 text-brand-peach">Visit Us</h4>
+                    <p class="text-slate-300 font-medium leading-relaxed mb-3">
+                        123 Storybook Lane<br>
+                        Imagination City, IC 00000
+                    </p>
+                </div>
+            </div>
+            <div class="border-t-2 border-slate-700 pt-8 text-center text-slate-400 font-medium text-sm">
+                © 2026 Nookly. All rights reserved. Made with ✨ for curious kids.
+            </div>
         </div>
     </footer>
 
+    <!-- ===== SCRIPTS ===== -->
     <script>
+        // Magic particle cursor trail
+        let lastParticleTime = 0;
+        const colors = ['#FF5E7A', '#3B6FFF', '#FFD23F', '#9D65FF', '#4EEDC4'];
         document.addEventListener('mousemove', (e) => {
-            if (Date.now() % 5 === 0) {
+            const now = Date.now();
+            if (now - lastParticleTime > 50) {
+                lastParticleTime = now;
                 const p = document.createElement('div');
                 p.className = 'magic-particle';
-                p.style.backgroundColor = ['#FF5E7A', '#3B6FFF', '#FFD23F'][Math.floor(Math.random() * 3)];
-                p.style.left = e.clientX + 'px';
-                p.style.top = e.clientY + 'px';
-                p.style.width = '10px'; p.style.height = '10px';
+                const size = Math.random() * 10 + 5;
+                p.style.width = `${size}px`;
+                p.style.height = `${size}px`;
+                p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                p.style.border = '1px solid #1E1B2E';
+                p.style.left = `${e.clientX}px`;
+                p.style.top = `${e.clientY}px`;
                 document.body.appendChild(p);
                 setTimeout(() => p.remove(), 800);
             }
         });
 
+        // Intersection Observer for reveal animations
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-        }, { threshold: 0.1 });
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
         document.querySelectorAll('.reveal-pop').forEach(el => observer.observe(el));
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 30) nav.classList.add('py-1'); else nav.classList.remove('py-1');
+        });
     </script>
 </body>
 </html>
