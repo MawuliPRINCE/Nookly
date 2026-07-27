@@ -1,477 +1,478 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Nookly Book Club - Discover how our weekly reading club works, monthly challenges, rewards, and membership benefits.">
-  <title>Book Club – Nookly</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --blue: #3B6FFF;
-      --coral: #FF5E7A;
-      --lime: #7ED957;
-      --yellow: #FFD23F;
-      --purple: #B388FF;
-      --peach: #FFB08A;
-      --bg: #FFFDF9;
-      --white: #FFFFFF;
-      --text: #1A1D2E;
-      --text-light: #4A4E5E;
-      --border: #E6E1D6;
-      --radius: 28px;
-      --font: 'Plus Jakarta Sans', sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nookly Book Club – Weekly reading meetups, monthly challenges, and exciting rewards for curious kids.">
+    <title>Book Club – Nookly</title>
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font);
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.5;
-      overflow-x: hidden;
-    }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    h1 { font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; }
-    h2 { font-size: clamp(2rem, 4.5vw, 3.5rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; }
-    h3 { font-size: 1.5rem; font-weight: 700; }
-    p { font-size: 1.15rem; color: var(--text-light); max-width: 600px; }
-
-    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
-    .section { padding: 100px 24px; }
-
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      padding: 18px 36px; border-radius: 40px; font-weight: 700; font-size: 1rem;
-      transition: all 0.25s ease; cursor: pointer; text-decoration: none; border: none;
-      color: white;
-    }
-    .btn-primary { background: var(--blue); box-shadow: 0 8px 20px rgba(59,111,255,0.25); }
-    .btn-primary:hover { background: #2B5CEB; transform: translateY(-3px); box-shadow: 0 12px 28px rgba(59,111,255,0.4); }
-    .btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); box-shadow: none; }
-    .btn-outline:hover { background: var(--blue); color: white; }
-    .btn-coral { background: var(--coral); box-shadow: 0 8px 20px rgba(255,94,122,0.25); }
-    .btn-coral:hover { background: #E84D68; transform: translateY(-3px); box-shadow: 0 12px 28px rgba(255,94,122,0.4); }
-
-    /* NAV */
-    .nav {
-      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
-      background: var(--white); border-bottom: 1px solid var(--border);
-      padding: 0 24px; height: 80px; display: flex; align-items: center;
-    }
-    .nav-inner {
-      width: 100%; max-width: 1200px; margin: 0 auto;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.8rem; color: var(--text); }
-    .logo-icon {
-      width: 40px; height: 40px; background: var(--blue); border-radius: 12px;
-      display: flex; align-items: center; justify-content: center; color: white;
-    }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a { font-weight: 600; color: var(--text); transition: color 0.2s; }
-    .nav-links a:hover { color: var(--blue); }
-    .nav-links a.active { color: var(--blue); font-weight: 700; }
-
-    /* PAGE HERO */
-    .page-hero {
-      padding: 160px 24px 100px;
-      background: #FFF0EE; /* soft coral tint */
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .page-hero h1 { color: var(--text); }
-    .page-hero h1 em { font-style: normal; color: var(--coral); }
-    .bg-shape-hero {
-      position: absolute; top: -50px; right: -40px; width: 280px; height: 280px;
-      background: var(--yellow); border-radius: 50px; transform: rotate(25deg); z-index: 0;
-      opacity: 0.3;
-    }
-
-    /* Section backgrounds */
-    .bg-warm-yellow { background: #FFF8E7; }
-    .bg-warm-green { background: #F0FFE8; }
-    .bg-warm-purple { background: #F8F0FF; }
-    .bg-warm-coral { background: #FFF0EE; }
-    .bg-warm-peach { background: #FFF4EC; }
-    .bg-white { background: white; }
-
-    /* HOW IT WORKS – steps */
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-    .step-card {
-      background: white;
-      border-radius: 24px;
-      padding: 32px 20px;
-      text-align: center;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
-      transition: transform 0.3s;
-      position: relative;
-    }
-    .step-card:hover { transform: translateY(-6px); }
-    .step-number {
-      width: 50px; height: 50px;
-      background: var(--blue);
-      color: white; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 800; font-size: 1.4rem;
-      margin: 0 auto 16px;
-    }
-    .step-card:nth-child(2) .step-number { background: var(--coral); }
-    .step-card:nth-child(3) .step-number { background: var(--lime); }
-    .step-card:nth-child(4) .step-number { background: var(--purple); }
-
-    /* WEEKLY READING – alternating layout */
-    .weekly-block {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      margin-top: 40px;
-    }
-    .weekly-image {
-      background: var(--yellow);
-      border-radius: 36px;
-      aspect-ratio: 4/3;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-    }
-
-    /* CHALLENGES – cards with top accent */
-    .challenges-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-    .challenge-card {
-      background: white;
-      border-radius: 24px;
-      padding: 32px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
-      text-align: center;
-      transition: transform 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-    .challenge-card:hover { transform: translateY(-6px); }
-    .challenge-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 6px;
-      background: var(--coral);
-    }
-    .challenge-card:nth-child(even)::before { background: var(--lime); }
-    .challenge-icon { font-size: 3rem; margin-bottom: 16px; }
-
-    /* REWARDS – simple badges */
-    .rewards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 24px;
-      margin-top: 40px;
-    }
-    .reward-item {
-      background: white;
-      border-radius: 24px;
-      padding: 24px;
-      text-align: center;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.03);
-      transition: transform 0.3s;
-    }
-    .reward-item:hover { transform: scale(1.05); }
-    .reward-icon { font-size: 2.5rem; margin-bottom: 12px; }
-
-    /* MEMBERSHIP BENEFITS – list style */
-    .benefits-list {
-      max-width: 700px;
-      margin: 40px auto 0;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .benefit-item {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      background: white;
-      padding: 20px 24px;
-      border-radius: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-      transition: transform 0.2s;
-    }
-    .benefit-item:hover { transform: translateX(8px); }
-    .benefit-check {
-      width: 40px; height: 40px;
-      background: var(--lime);
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      color: white; font-weight: 800; font-size: 1.2rem;
-      flex-shrink: 0;
-    }
-
-    /* CTA BANNER */
-    .cta-banner {
-      background: var(--blue);
-      border-radius: 36px; padding: 60px 40px; text-align: center;
-      color: white;
-      margin-top: 40px;
-    }
-    .cta-banner h2, .cta-banner p { color: white; }
-    .cta-banner .btn { background: white; color: var(--blue); font-weight: 800; }
-    .cta-banner .btn:hover { background: #EBF1FF; }
-
-    /* FOOTER */
-    .footer {
-      background: var(--text); color: white; padding: 60px 24px 30px;
-    }
-    .footer-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
-      gap: 40px; margin-bottom: 40px;
-    }
-    .footer a { color: #AAB2C0; transition: color 0.2s; }
-    .footer a:hover { color: white; }
-
-    /* REVEAL ANIMATIONS */
-    .reveal {
-      opacity: 0; transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-    .reveal.from-left { transform: translateX(-40px); }
-    .reveal.from-right { transform: translateX(40px); }
-    .reveal.from-bottom { transform: translateY(40px); }
-    .reveal.scale-in { transform: scale(0.95); }
-    .reveal.visible { opacity: 1; transform: translate(0) scale(1); }
-
-    @media (max-width: 768px) {
-      .weekly-block { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Navigation -->
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="index.html" class="logo">
-        <div class="logo-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" fill="white" opacity=".8"/><path d="M12 6v12M4 12h16" stroke="white" stroke-width="2"/></svg></div>
-        Nookly
-      </a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="library.html">Library</a></li>
-        <li><a href="bookclub.html" class="active">Book Club</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <a href="#" class="btn btn-coral">Become a Member</a>
-    </div>
-  </nav>
-
-  <!-- Page Hero -->
-  <section class="page-hero">
-    <div class="bg-shape-hero"></div>
-    <div class="container reveal from-bottom">
-      <h1>Join the <em>Book Club</em></h1>
-      <p style="margin: 20px auto 0; max-width: 650px;">A weekly adventure in reading — discussion, challenges, and rewards that turn reading into the best part of the week.</p>
-    </div>
-  </section>
-
-  <!-- How It Works (step cards) -->
-  <section class="section bg-white">
-    <div class="container">
-      <div class="reveal from-bottom" style="text-align: center; margin-bottom: 40px;">
-        <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--coral);">Getting Started</span>
-        <h2>How the Book Club Works</h2>
-        <p>Four simple steps to a world of stories, friends, and fun.</p>
-      </div>
-      <div class="steps-grid">
-        <div class="step-card reveal scale-in">
-          <div class="step-number">1</div>
-          <h3>Sign Up</h3>
-          <p>Choose a membership plan that fits your child’s reading appetite.</p>
-        </div>
-        <div class="step-card reveal scale-in" style="transition-delay:0.1s;">
-          <div class="step-number">2</div>
-          <h3>Pick a Book</h3>
-          <p>Browse curated lists by age and interest, then pick your weekly read.</p>
-        </div>
-        <div class="step-card reveal scale-in" style="transition-delay:0.2s;">
-          <div class="step-number">3</div>
-          <h3>Join the Meetup</h3>
-          <p>Every Saturday, we gather to discuss the story, share ideas, and play games.</p>
-        </div>
-        <div class="step-card reveal scale-in" style="transition-delay:0.3s;">
-          <div class="step-number">4</div>
-          <h3>Earn Rewards</h3>
-          <p>Complete challenges, earn badges, and unlock special prizes.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Weekly Reading (alternating layout) -->
-  <section class="section bg-warm-yellow">
-    <div class="container">
-      <div class="weekly-block">
-        <div class="weekly-image reveal from-left">
-          <span style="font-size: 4rem;">📖🗣️</span>
-        </div>
-        <div class="reveal from-right">
-          <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue);">Weekly Sessions</span>
-          <h2 style="margin: 16px 0 24px;">Saturday Reading Meetups</h2>
-          <p>Every Saturday morning, our club members gather in small groups (max 8 kids) led by a trained story guide. We read a chapter together, talk about characters, predict what happens next, and then do a creative activity — drawing, acting, or building something from the story.</p>
-          <p style="margin-top: 16px;"><strong>Groups are split by age:</strong> 4–6, 7–9, and 10–12, so every child feels comfortable and engaged.</p>
-          <a href="#" class="btn btn-primary" style="margin-top: 24px;">See Schedule</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Monthly Challenges (cards) -->
-  <section class="section bg-warm-purple">
-    <div class="container">
-      <div class="reveal from-bottom" style="text-align: center; margin-bottom: 40px;">
-        <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue);">Keep the Fun Going</span>
-        <h2>Monthly Challenges</h2>
-        <p>Each month brings a new theme and a fresh set of mini-missions. Complete them to earn bonus points and exclusive badges.</p>
-      </div>
-      <div class="challenges-grid">
-        <div class="challenge-card reveal scale-in">
-          <div class="challenge-icon">🌟</div>
-          <h3>Story Explorer</h3>
-          <p>Read 3 books from different genres this month.</p>
-        </div>
-        <div class="challenge-card reveal scale-in" style="transition-delay:0.1s;">
-          <div class="challenge-icon">✍️</div>
-          <h3>Young Author</h3>
-          <p>Write and illustrate your own short story.</p>
-        </div>
-        <div class="challenge-card reveal scale-in" style="transition-delay:0.2s;">
-          <div class="challenge-icon">🎭</div>
-          <h3>Book Character Day</h3>
-          <p>Dress up as a favorite character and tell us why you chose them.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Rewards (badge grid) -->
-  <section class="section bg-white">
-    <div class="container">
-      <div class="reveal from-bottom" style="text-align: center; margin-bottom: 40px;">
-        <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--coral);">Earn & Celebrate</span>
-        <h2>Rewards & Badges</h2>
-        <p>Every page read and every challenge completed brings your child closer to awesome rewards.</p>
-      </div>
-      <div class="rewards-grid">
-        <div class="reward-item reveal scale-in">
-          <div class="reward-icon">🏅</div>
-          <h4>Bronze Reader</h4>
-          <p>Complete 5 books</p>
-        </div>
-        <div class="reward-item reveal scale-in" style="transition-delay:0.1s;">
-          <div class="reward-icon">🥈</div>
-          <h4>Silver Scholar</h4>
-          <p>Read 15 books + 2 challenges</p>
-        </div>
-        <div class="reward-item reveal scale-in" style="transition-delay:0.2s;">
-          <div class="reward-icon">🥇</div>
-          <h4>Gold Genius</h4>
-          <p>Read 30 books + all monthly missions</p>
-        </div>
-        <div class="reward-item reveal scale-in" style="transition-delay:0.3s;">
-          <div class="reward-icon">🎁</div>
-          <h4>Mystery Prize</h4>
-          <p>Unlocked at every Gold tier</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Membership Benefits (checklist) -->
-  <section class="section bg-warm-green">
-    <div class="container">
-      <div class="reveal from-bottom" style="text-align: center; margin-bottom: 40px;">
-        <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue);">What You Get</span>
-        <h2>Membership Benefits</h2>
-      </div>
-      <div class="benefits-list">
-        <div class="benefit-item reveal from-left">
-          <div class="benefit-check">✓</div>
-          <div><strong>Weekly guided reading sessions</strong> with trained story guides</div>
-        </div>
-        <div class="benefit-item reveal from-right">
-          <div class="benefit-check">✓</div>
-          <div><strong>Access to all curated book collections</strong> for your child's age group</div>
-        </div>
-        <div class="benefit-item reveal from-left">
-          <div class="benefit-check">✓</div>
-          <div><strong>Free entry to all Nookly events</strong> — storytelling, workshops, and parades</div>
-        </div>
-        <div class="benefit-item reveal from-right">
-          <div class="benefit-check">✓</div>
-          <div><strong>Monthly progress report</strong> and personalized reading recommendations</div>
-        </div>
-        <div class="benefit-item reveal from-left">
-          <div class="benefit-check">✓</div>
-          <div><strong>Birthday surprise</strong> — a special book and badge on your child's big day</div>
-        </div>
-        <div class="benefit-item reveal from-right">
-          <div class="benefit-check">✓</div>
-          <div><strong>Exclusive parent workshops</strong> on raising confident readers</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Call to Action -->
-  <section class="section bg-warm-coral">
-    <div class="container">
-      <div class="cta-banner reveal scale-in">
-        <h2>Ready to Start the Adventure?</h2>
-        <p style="margin: 20px auto;">Join the Nookly Book Club and give your child the joy of reading, friends, and discovery.</p>
-        <a href="#" class="btn">Become a Member</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div style="display:flex; align-items:center; gap:10px; font-weight:800; font-size:1.8rem; margin-bottom:16px;">
-            <div class="logo-icon" style="background:var(--coral);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" fill="white" opacity=".8"/><path d="M12 6v12M4 12h16" stroke="white" stroke-width="2"/></svg></div> Nookly
-          </div>
-          <p style="color:#AAB2C0;">Where curious minds grow.</p>
-        </div>
-        <div><h4 style="color:white; margin-bottom:16px;">Explore</h4><a href="about.html">About</a><br><a href="library.html">Library</a><br><a href="bookclub.html">Book Club</a></div>
-        <div><h4 style="color:white; margin-bottom:16px;">Connect</h4><a href="events.html">Events</a><br><a href="contact.html">Contact</a><br><a href="#">Instagram</a></div>
-        <div><h4 style="color:white; margin-bottom:16px;">Visit</h4><p style="color:#AAB2C0;">123 Storybook Lane<br>Imagination City, IC 00000</p></div>
-      </div>
-      <div style="text-align:center; border-top:1px solid rgba(255,255,255,0.1); padding-top:30px; color:#AAB2C0;">
-        © 2026 Nookly. All rights reserved.
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Fredoka"', 'cursive', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#3B6FFF',
+                            blueDark: '#224BDB',
+                            coral: '#FF5E7A',
+                            coralDark: '#E03C58',
+                            lime: '#7ED957',
+                            yellow: '#FFD23F',
+                            yellowDark: '#E5B518',
+                            purple: '#9D65FF',
+                            purpleDark: '#7C3EFF',
+                            peach: '#FFB08A',
+                            mint: '#4EEDC4',
+                            dark: '#1E1B2E',
+                            cream: '#FFFDF9',
+                        }
+                    },
+                    boxShadow: {
+                        'fun': '0 8px 0px 0px #1E1B2E',
+                        'fun-lg': '0 12px 0px 0px #1E1B2E',
+                        'fun-coral': '0 8px 0px 0px #FF5E7A',
+                        'fun-blue': '0 8px 0px 0px #3B6FFF',
+                        'fun-yellow': '0 8px 0px 0px #FFD23F',
+                        'fun-purple': '0 8px 0px 0px #9D65FF',
+                        'glow-purple': '0 10px 30px -5px rgba(157, 101, 255, 0.35)',
+                    },
+                    keyframes: {
+                        wiggle: { '0%, 100%': { transform: 'rotate(-3deg)' }, '50%': { transform: 'rotate(3deg)' } },
+                        floatSlow: { '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' }, '50%': { transform: 'translateY(-14px) rotate(2deg)' } },
+                        floatFast: { '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' }, '50%': { transform: 'translateY(-8px) rotate(-3deg)' } },
+                    },
+                    animation: {
+                        'wiggle': 'wiggle 2s ease-in-out infinite',
+                        'float-slow': 'floatSlow 5s ease-in-out infinite',
+                        'float-fast': 'floatFast 3.5s ease-in-out infinite',
+                    }
+                }
+            }
         }
-      });
-    }, { threshold: 0.15 });
-    reveals.forEach(el => observer.observe(el));
-  </script>
+    </script>
+
+    <style>
+        .bg-noise {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+        }
+        .paper-card {
+            background-color: #FFFFFF;
+            border: 3px solid #1E1B2E;
+            box-shadow: 6px 6px 0px 0px #1E1B2E;
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .paper-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0px 0px #1E1B2E;
+        }
+        .btn-bounce {
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 3px solid #1E1B2E;
+        }
+        .btn-bounce:hover {
+            transform: translate(-3px, -3px) scale(1.02);
+            box-shadow: 7px 7px 0px 0px #1E1B2E;
+        }
+        .btn-bounce:active {
+            transform: translate(2px, 2px) scale(0.98);
+            box-shadow: 2px 2px 0px 0px #1E1B2E;
+        }
+        .reveal-pop {
+            opacity: 0;
+            transform: scale(0.85) translateY(30px);
+            transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .reveal-pop.visible {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+        .magic-particle {
+            pointer-events: none;
+            position: fixed;
+            border-radius: 50%;
+            animation: particleFade 0.8s forwards ease-out;
+            z-index: 9999;
+        }
+        @keyframes particleFade {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0.2) translateY(-20px); }
+        }
+    </style>
+</head>
+<body class="bg-brand-cream text-brand-dark font-sans bg-noise selection:bg-brand-yellow selection:text-brand-dark overflow-x-hidden">
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="fixed top-0 left-0 right-0 z-50 px-4 py-3 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto">
+            <div class="bg-white/90 backdrop-blur-md border-3 border-brand-dark rounded-full px-6 py-3 shadow-fun flex items-center justify-between">
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 bg-brand-blue border-2 border-brand-dark rounded-2xl flex items-center justify-center text-white shadow-[3px_3px_0px_0px_#1E1B2E] group-hover:rotate-12 transition-transform duration-300">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="transform -rotate-6">
+                            <path d="M4 6h16v12H4z" fill="white" opacity=".9"/>
+                            <path d="M12 6v12M4 12h16" stroke="#1E1B2E" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <span class="font-display font-bold text-2xl tracking-wide text-brand-dark">Nookly<span class="text-brand-coral">.</span></span>
+                </a>
+                <ul class="hidden md:flex items-center gap-7 font-bold text-sm text-brand-dark">
+                    <li><a href="index.html" class="hover:text-brand-blue transition-colors">Home</a></li>
+                    <li><a href="about.html" class="hover:text-brand-blue transition-colors">About</a></li>
+                    <li><a href="library.html" class="hover:text-brand-blue transition-colors">Library</a></li>
+                    <li><a href="bookclub.html" class="text-brand-blue underline decoration-brand-purple decoration-4 underline-offset-4">Book Club</a></li>
+                    <li><a href="events.html" class="hover:text-brand-blue transition-colors">Events</a></li>
+                    <li><a href="contact.html" class="hover:text-brand-blue transition-colors">Contact</a></li>
+                </ul>
+                <div class="hidden sm:block">
+                    <a href="#membership" class="btn-bounce bg-brand-coral text-white font-display font-bold text-sm py-2.5 px-6 rounded-full shadow-fun-coral flex items-center gap-2">
+                        <span>Become a Member</span>
+                        <span>✨</span>
+                    </a>
+                </div>
+                <button class="md:hidden w-10 h-10 border-2 border-brand-dark rounded-xl bg-brand-yellow flex items-center justify-center font-bold">
+                    🍔
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== PAGE HERO ===== -->
+    <section class="relative pt-44 pb-24 bg-brand-purple/10 border-b-4 border-brand-dark text-center overflow-hidden">
+        <div class="absolute top-32 left-10 text-5xl animate-float-slow opacity-80 pointer-events-none select-none">📖</div>
+        <div class="absolute bottom-20 right-10 text-5xl animate-float-fast opacity-80 pointer-events-none select-none">✨</div>
+        <div class="max-w-4xl mx-auto px-6 reveal-pop">
+            <span class="inline-block bg-brand-yellow border-2 border-brand-dark px-5 py-2 rounded-full font-display font-bold text-sm uppercase tracking-wider shadow-[3px_3px_0px_0px_#1E1B2E] mb-6">
+                Saturday Mornings
+            </span>
+            <h1 class="font-display font-extrabold text-5xl sm:text-6xl lg:text-7xl text-brand-dark mb-8">
+                Join the<br>
+                <span class="text-brand-purple relative inline-block">
+                    Book Club
+                    <svg class="absolute -bottom-2 left-0 w-full h-4 text-brand-coral" viewBox="0 0 200 15" fill="none">
+                        <path d="M2 11C50 3 150 3 198 11" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+                    </svg>
+                </span>
+            </h1>
+            <p class="text-lg sm:text-xl text-brand-dark/70 font-medium max-w-lg mx-auto">
+                A weekly adventure in reading — discussion, challenges, and rewards that turn reading into the best part of the week.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="py-24 bg-brand-cream border-b-4 border-brand-dark">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-14 reveal-pop">
+                <span class="bg-brand-coral text-white font-display font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full border-2 border-brand-dark shadow-[2px_2px_0px_0px_#1E1B2E] inline-block mb-3">
+                    Getting Started
+                </span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark">
+                    How the Book Club Works
+                </h2>
+                <p class="text-lg text-brand-dark/70 font-medium max-w-xl mx-auto mt-4">
+                    Four simple steps to a world of stories, friends, and fun.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Step 1 -->
+                <div class="paper-card rounded-[2.5rem] p-8 bg-white reveal-pop text-center group">
+                    <div class="w-14 h-14 bg-brand-blue border-2 border-brand-dark rounded-2xl flex items-center justify-center text-white font-display font-extrabold text-2xl mx-auto mb-4 shadow-[3px_3px_0px_0px_#1E1B2E] group-hover:rotate-6 transition-transform">
+                        1
+                    </div>
+                    <h3 class="font-display font-bold text-2xl text-brand-dark mb-2">Sign Up</h3>
+                    <p class="text-brand-dark/70 text-sm">Choose a membership plan that fits your child’s reading appetite.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="paper-card rounded-[2.5rem] p-8 bg-white reveal-pop delay-100 text-center group">
+                    <div class="w-14 h-14 bg-brand-coral border-2 border-brand-dark rounded-2xl flex items-center justify-center text-white font-display font-extrabold text-2xl mx-auto mb-4 shadow-[3px_3px_0px_0px_#1E1B2E] group-hover:rotate-6 transition-transform">
+                        2
+                    </div>
+                    <h3 class="font-display font-bold text-2xl text-brand-dark mb-2">Pick a Book</h3>
+                    <p class="text-brand-dark/70 text-sm">Browse curated lists by age and interest, then pick your weekly read.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="paper-card rounded-[2.5rem] p-8 bg-white reveal-pop delay-200 text-center group">
+                    <div class="w-14 h-14 bg-brand-lime border-2 border-brand-dark rounded-2xl flex items-center justify-center text-brand-dark font-display font-extrabold text-2xl mx-auto mb-4 shadow-[3px_3px_0px_0px_#1E1B2E] group-hover:rotate-6 transition-transform">
+                        3
+                    </div>
+                    <h3 class="font-display font-bold text-2xl text-brand-dark mb-2">Join the Meetup</h3>
+                    <p class="text-brand-dark/70 text-sm">Every Saturday, we gather to discuss the story, share ideas, and play games.</p>
+                </div>
+                <!-- Step 4 -->
+                <div class="paper-card rounded-[2.5rem] p-8 bg-white reveal-pop delay-300 text-center group">
+                    <div class="w-14 h-14 bg-brand-purple border-2 border-brand-dark rounded-2xl flex items-center justify-center text-white font-display font-extrabold text-2xl mx-auto mb-4 shadow-[3px_3px_0px_0px_#1E1B2E] group-hover:rotate-6 transition-transform">
+                        4
+                    </div>
+                    <h3 class="font-display font-bold text-2xl text-brand-dark mb-2">Earn Rewards</h3>
+                    <p class="text-brand-dark/70 text-sm">Complete challenges, earn badges, and unlock special prizes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WEEKLY READING ===== -->
+    <section class="py-24 bg-brand-yellow/10 border-b-4 border-brand-dark">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="reveal-pop">
+                    <div class="w-full aspect-square max-h-[380px] bg-brand-blue border-3 border-brand-dark rounded-[2.5rem] flex items-center justify-center shadow-fun-blue relative overflow-hidden group">
+                        <div class="text-8xl group-hover:scale-125 group-hover:rotate-6 transition-transform duration-500 filter drop-shadow-[4px_4px_0px_#1E1B2E]">
+                            📖🗣️
+                        </div>
+                        <div class="absolute bottom-4 left-4 bg-brand-yellow border-2 border-brand-dark font-display font-bold text-xs px-3 py-1.5 rounded-xl shadow-[2px_2px_0px_0px_#1E1B2E]">
+                            Saturdays 10 AM 🕒
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal-pop delay-100">
+                    <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-coral text-white font-display font-bold text-xs uppercase tracking-widest border-2 border-brand-dark mb-4 shadow-[2px_2px_0px_0px_#1E1B2E]">
+                        Weekly Sessions
+                    </span>
+                    <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark mb-6">
+                        Saturday Reading Meetups
+                    </h2>
+                    <p class="text-lg text-brand-dark/80 font-medium mb-4 leading-relaxed">
+                        Every Saturday morning, our club members gather in small groups (max 8 kids) led by a trained story guide. We read a chapter together, talk about characters, predict what happens next, and then do a creative activity — drawing, acting, or building something from the story.
+                    </p>
+                    <p class="text-brand-dark/70 font-semibold mb-8">
+                        Groups are split by age: <span class="text-brand-blue">4–6</span>, <span class="text-brand-coral">7–9</span>, and <span class="text-brand-purple">10–12</span>.
+                    </p>
+                    <a href="#" class="btn-bounce bg-brand-blue text-white font-display font-bold text-lg py-4 px-8 rounded-2xl shadow-fun-blue inline-flex items-center gap-2">
+                        <span>See Full Schedule</span>
+                        <span class="text-xl">➔</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MONTHLY CHALLENGES ===== -->
+    <section class="py-24 bg-brand-cream border-b-4 border-brand-dark">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-14 reveal-pop">
+                <span class="bg-brand-lime text-brand-dark font-display font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full border-2 border-brand-dark shadow-[2px_2px_0px_0px_#1E1B2E] inline-block mb-3">
+                    Keep the Fun Going
+                </span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark">
+                    Monthly Challenges
+                </h2>
+                <p class="text-lg text-brand-dark/70 font-medium max-w-xl mx-auto mt-4">
+                    Each month brings a new theme and a fresh set of mini‑missions. Complete them to earn bonus points and exclusive badges.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="paper-card rounded-[2.5rem] p-8 bg-white reveal-pop text-center group">
+                    <div class="text-5xl mb-4">🌟</div>
+                    <h3 class="font-display font-bold text-2xl text-brand-dark mb-2">Story Explorer</h3>
+                    <p class="text-brand-dark/70">Read 3 books from different genres this month.</p>
+                </div>
+                <div class="paper-card rounded-[2.5rem] p-8 bg-white reveal-pop delay-100 text-center group">
+                    <div class="text-5xl mb-4">✍️</div>
+                    <h3 class="font-display font-bold text-2xl text-brand-dark mb-2">Young Author</h3>
+                    <p class="text-brand-dark/70">Write and illustrate your own short story.</p>
+                </div>
+                <div class="paper-card rounded-[2.5rem] p-8 bg-white reveal-pop delay-200 text-center group">
+                    <div class="text-5xl mb-4">🎭</div>
+                    <h3 class="font-display font-bold text-2xl text-brand-dark mb-2">Book Character Day</h3>
+                    <p class="text-brand-dark/70">Dress up as a favorite character and tell us why you chose them.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== REWARDS ===== -->
+    <section class="py-24 bg-brand-mint/10 border-b-4 border-brand-dark">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-14 reveal-pop">
+                <span class="bg-brand-purple text-white font-display font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full border-2 border-brand-dark shadow-[2px_2px_0px_0px_#1E1B2E] inline-block mb-3">
+                    Earn & Celebrate
+                </span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark">
+                    Rewards & Badges
+                </h2>
+                <p class="text-lg text-brand-dark/70 font-medium max-w-xl mx-auto mt-4">
+                    Every page read and every challenge completed brings your child closer to awesome rewards.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <div class="paper-card p-6 bg-white reveal-pop text-center group">
+                    <div class="text-4xl mb-2">🏅</div>
+                    <h4 class="font-display font-bold text-lg">Bronze Reader</h4>
+                    <p class="text-xs text-brand-dark/60">Complete 5 books</p>
+                </div>
+                <div class="paper-card p-6 bg-white reveal-pop delay-75 text-center group">
+                    <div class="text-4xl mb-2">🥈</div>
+                    <h4 class="font-display font-bold text-lg">Silver Scholar</h4>
+                    <p class="text-xs text-brand-dark/60">15 books + 2 challenges</p>
+                </div>
+                <div class="paper-card p-6 bg-white reveal-pop delay-150 text-center group">
+                    <div class="text-4xl mb-2">🥇</div>
+                    <h4 class="font-display font-bold text-lg">Gold Genius</h4>
+                    <p class="text-xs text-brand-dark/60">30 books + all missions</p>
+                </div>
+                <div class="paper-card p-6 bg-white reveal-pop delay-225 text-center group">
+                    <div class="text-4xl mb-2">🎁</div>
+                    <h4 class="font-display font-bold text-lg">Mystery Prize</h4>
+                    <p class="text-xs text-brand-dark/60">Unlocked at Gold tier</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MEMBERSHIP BENEFITS ===== -->
+    <section class="py-24 bg-brand-cream border-b-4 border-brand-dark">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-14 reveal-pop">
+                <span class="bg-brand-blue text-white font-display font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full border-2 border-brand-dark shadow-[2px_2px_0px_0px_#1E1B2E] inline-block mb-3">
+                    What You Get
+                </span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark">
+                    Membership Benefits
+                </h2>
+            </div>
+
+            <div class="space-y-5">
+                <div class="paper-card rounded-2xl p-5 bg-white flex items-center gap-4 reveal-pop">
+                    <div class="w-10 h-10 bg-brand-lime border-2 border-brand-dark rounded-xl flex items-center justify-center text-brand-dark font-extrabold text-xl shrink-0">✓</div>
+                    <div class="font-medium text-brand-dark"><strong>Weekly guided reading sessions</strong> with trained story guides</div>
+                </div>
+                <div class="paper-card rounded-2xl p-5 bg-white flex items-center gap-4 reveal-pop delay-75">
+                    <div class="w-10 h-10 bg-brand-lime border-2 border-brand-dark rounded-xl flex items-center justify-center text-brand-dark font-extrabold text-xl shrink-0">✓</div>
+                    <div class="font-medium text-brand-dark"><strong>Access to all curated book collections</strong> for your child's age group</div>
+                </div>
+                <div class="paper-card rounded-2xl p-5 bg-white flex items-center gap-4 reveal-pop delay-150">
+                    <div class="w-10 h-10 bg-brand-lime border-2 border-brand-dark rounded-xl flex items-center justify-center text-brand-dark font-extrabold text-xl shrink-0">✓</div>
+                    <div class="font-medium text-brand-dark"><strong>Free entry to all Nookly events</strong> — storytelling, workshops, and parades</div>
+                </div>
+                <div class="paper-card rounded-2xl p-5 bg-white flex items-center gap-4 reveal-pop delay-200">
+                    <div class="w-10 h-10 bg-brand-lime border-2 border-brand-dark rounded-xl flex items-center justify-center text-brand-dark font-extrabold text-xl shrink-0">✓</div>
+                    <div class="font-medium text-brand-dark"><strong>Monthly progress report</strong> and personalized reading recommendations</div>
+                </div>
+                <div class="paper-card rounded-2xl p-5 bg-white flex items-center gap-4 reveal-pop delay-250">
+                    <div class="w-10 h-10 bg-brand-lime border-2 border-brand-dark rounded-xl flex items-center justify-center text-brand-dark font-extrabold text-xl shrink-0">✓</div>
+                    <div class="font-medium text-brand-dark"><strong>Birthday surprise</strong> — a special book and badge on your child's big day</div>
+                </div>
+                <div class="paper-card rounded-2xl p-5 bg-white flex items-center gap-4 reveal-pop delay-300">
+                    <div class="w-10 h-10 bg-brand-lime border-2 border-brand-dark rounded-xl flex items-center justify-center text-brand-dark font-extrabold text-xl shrink-0">✓</div>
+                    <div class="font-medium text-brand-dark"><strong>Exclusive parent workshops</strong> on raising confident readers</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="py-20 bg-brand-coral/10 relative overflow-hidden" id="membership">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="paper-card rounded-[3rem] p-10 md:p-14 bg-brand-yellow/30 text-center reveal-pop relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 text-8xl opacity-20 pointer-events-none select-none">🎉</div>
+                <div class="text-5xl mb-4">🚀</div>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark mb-4">
+                    Ready to Start the Adventure?
+                </h2>
+                <p class="text-lg text-brand-dark/80 font-medium max-w-lg mx-auto mb-8">
+                    Join the Nookly Book Club and give your child the joy of reading, friends, and discovery.
+                </p>
+                <a href="#" class="btn-bounce bg-brand-coral text-white font-display font-bold text-lg py-4 px-8 rounded-2xl shadow-fun-coral inline-flex items-center gap-2">
+                    <span>Become a Member</span>
+                    <span>✨</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-brand-dark text-white pt-20 pb-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div>
+                    <a href="index.html" class="flex items-center gap-3 mb-4 group">
+                        <div class="w-10 h-10 bg-brand-coral border-2 border-white rounded-xl flex items-center justify-center text-white shadow-[3px_3px_0px_0px_#FFF]">
+                            📚
+                        </div>
+                        <span class="font-display font-bold text-2xl tracking-wide text-white">Nookly</span>
+                    </a>
+                    <p class="text-slate-300 font-medium leading-relaxed">
+                        Where curious minds grow. Fostering a love for reading in children worldwide.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-display font-bold text-lg mb-4 text-brand-yellow">Explore</h4>
+                    <ul class="space-y-3 font-medium text-slate-300">
+                        <li><a href="about.html" class="hover:text-brand-coral transition-colors">About</a></li>
+                        <li><a href="library.html" class="hover:text-brand-coral transition-colors">Library</a></li>
+                        <li><a href="bookclub.html" class="hover:text-brand-coral transition-colors">Book Club</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-display font-bold text-lg mb-4 text-brand-mint">Connect</h4>
+                    <ul class="space-y-3 font-medium text-slate-300">
+                        <li><a href="events.html" class="hover:text-brand-coral transition-colors">Events</a></li>
+                        <li><a href="contact.html" class="hover:text-brand-coral transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-brand-coral transition-colors">Instagram</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-display font-bold text-lg mb-4 text-brand-peach">Visit Us</h4>
+                    <p class="text-slate-300 font-medium leading-relaxed mb-3">
+                        123 Storybook Lane<br>
+                        Imagination City, IC 00000
+                    </p>
+                </div>
+            </div>
+            <div class="border-t-2 border-slate-700 pt-8 text-center text-slate-400 font-medium text-sm">
+                © 2026 Nookly. All rights reserved. Made with ✨ for curious kids.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+        // Magic particle trail
+        let lastParticleTime = 0;
+        const colors = ['#FF5E7A', '#3B6FFF', '#FFD23F', '#9D65FF', '#4EEDC4'];
+        document.addEventListener('mousemove', (e) => {
+            const now = Date.now();
+            if (now - lastParticleTime > 50) {
+                lastParticleTime = now;
+                const p = document.createElement('div');
+                p.className = 'magic-particle';
+                const size = Math.random() * 10 + 5;
+                p.style.width = `${size}px`;
+                p.style.height = `${size}px`;
+                p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                p.style.border = '1px solid #1E1B2E';
+                p.style.left = `${e.clientX}px`;
+                p.style.top = `${e.clientY}px`;
+                document.body.appendChild(p);
+                setTimeout(() => p.remove(), 800);
+            }
+        });
+
+        // Reveal animations on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal-pop').forEach(el => observer.observe(el));
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 30) nav.classList.add('py-1'); else nav.classList.remove('py-1');
+        });
+    </script>
 </body>
 </html>
