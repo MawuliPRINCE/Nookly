@@ -4,16 +4,44 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nookly CMS</title>
+  <style>
+    body {
+      background: #1E1B2E;
+      color: white;
+      font-family: sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .loader { text-align: center; }
+    .loader p { color: #FFD23F; }
+  </style>
 </head>
 <body>
-  <!-- Include the Netlify Identity widget -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <!-- Loading message (visible until CMS loads) -->
+  <div id="cms-loading" class="loader">
+    <p>⏳ Loading CMS…</p>
+    <p style="color:#aaa; font-size:0.9rem;">If this stays for more than 10 seconds, try refreshing or check the console (F12).</p>
+  </div>
 
-  <!-- Include the CMS -->
+  <!-- Netlify Identity Widget -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <!-- Decap CMS -->
   <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
 
-  <!-- Initialize the Identity widget -->
   <script>
+    // Hide the loading message once the CMS interface appears
+    const observer = new MutationObserver(() => {
+      if (document.getElementById('nc-root')) {
+        document.getElementById('cms-loading').style.display = 'none';
+        observer.disconnect();
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Identity redirect handling (ensures you land back on /admin/ after login)
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on("init", user => {
         if (!user) {
@@ -21,6 +49,10 @@
             document.location.href = "/admin/";
           });
         }
+      });
+      // Open the login widget if user needs to sign up / log in
+      window.netlifyIdentity.on("logout", () => {
+        document.location.href = "/admin/";
       });
     }
   </script>
