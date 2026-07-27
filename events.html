@@ -1,383 +1,441 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Nookly Events - Storytelling, reading sessions, holiday activities, competitions, and our full event calendar.">
-  <title>Events – Nookly</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --blue: #3B6FFF;
-      --coral: #FF5E7A;
-      --lime: #7ED957;
-      --yellow: #FFD23F;
-      --purple: #B388FF;
-      --peach: #FFB08A;
-      --bg: #FFFDF9;
-      --white: #FFFFFF;
-      --text: #1A1D2E;
-      --text-light: #4A4E5E;
-      --border: #E6E1D6;
-      --radius: 28px;
-      --font: 'Plus Jakarta Sans', sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nookly Events – Magical storytelling, reading sessions, holiday camps, and friendly competitions.">
+    <title>Events – Nookly</title>
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font);
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.5;
-      overflow-x: hidden;
-    }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    h1 { font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; }
-    h2 { font-size: clamp(2rem, 4.5vw, 3.5rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; }
-    h3 { font-size: 1.5rem; font-weight: 700; }
-    p { font-size: 1.15rem; color: var(--text-light); max-width: 600px; }
-
-    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
-    .section { padding: 100px 24px; }
-
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      padding: 18px 36px; border-radius: 40px; font-weight: 700; font-size: 1rem;
-      transition: all 0.25s ease; cursor: pointer; text-decoration: none; border: none;
-      color: white;
-    }
-    .btn-primary { background: var(--blue); box-shadow: 0 8px 20px rgba(59,111,255,0.25); }
-    .btn-primary:hover { background: #2B5CEB; transform: translateY(-3px); box-shadow: 0 12px 28px rgba(59,111,255,0.4); }
-    .btn-coral { background: var(--coral); box-shadow: 0 8px 20px rgba(255,94,122,0.25); }
-    .btn-coral:hover { background: #E84D68; transform: translateY(-3px); box-shadow: 0 12px 28px rgba(255,94,122,0.4); }
-
-    /* NAV */
-    .nav {
-      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
-      background: var(--white); border-bottom: 1px solid var(--border);
-      padding: 0 24px; height: 80px; display: flex; align-items: center;
-    }
-    .nav-inner {
-      width: 100%; max-width: 1200px; margin: 0 auto;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.8rem; color: var(--text); }
-    .logo-icon {
-      width: 40px; height: 40px; background: var(--blue); border-radius: 12px;
-      display: flex; align-items: center; justify-content: center; color: white;
-    }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a { font-weight: 600; color: var(--text); transition: color 0.2s; }
-    .nav-links a:hover { color: var(--blue); }
-    .nav-links a.active { color: var(--blue); font-weight: 700; }
-
-    /* PAGE HERO */
-    .page-hero {
-      padding: 160px 24px 100px;
-      background: #F8F0FF; /* soft purple tint */
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .page-hero h1 { color: var(--text); }
-    .page-hero h1 em { font-style: normal; color: var(--purple); }
-    .bg-shape-hero {
-      position: absolute; bottom: -60px; left: -40px; width: 300px; height: 300px;
-      background: var(--yellow); border-radius: 50px; transform: rotate(30deg); z-index: 0;
-      opacity: 0.3;
-    }
-
-    /* Section backgrounds */
-    .bg-warm-yellow { background: #FFF8E7; }
-    .bg-warm-green { background: #F0FFE8; }
-    .bg-warm-purple { background: #F8F0FF; }
-    .bg-warm-coral { background: #FFF0EE; }
-    .bg-warm-peach { background: #FFF4EC; }
-    .bg-white { background: white; }
-
-    /* EVENT CARDS */
-    .events-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-    .event-card {
-      background: white;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
-      transition: transform 0.3s;
-    }
-    .event-card:hover { transform: translateY(-6px); }
-    .event-img {
-      height: 160px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 3rem; color: white;
-    }
-    .event-img.s1 { background: var(--coral); }
-    .event-img.s2 { background: var(--lime); }
-    .event-img.s3 { background: var(--purple); }
-    .event-img.s4 { background: var(--yellow); }
-    .event-img.s5 { background: var(--peach); }
-    .event-img.s6 { background: var(--blue); }
-    .event-details { padding: 24px; }
-    .event-tag {
-      display: inline-block;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.8rem; font-weight: 700;
-      color: white; margin-bottom: 12px;
-    }
-    .tag-story { background: var(--coral); }
-    .tag-session { background: var(--blue); }
-    .tag-holiday { background: var(--purple); }
-    .tag-comp { background: var(--lime); color: var(--text); }
-
-    /* CALENDAR – simple month grid */
-    .calendar {
-      background: white;
-      border-radius: 32px;
-      padding: 40px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
-      margin-top: 40px;
-    }
-    .month-header {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 32px;
-    }
-    .month-name { font-size: 1.8rem; font-weight: 800; }
-    .days-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 12px;
-      text-align: center;
-    }
-    .day-name { font-weight: 700; color: var(--text-light); padding: 8px 0; }
-    .day {
-      padding: 12px 4px;
-      border-radius: 16px;
-      font-weight: 600;
-      transition: background 0.2s;
-      cursor: pointer;
-    }
-    .day.event-day {
-      background: var(--coral);
-      color: white;
-    }
-    .day.event-day.alt { background: var(--lime); color: var(--text); }
-    .day:hover:not(.empty) { background: #F0F4FF; }
-
-    /* CTA */
-    .cta-banner {
-      background: var(--coral);
-      border-radius: 36px; padding: 60px 40px; text-align: center;
-      color: white;
-      margin-top: 40px;
-    }
-    .cta-banner h2, .cta-banner p { color: white; }
-    .cta-banner .btn { background: white; color: var(--coral); font-weight: 800; }
-    .cta-banner .btn:hover { background: #FFEDF0; }
-
-    /* FOOTER */
-    .footer {
-      background: var(--text); color: white; padding: 60px 24px 30px;
-    }
-    .footer-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
-      gap: 40px; margin-bottom: 40px;
-    }
-    .footer a { color: #AAB2C0; transition: color 0.2s; }
-    .footer a:hover { color: white; }
-
-    /* REVEAL ANIMATIONS */
-    .reveal {
-      opacity: 0; transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-    .reveal.from-left { transform: translateX(-40px); }
-    .reveal.from-right { transform: translateX(40px); }
-    .reveal.from-bottom { transform: translateY(40px); }
-    .reveal.scale-in { transform: scale(0.95); }
-    .reveal.visible { opacity: 1; transform: translate(0) scale(1); }
-
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .calendar { padding: 20px; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Navigation -->
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="index.html" class="logo">
-        <div class="logo-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" fill="white" opacity=".8"/><path d="M12 6v12M4 12h16" stroke="white" stroke-width="2"/></svg></div>
-        Nookly
-      </a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="library.html">Library</a></li>
-        <li><a href="bookclub.html">Book Club</a></li>
-        <li><a href="events.html" class="active">Events</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <a href="#" class="btn btn-coral">Become a Member</a>
-    </div>
-  </nav>
-
-  <!-- Page Hero -->
-  <section class="page-hero">
-    <div class="bg-shape-hero"></div>
-    <div class="container reveal from-bottom">
-      <h1>What's <em>Happening</em></h1>
-      <p style="margin: 20px auto 0; max-width: 650px;">From magical storytelling to creative competitions — there's always something exciting at Nookly.</p>
-    </div>
-  </section>
-
-  <!-- Storytelling & Reading Sessions -->
-  <section class="section bg-white">
-    <div class="container">
-      <div class="reveal from-bottom" style="text-align: center; margin-bottom: 40px;">
-        <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--coral);">Regular Events</span>
-        <h2>Storytelling & Reading Sessions</h2>
-      </div>
-      <div class="events-grid">
-        <div class="event-card reveal scale-in">
-          <div class="event-img s1">🌟</div>
-          <div class="event-details">
-            <span class="event-tag tag-story">Storytelling</span>
-            <h3>Stories Under the Stars</h3>
-            <p>Outdoor evening tales with blankets and hot chocolate. Every Friday, 6 PM. Ages 4–8.</p>
-          </div>
-        </div>
-        <div class="event-card reveal scale-in" style="transition-delay:0.1s;">
-          <div class="event-img s2">📚</div>
-          <div class="event-details">
-            <span class="event-tag tag-session">Reading Session</span>
-            <h3>Silent Reading Mornings</h3>
-            <p>Cozy, quiet reading time with themed book baskets. Saturdays, 9–11 AM. All ages.</p>
-          </div>
-        </div>
-        <div class="event-card reveal scale-in" style="transition-delay:0.2s;">
-          <div class="event-img s3">🎤</div>
-          <div class="event-details">
-            <span class="event-tag tag-story">Storytelling</span>
-            <h3>Guest Storyteller Hour</h3>
-            <p>Local authors and performers bring stories to life. Monthly on the first Sunday. Ages 6–12.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Holiday Activities & Competitions -->
-  <section class="section bg-warm-green">
-    <div class="container">
-      <div class="reveal from-bottom" style="text-align: center; margin-bottom: 40px;">
-        <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue);">Special Events</span>
-        <h2>Holiday Activities & Competitions</h2>
-      </div>
-      <div class="events-grid">
-        <div class="event-card reveal scale-in">
-          <div class="event-img s4">🎃</div>
-          <div class="event-details">
-            <span class="event-tag tag-holiday">Holiday</span>
-            <h3>Halloween Book Parade</h3>
-            <p>Dress as your favorite character and trick-or-treat for books! Oct 31st, 4 PM.</p>
-          </div>
-        </div>
-        <div class="event-card reveal scale-in" style="transition-delay:0.1s;">
-          <div class="event-img s5">🎄</div>
-          <div class="event-details">
-            <span class="event-tag tag-holiday">Holiday</span>
-            <h3>Winter Story Camp</h3>
-            <p>A week of crafts, cocoa, and holiday tales. Dec 20–24, daily 10 AM–1 PM.</p>
-          </div>
-        </div>
-        <div class="event-card reveal scale-in" style="transition-delay:0.2s;">
-          <div class="event-img s6">🏆</div>
-          <div class="event-details">
-            <span class="event-tag tag-comp">Competition</span>
-            <h3>Young Writers' Contest</h3>
-            <p>Submit your original short story by Aug 15th. Prizes for ages 6–12!</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Event Calendar (visual month grid) -->
-  <section class="section bg-warm-peach">
-    <div class="container">
-      <div class="reveal from-bottom" style="text-align: center; margin-bottom: 40px;">
-        <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue);">Plan Ahead</span>
-        <h2>Event Calendar</h2>
-        <p>Mark your calendars! Here’s a look at this month's key dates.</p>
-      </div>
-      <div class="calendar reveal scale-in">
-        <div class="month-header">
-          <span style="font-weight:700;">◀</span>
-          <span class="month-name">July 2026</span>
-          <span style="font-weight:700;">▶</span>
-        </div>
-        <div class="days-grid">
-          <div class="day-name">Mon</div><div class="day-name">Tue</div><div class="day-name">Wed</div><div class="day-name">Thu</div><div class="day-name">Fri</div><div class="day-name">Sat</div><div class="day-name">Sun</div>
-          <!-- Empty cells for June 29,30 -->
-          <div class="day empty"></div><div class="day empty"></div><div class="day">1</div><div class="day">2</div><div class="day">3</div><div class="day event-day">4</div><div class="day">5</div>
-          <div class="day">6</div><div class="day">7</div><div class="day">8</div><div class="day">9</div><div class="day event-day alt">10</div><div class="day">11</div><div class="day event-day">12</div>
-          <div class="day">13</div><div class="day">14</div><div class="day">15</div><div class="day event-day alt">16</div><div class="day">17</div><div class="day">18</div><div class="day">19</div>
-          <div class="day">20</div><div class="day">21</div><div class="day">22</div><div class="day">23</div><div class="day event-day">24</div><div class="day">25</div><div class="day">26</div>
-          <div class="day">27</div><div class="day">28</div><div class="day">29</div><div class="day">30</div><div class="day event-day alt">31</div><div class="day empty"></div><div class="day empty"></div>
-        </div>
-        <p style="margin-top: 24px; text-align: center; font-weight: 600;">Event days: 4, 10, 12, 16, 24, 31</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Call to Action -->
-  <section class="section bg-warm-coral">
-    <div class="container">
-      <div class="cta-banner reveal scale-in">
-        <h2>Don't Miss the Fun!</h2>
-        <p style="margin: 20px auto;">Join Nookly and get free access to all events, plus early registration for special activities.</p>
-        <a href="#" class="btn">Become a Member</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div style="display:flex; align-items:center; gap:10px; font-weight:800; font-size:1.8rem; margin-bottom:16px;">
-            <div class="logo-icon" style="background:var(--coral);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" fill="white" opacity=".8"/><path d="M12 6v12M4 12h16" stroke="white" stroke-width="2"/></svg></div> Nookly
-          </div>
-          <p style="color:#AAB2C0;">Where curious minds grow.</p>
-        </div>
-        <div><h4 style="color:white; margin-bottom:16px;">Explore</h4><a href="about.html">About</a><br><a href="library.html">Library</a><br><a href="bookclub.html">Book Club</a></div>
-        <div><h4 style="color:white; margin-bottom:16px;">Connect</h4><a href="events.html">Events</a><br><a href="contact.html">Contact</a><br><a href="#">Instagram</a></div>
-        <div><h4 style="color:white; margin-bottom:16px;">Visit</h4><p style="color:#AAB2C0;">123 Storybook Lane<br>Imagination City, IC 00000</p></div>
-      </div>
-      <div style="text-align:center; border-top:1px solid rgba(255,255,255,0.1); padding-top:30px; color:#AAB2C0;">
-        © 2026 Nookly. All rights reserved.
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Fredoka"', 'cursive', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#3B6FFF',
+                            blueDark: '#224BDB',
+                            coral: '#FF5E7A',
+                            coralDark: '#E03C58',
+                            lime: '#7ED957',
+                            yellow: '#FFD23F',
+                            yellowDark: '#E5B518',
+                            purple: '#9D65FF',
+                            purpleDark: '#7C3EFF',
+                            peach: '#FFB08A',
+                            mint: '#4EEDC4',
+                            dark: '#1E1B2E',
+                            cream: '#FFFDF9',
+                        }
+                    },
+                    boxShadow: {
+                        'fun': '0 8px 0px 0px #1E1B2E',
+                        'fun-lg': '0 12px 0px 0px #1E1B2E',
+                        'fun-coral': '0 8px 0px 0px #FF5E7A',
+                        'fun-blue': '0 8px 0px 0px #3B6FFF',
+                        'fun-yellow': '0 8px 0px 0px #FFD23F',
+                        'fun-purple': '0 8px 0px 0px #9D65FF',
+                    },
+                    keyframes: {
+                        wiggle: { '0%, 100%': { transform: 'rotate(-3deg)' }, '50%': { transform: 'rotate(3deg)' } },
+                        floatSlow: { '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' }, '50%': { transform: 'translateY(-14px) rotate(2deg)' } },
+                        floatFast: { '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' }, '50%': { transform: 'translateY(-8px) rotate(-3deg)' } },
+                    },
+                    animation: {
+                        'wiggle': 'wiggle 2s ease-in-out infinite',
+                        'float-slow': 'floatSlow 5s ease-in-out infinite',
+                        'float-fast': 'floatFast 3.5s ease-in-out infinite',
+                    }
+                }
+            }
         }
-      });
-    }, { threshold: 0.15 });
-    reveals.forEach(el => observer.observe(el));
-  </script>
+    </script>
+
+    <style>
+        .bg-noise {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+        }
+        .paper-card {
+            background-color: #FFFFFF;
+            border: 3px solid #1E1B2E;
+            box-shadow: 6px 6px 0px 0px #1E1B2E;
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .paper-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0px 0px #1E1B2E;
+        }
+        .btn-bounce {
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 3px solid #1E1B2E;
+        }
+        .btn-bounce:hover {
+            transform: translate(-3px, -3px) scale(1.02);
+            box-shadow: 7px 7px 0px 0px #1E1B2E;
+        }
+        .btn-bounce:active {
+            transform: translate(2px, 2px) scale(0.98);
+            box-shadow: 2px 2px 0px 0px #1E1B2E;
+        }
+        .reveal-pop {
+            opacity: 0;
+            transform: scale(0.85) translateY(30px);
+            transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .reveal-pop.visible {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+        .magic-particle {
+            pointer-events: none;
+            position: fixed;
+            border-radius: 50%;
+            animation: particleFade 0.8s forwards ease-out;
+            z-index: 9999;
+        }
+        @keyframes particleFade {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0.2) translateY(-20px); }
+        }
+    </style>
+</head>
+<body class="bg-brand-cream text-brand-dark font-sans bg-noise selection:bg-brand-yellow selection:text-brand-dark overflow-x-hidden">
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="fixed top-0 left-0 right-0 z-50 px-4 py-3 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto">
+            <div class="bg-white/90 backdrop-blur-md border-3 border-brand-dark rounded-full px-6 py-3 shadow-fun flex items-center justify-between">
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 bg-brand-blue border-2 border-brand-dark rounded-2xl flex items-center justify-center text-white shadow-[3px_3px_0px_0px_#1E1B2E] group-hover:rotate-12 transition-transform duration-300">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="transform -rotate-6">
+                            <path d="M4 6h16v12H4z" fill="white" opacity=".9"/>
+                            <path d="M12 6v12M4 12h16" stroke="#1E1B2E" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <span class="font-display font-bold text-2xl tracking-wide text-brand-dark">Nookly<span class="text-brand-coral">.</span></span>
+                </a>
+                <ul class="hidden md:flex items-center gap-7 font-bold text-sm text-brand-dark">
+                    <li><a href="index.html" class="hover:text-brand-blue transition-colors">Home</a></li>
+                    <li><a href="about.html" class="hover:text-brand-blue transition-colors">About</a></li>
+                    <li><a href="library.html" class="hover:text-brand-blue transition-colors">Library</a></li>
+                    <li><a href="bookclub.html" class="hover:text-brand-blue transition-colors">Book Club</a></li>
+                    <li><a href="events.html" class="text-brand-blue underline decoration-brand-coral decoration-4 underline-offset-4">Events</a></li>
+                    <li><a href="contact.html" class="hover:text-brand-blue transition-colors">Contact</a></li>
+                </ul>
+                <div class="hidden sm:block">
+                    <a href="#membership" class="btn-bounce bg-brand-coral text-white font-display font-bold text-sm py-2.5 px-6 rounded-full shadow-fun-coral flex items-center gap-2">
+                        <span>Become a Member</span>
+                        <span>✨</span>
+                    </a>
+                </div>
+                <button class="md:hidden w-10 h-10 border-2 border-brand-dark rounded-xl bg-brand-yellow flex items-center justify-center font-bold">
+                    🍔
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== PAGE HERO ===== -->
+    <section class="relative pt-44 pb-24 bg-brand-coral/10 border-b-4 border-brand-dark text-center overflow-hidden">
+        <div class="absolute top-32 left-10 text-6xl animate-float-slow opacity-80 pointer-events-none select-none">🎉</div>
+        <div class="absolute bottom-20 right-10 text-6xl animate-float-fast opacity-80 pointer-events-none select-none">🎭</div>
+        <div class="max-w-4xl mx-auto px-6 reveal-pop">
+            <span class="inline-block bg-brand-yellow border-2 border-brand-dark px-5 py-2 rounded-full font-display font-bold text-sm uppercase tracking-wider shadow-[3px_3px_0px_0px_#1E1B2E] mb-6">
+                Upcoming Fun
+            </span>
+            <h1 class="font-display font-extrabold text-5xl sm:text-6xl lg:text-7xl text-brand-dark mb-8">
+                What's <span class="text-brand-coral relative inline-block">
+                    Happening
+                    <svg class="absolute -bottom-2 left-0 w-full h-4 text-brand-blue" viewBox="0 0 200 15" fill="none">
+                        <path d="M2 11C50 3 150 3 198 11" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+                    </svg>
+                </span>
+            </h1>
+            <p class="text-lg sm:text-xl text-brand-dark/70 font-medium max-w-lg mx-auto">
+                From magical storytelling to creative competitions — there's always something exciting at Nookly.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== REGULAR EVENTS (Storytelling & Reading) ===== -->
+    <section class="py-24 bg-brand-cream border-b-4 border-brand-dark">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-14 reveal-pop">
+                <span class="bg-brand-coral text-white font-display font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full border-2 border-brand-dark shadow-[2px_2px_0px_0px_#1E1B2E] inline-block mb-3">
+                    Regular Events
+                </span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark">
+                    Storytelling & Reading Sessions
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Event Card 1 -->
+                <div class="paper-card rounded-[2.5rem] overflow-hidden bg-white reveal-pop group">
+                    <div class="h-40 bg-brand-coral flex items-center justify-center text-5xl relative">
+                        🌟
+                        <span class="absolute top-3 right-3 bg-white border-2 border-brand-dark px-2 py-0.5 rounded-full font-display font-bold text-xs">Storytelling</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display font-bold text-2xl text-brand-dark mb-2">Stories Under the Stars</h3>
+                        <p class="text-brand-dark/70 text-sm mb-4">Outdoor evening tales with blankets and hot chocolate. Every Friday, 6 PM. Ages 4–8.</p>
+                        <div class="flex items-center gap-2 text-brand-blue font-bold text-sm">
+                            <span>📅 Fridays</span>
+                            <span>•</span>
+                            <span>🕕 6 PM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Card 2 -->
+                <div class="paper-card rounded-[2.5rem] overflow-hidden bg-white reveal-pop delay-100 group">
+                    <div class="h-40 bg-brand-lime flex items-center justify-center text-5xl relative">
+                        📚
+                        <span class="absolute top-3 right-3 bg-white border-2 border-brand-dark px-2 py-0.5 rounded-full font-display font-bold text-xs">Reading</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display font-bold text-2xl text-brand-dark mb-2">Silent Reading Mornings</h3>
+                        <p class="text-brand-dark/70 text-sm mb-4">Cozy, quiet reading time with themed book baskets. Saturdays, 9–11 AM. All ages.</p>
+                        <div class="flex items-center gap-2 text-brand-lime font-bold text-sm">
+                            <span>📅 Saturdays</span>
+                            <span>•</span>
+                            <span>🕘 9 AM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Card 3 -->
+                <div class="paper-card rounded-[2.5rem] overflow-hidden bg-white reveal-pop delay-200 group">
+                    <div class="h-40 bg-brand-purple flex items-center justify-center text-5xl relative">
+                        🎤
+                        <span class="absolute top-3 right-3 bg-white border-2 border-brand-dark px-2 py-0.5 rounded-full font-display font-bold text-xs">Guest</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display font-bold text-2xl text-brand-dark mb-2">Guest Storyteller Hour</h3>
+                        <p class="text-brand-dark/70 text-sm mb-4">Local authors and performers bring stories to life. Monthly on the first Sunday. Ages 6–12.</p>
+                        <div class="flex items-center gap-2 text-brand-purple font-bold text-sm">
+                            <span>📅 1st Sunday</span>
+                            <span>•</span>
+                            <span>🕑 2 PM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== HOLIDAY ACTIVITIES & COMPETITIONS ===== -->
+    <section class="py-24 bg-brand-yellow/10 border-b-4 border-brand-dark">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-14 reveal-pop">
+                <span class="bg-brand-purple text-white font-display font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full border-2 border-brand-dark shadow-[2px_2px_0px_0px_#1E1B2E] inline-block mb-3">
+                    Special Events
+                </span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark">
+                    Holiday Activities & Competitions
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="paper-card rounded-[2.5rem] p-8 bg-white reveal-pop text-center group">
+                    <div class="text-6xl mb-4">🎃</div>
+                    <span class="inline-block bg-brand-coral text-white font-display font-bold text-xs px-3 py-1 rounded-full mb-3 border-2 border-brand-dark">Holiday</span>
+                    <h3 class="font-display font-bold text-2xl text-brand-dark mb-2">Halloween Book Parade</h3>
+                    <p class="text-brand-dark/70 text-sm">Dress as your favorite character and trick-or-treat for books! Oct 31st, 4 PM.</p>
+                </div>
+
+                <div class="paper-card rounded-[2.5rem] p-8 bg-white reveal-pop delay-100 text-center group">
+                    <div class="text-6xl mb-4">🎄</div>
+                    <span class="inline-block bg-brand-lime text-brand-dark font-display font-bold text-xs px-3 py-1 rounded-full mb-3 border-2 border-brand-dark">Holiday</span>
+                    <h3 class="font-display font-bold text-2xl text-brand-dark mb-2">Winter Story Camp</h3>
+                    <p class="text-brand-dark/70 text-sm">A week of crafts, cocoa, and holiday tales. Dec 20–24, daily 10 AM–1 PM.</p>
+                </div>
+
+                <div class="paper-card rounded-[2.5rem] p-8 bg-white reveal-pop delay-200 text-center group">
+                    <div class="text-6xl mb-4">🏆</div>
+                    <span class="inline-block bg-brand-blue text-white font-display font-bold text-xs px-3 py-1 rounded-full mb-3 border-2 border-brand-dark">Competition</span>
+                    <h3 class="font-display font-bold text-2xl text-brand-dark mb-2">Young Writers' Contest</h3>
+                    <p class="text-brand-dark/70 text-sm">Submit your original short story by Aug 15th. Prizes for ages 6–12!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EVENT CALENDAR ===== -->
+    <section class="py-24 bg-brand-cream border-b-4 border-brand-dark">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="text-center mb-14 reveal-pop">
+                <span class="bg-brand-mint text-brand-dark font-display font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full border-2 border-brand-dark shadow-[2px_2px_0px_0px_#1E1B2E] inline-block mb-3">
+                    Plan Ahead
+                </span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark">
+                    Event Calendar
+                </h2>
+                <p class="text-lg text-brand-dark/70 font-medium max-w-xl mx-auto mt-4">
+                    Mark your calendars! Here's a look at this month's key dates.
+                </p>
+            </div>
+
+            <div class="paper-card rounded-[2.5rem] p-8 bg-white reveal-pop">
+                <!-- Month Header -->
+                <div class="flex items-center justify-between mb-8">
+                    <button class="w-10 h-10 border-2 border-brand-dark rounded-xl bg-brand-yellow flex items-center justify-center font-bold hover:bg-brand-yellowDark transition-colors">◀</button>
+                    <h3 class="font-display font-extrabold text-2xl">July 2026</h3>
+                    <button class="w-10 h-10 border-2 border-brand-dark rounded-xl bg-brand-yellow flex items-center justify-center font-bold hover:bg-brand-yellowDark transition-colors">▶</button>
+                </div>
+
+                <!-- Days Grid -->
+                <div class="grid grid-cols-7 gap-3 text-center">
+                    <div class="font-display font-bold text-xs text-brand-dark/50 py-2">Mon</div>
+                    <div class="font-display font-bold text-xs text-brand-dark/50 py-2">Tue</div>
+                    <div class="font-display font-bold text-xs text-brand-dark/50 py-2">Wed</div>
+                    <div class="font-display font-bold text-xs text-brand-dark/50 py-2">Thu</div>
+                    <div class="font-display font-bold text-xs text-brand-dark/50 py-2">Fri</div>
+                    <div class="font-display font-bold text-xs text-brand-dark/50 py-2">Sat</div>
+                    <div class="font-display font-bold text-xs text-brand-dark/50 py-2">Sun</div>
+
+                    <!-- Empty days for June -->
+                    <div></div><div></div><div>1</div><div>2</div><div>3</div>
+                    <div class="bg-brand-coral text-white border-2 border-brand-dark rounded-xl py-2 font-display font-bold">4</div>
+                    <div>5</div>
+
+                    <div>6</div><div>7</div><div>8</div><div>9</div>
+                    <div class="bg-brand-lime text-brand-dark border-2 border-brand-dark rounded-xl py-2 font-display font-bold">10</div>
+                    <div>11</div>
+                    <div class="bg-brand-coral text-white border-2 border-brand-dark rounded-xl py-2 font-display font-bold">12</div>
+
+                    <div>13</div><div>14</div><div>15</div>
+                    <div class="bg-brand-lime text-brand-dark border-2 border-brand-dark rounded-xl py-2 font-display font-bold">16</div>
+                    <div>17</div><div>18</div><div>19</div>
+
+                    <div>20</div><div>21</div><div>22</div><div>23</div>
+                    <div class="bg-brand-coral text-white border-2 border-brand-dark rounded-xl py-2 font-display font-bold">24</div>
+                    <div>25</div><div>26</div>
+
+                    <div>27</div><div>28</div><div>29</div><div>30</div>
+                    <div class="bg-brand-lime text-brand-dark border-2 border-brand-dark rounded-xl py-2 font-display font-bold">31</div>
+                    <div></div><div></div>
+                </div>
+
+                <!-- Legend -->
+                <div class="flex justify-center gap-8 mt-8 text-sm font-bold">
+                    <div class="flex items-center gap-2"><span class="w-4 h-4 bg-brand-coral border border-brand-dark rounded-md inline-block"></span> Storytelling</div>
+                    <div class="flex items-center gap-2"><span class="w-4 h-4 bg-brand-lime border border-brand-dark rounded-md inline-block"></span> Reading Sessions</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="py-20 bg-brand-coral/10 relative overflow-hidden" id="membership">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="paper-card rounded-[3rem] p-10 md:p-14 bg-brand-yellow/30 text-center reveal-pop relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 text-8xl opacity-20 pointer-events-none select-none">🎪</div>
+                <div class="text-5xl mb-4">🎟️</div>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark mb-4">
+                    Don't Miss the Fun!
+                </h2>
+                <p class="text-lg text-brand-dark/80 font-medium max-w-lg mx-auto mb-8">
+                    Join Nookly and get free access to all events, plus early registration for special activities.
+                </p>
+                <a href="#" class="btn-bounce bg-brand-coral text-white font-display font-bold text-lg py-4 px-8 rounded-2xl shadow-fun-coral inline-flex items-center gap-2">
+                    <span>Become a Member</span>
+                    <span>✨</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-brand-dark text-white pt-20 pb-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div>
+                    <a href="index.html" class="flex items-center gap-3 mb-4 group">
+                        <div class="w-10 h-10 bg-brand-coral border-2 border-white rounded-xl flex items-center justify-center text-white shadow-[3px_3px_0px_0px_#FFF]">
+                            📚
+                        </div>
+                        <span class="font-display font-bold text-2xl tracking-wide text-white">Nookly</span>
+                    </a>
+                    <p class="text-slate-300 font-medium leading-relaxed">
+                        Where curious minds grow. Fostering a love for reading in children worldwide.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-display font-bold text-lg mb-4 text-brand-yellow">Explore</h4>
+                    <ul class="space-y-3 font-medium text-slate-300">
+                        <li><a href="about.html" class="hover:text-brand-coral transition-colors">About</a></li>
+                        <li><a href="library.html" class="hover:text-brand-coral transition-colors">Library</a></li>
+                        <li><a href="bookclub.html" class="hover:text-brand-coral transition-colors">Book Club</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-display font-bold text-lg mb-4 text-brand-mint">Connect</h4>
+                    <ul class="space-y-3 font-medium text-slate-300">
+                        <li><a href="events.html" class="hover:text-brand-coral transition-colors">Events</a></li>
+                        <li><a href="contact.html" class="hover:text-brand-coral transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-brand-coral transition-colors">Instagram</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-display font-bold text-lg mb-4 text-brand-peach">Visit Us</h4>
+                    <p class="text-slate-300 font-medium leading-relaxed mb-3">
+                        123 Storybook Lane<br>
+                        Imagination City, IC 00000
+                    </p>
+                </div>
+            </div>
+            <div class="border-t-2 border-slate-700 pt-8 text-center text-slate-400 font-medium text-sm">
+                © 2026 Nookly. All rights reserved. Made with ✨ for curious kids.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+        // Magic particle trail
+        let lastParticleTime = 0;
+        const colors = ['#FF5E7A', '#3B6FFF', '#FFD23F', '#9D65FF', '#4EEDC4'];
+        document.addEventListener('mousemove', (e) => {
+            const now = Date.now();
+            if (now - lastParticleTime > 50) {
+                lastParticleTime = now;
+                const p = document.createElement('div');
+                p.className = 'magic-particle';
+                const size = Math.random() * 10 + 5;
+                p.style.width = `${size}px`;
+                p.style.height = `${size}px`;
+                p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                p.style.border = '1px solid #1E1B2E';
+                p.style.left = `${e.clientX}px`;
+                p.style.top = `${e.clientY}px`;
+                document.body.appendChild(p);
+                setTimeout(() => p.remove(), 800);
+            }
+        });
+
+        // Reveal animations on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal-pop').forEach(el => observer.observe(el));
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 30) nav.classList.add('py-1'); else nav.classList.remove('py-1');
+        });
+    </script>
 </body>
 </html>
