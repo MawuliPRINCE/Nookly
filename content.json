@@ -1,0 +1,162 @@
+{
+  "site": {
+    "title": "Nookly",
+    "logo_url": "assets/images/logo.svg",
+    "footer_text": "Where curious minds grow. Fostering a love for reading in children worldwide."
+  },
+  "home": {
+    "hero_badge": "🎉 New Summer Reading Club Open!",
+    "hero_desc": "Nookly opens the door to imagination, curiosity, and lifelong learning for children aged 4–12. Join our reading club and community library today.",
+    "member_count": "Joined by 500+ Happy Readers",
+    "video_badge": "See the Magic",
+    "video_title": "Watch Nookly in Action ✨",
+    "video_desc": "Take a peek inside our reading club – storytelling, crafts, and happy readers.",
+    "featured_title": "Weekly Reading Club",
+    "featured_desc": "A fun, guided reading experience where kids discuss books, share ideas, and make friends. Every Saturday with a new theme each month.",
+    "programmes": [
+      { "icon": "📚", "title": "Weekly Reading Club", "desc": "Guided reading, discussions, and friendship every Saturday in a welcoming environment." },
+      { "icon": "🎨", "title": "Creative Workshops", "desc": "Arts & crafts sessions that bring beloved stories to life through hands-on activities." },
+      { "icon": "🏆", "title": "Monthly Challenges", "desc": "Engaging reading challenges with exciting rewards to keep the motivation high." }
+    ],
+    "categories": [
+      { "icon": "🚀", "label": "Adventure" },
+      { "icon": "🧙", "label": "Fantasy" },
+      { "icon": "🔬", "label": "Science & Nature" },
+      { "icon": "🤝", "label": "Friendship" },
+      { "icon": "🎨", "label": "Creativity" },
+      { "icon": "🌍", "label": "World Stories" }
+    ],
+    "events": [
+      { "date": "12", "month": "Jul", "title": "Storytelling Under the Stars", "desc": "An outdoor evening of magical tales for ages 4–8. Blankets provided!" },
+      { "date": "24", "month": "Jul", "title": "Creative Writing Camp", "desc": "A half-day workshop to unleash your child's inner author and illustrator." },
+      { "date": "05", "month": "Aug", "title": "Book Character Parade", "desc": "Dress up as your favorite character and march through the library." }
+    ],
+    "testimonials": [
+      { "text": "My daughter used to hate reading. Nookly turned it into her favorite part of the day.", "author": "Sarah M.", "role": "Parent" },
+      { "text": "As a teacher, I love the curated lists and inclusive environment. Highly recommended.", "author": "Mr. David", "role": "3rd Grade Teacher" }
+    ]
+  },
+  "about": {
+    "hero_badge": "💛 Our Story & Heart",
+    "hero_desc": "A modern reading club and community library built on curiosity, creativity, and the belief that every child deserves a magical space to grow.",
+    "story_title": "How a Small Book Nook Became a Community",
+    "story_text_1": "Nookly started in a cozy corner of a neighborhood café where a few parents gathered to read with their children. What began as a weekly storytelling circle quickly grew into a vibrant club with hundreds of families, dedicated educators, and a shared mission to make reading an adventure.",
+    "story_text_2": "Today, Nookly is a warm, inclusive space where children aged 4–12 explore new worlds through books, workshops, and events — all while building confidence and a lifelong love for learning.",
+    "team": [
+      { "emoji": "👩‍🏫", "name": "Ms. Priya", "role": "Founder & Head Storyteller", "book": "Matilda 📚" },
+      { "emoji": "🧑‍🎨", "name": "Mr. James", "role": "Creative Workshop Lead", "book": "Wild Things 🎨" },
+      { "emoji": "👩‍🔬", "name": "Dr. Aisha", "role": "Literacy Specialist", "book": "Phantom Tollbooth 🔬" },
+      { "emoji": "🧑‍💻", "name": "Leo", "role": "Community Manager", "book": "The Little Prince 🦊" }
+    ],
+    "gallery": [
+      { "icon": "📚", "label": "Storytime Saturdays" },
+      { "icon": "🎨", "label": "Crafts & Characters" },
+      { "icon": "🌟", "label": "Starry Night Tales" },
+      { "icon": "🎪", "label": "Book Costume Day" },
+      { "icon": "📖", "label": "Quiet Reading Nooks" },
+      { "icon": "🧩", "label": "Puzzle & Quest Hours" }
+    ],
+    "cta_text": "Join Nookly today and give your child the gift of imagination, community, and lifelong learning."
+  },
+  "library": {
+    "hero_badge": "Explore Our Collection",
+    "hero_desc": "Hand‑picked books matched perfectly to your child's reading level and interests.",
+    "collections": [
+      { "icon": "🐉", "label": "Fantasy" },
+      { "icon": "🚀", "label": "Sci‑Fi" },
+      { "icon": "🕵️", "label": "Mystery" },
+      { "icon": "🐾", "label": "Nature" },
+      { "icon": "🤝", "label": "Friendship" },
+      { "icon": "😂", "label": "Humour" }
+    ],
+    "featured_books": [
+      { "cover_icon": "📘", "title": "The Starry Forest", "desc": "A magical journey through a glowing woodland.", "staff": "Ms. Priya", "age": "Ages 6‑8" },
+      { "cover_icon": "📗", "title": "Captain Curiosity", "desc": "An inventor's tale full of wild experiments.", "staff": "Mr. James", "age": "Ages 7‑10" },
+      { "cover_icon": "📙", "title": "The Friendship Puzzle", "desc": "Heartwarming story about building bridges.", "staff": "Dr. Aisha", "age": "Ages 4‑7" },
+      { "cover_icon": "📕", "title": "Luna & the Lost Moon", "desc": "A whimsical space adventure.", "staff": "Ms. Sofia", "age": "Ages 8‑12" }
+    ],
+    "spaces": [
+      { "icon": "🛋️", "title": "The Cozy Corner", "desc": "Soft cushions, warm light – perfect for quiet reading." },
+      { "icon": "🌳", "title": "Outdoor Story Garden", "desc": "Read under the trees in our fresh‑air space." },
+      { "icon": "🎪", "title": "Imagination Tent", "desc": "A playful corner for acting out stories and puppet shows." },
+      { "icon": "🎧", "title": "Audio Nook", "desc": "Listen to narrated tales and audiobooks in a calm setting." }
+    ],
+    "facilities": [
+      { "icon": "☕", "title": "Parent Café", "desc": "Free coffee & Wi‑Fi" },
+      { "icon": "🧸", "title": "Toddler Play", "desc": "Safe area for little siblings" },
+      { "icon": "🎒", "title": "Homework Help", "desc": "After‑school tutors" },
+      { "icon": "🎉", "title": "Party Room", "desc": "Book‑themed birthdays" }
+    ],
+    "cta_text": "Become a member and unlock unlimited access to all collections, spaces, and events."
+  },
+  "bookclub": {
+    "hero_badge": "Saturday Mornings",
+    "hero_desc": "A weekly adventure in reading — discussion, challenges, and rewards that turn reading into the best part of the week.",
+    "steps": [
+      { "number": "1", "title": "Sign Up", "desc": "Choose a membership plan that fits your child's reading appetite." },
+      { "number": "2", "title": "Pick a Book", "desc": "Browse curated lists by age and interest, then pick your weekly read." },
+      { "number": "3", "title": "Join the Meetup", "desc": "Every Saturday, we gather to discuss the story, share ideas, and play games." },
+      { "number": "4", "title": "Earn Rewards", "desc": "Complete challenges, earn badges, and unlock special prizes." }
+    ],
+    "challenges": [
+      { "icon": "🌟", "title": "Story Explorer", "desc": "Read 3 books from different genres this month." },
+      { "icon": "✍️", "title": "Young Author", "desc": "Write and illustrate your own short story." },
+      { "icon": "🎭", "title": "Book Character Day", "desc": "Dress up as a favorite character and tell us why you chose them." }
+    ],
+    "rewards": [
+      { "icon": "🏅", "title": "Bronze Reader", "desc": "Complete 5 books" },
+      { "icon": "🥈", "title": "Silver Scholar", "desc": "15 books + 2 challenges" },
+      { "icon": "🥇", "title": "Gold Genius", "desc": "30 books + all missions" },
+      { "icon": "🎁", "title": "Mystery Prize", "desc": "Unlocked at Gold tier" }
+    ],
+    "benefits": [
+      "Weekly guided reading sessions with trained story guides",
+      "Access to all curated book collections for your child's age group",
+      "Free entry to all Nookly events — storytelling, workshops, and parades",
+      "Monthly progress report and personalized reading recommendations",
+      "Birthday surprise — a special book and badge on your child's big day",
+      "Exclusive parent workshops on raising confident readers"
+    ]
+  },
+  "events_page": {
+    "hero_badge": "Upcoming Fun",
+    "hero_desc": "From magical storytelling to creative competitions — there's always something exciting at Nookly.",
+    "regular_events": [
+      { "icon": "🌟", "tag": "Storytelling", "title": "Stories Under the Stars", "desc": "Outdoor evening tales with blankets and hot chocolate. Every Friday, 6 PM. Ages 4–8.", "schedule": "Fridays, 6 PM" },
+      { "icon": "📚", "tag": "Reading", "title": "Silent Reading Mornings", "desc": "Cozy, quiet reading time with themed book baskets. Saturdays, 9–11 AM. All ages.", "schedule": "Saturdays, 9 AM" },
+      { "icon": "🎤", "tag": "Guest", "title": "Guest Storyteller Hour", "desc": "Local authors and performers bring stories to life. Monthly on the first Sunday. Ages 6–12.", "schedule": "1st Sunday, 2 PM" }
+    ],
+    "special_events": [
+      { "icon": "🎃", "tag": "Holiday", "title": "Halloween Book Parade", "desc": "Dress as your favorite character and trick-or-treat for books! Oct 31st, 4 PM." },
+      { "icon": "🎄", "tag": "Holiday", "title": "Winter Story Camp", "desc": "A week of crafts, cocoa, and holiday tales. Dec 20–24, daily 10 AM–1 PM." },
+      { "icon": "🏆", "tag": "Competition", "title": "Young Writers' Contest", "desc": "Submit your original short story by Aug 15th. Prizes for ages 6–12!" }
+    ],
+    "cta_text": "Join Nookly and get free access to all events, plus early registration for special activities."
+  },
+  "contact": {
+    "hero_badge": "We'd Love to Hear from You",
+    "hero_desc": "Have a question, want to visit, or just say hi? Drop us a message — we're all ears.",
+    "address": "123 Storybook Lane, Imagination City, IC 00000",
+    "email": "hello@nookly.com",
+    "phone": "+1 (555) 123-4567",
+    "opening_hours": [
+      { "day": "Monday – Friday", "time": "9:00 AM – 6:00 PM" },
+      { "day": "Saturday", "time": "9:00 AM – 4:00 PM" },
+      { "day": "Sunday", "time": "10:00 AM – 2:00 PM" }
+    ],
+    "social_links": [
+      { "icon": "📸", "label": "Instagram", "url": "#" },
+      { "icon": "📘", "label": "Facebook", "url": "#" },
+      { "icon": "🐦", "label": "Twitter / X", "url": "#" },
+      { "icon": "🎥", "label": "YouTube", "url": "#" }
+    ],
+    "faq": [
+      { "question": "How do I sign up for a membership?", "answer": "Click any \"Become a Member\" button on our site, choose your plan, and fill out the short form. You'll get a welcome email with everything you need within minutes." },
+      { "question": "Can I visit Nookly without a membership?", "answer": "Yes! Drop-in visits are welcome during opening hours. You can browse the library, join a trial reading session, and explore the space before deciding to join." },
+      { "question": "What age groups does Nookly cater to?", "answer": "Our programmes are designed for children aged 4–12, split into three groups: 4–6, 7–9, and 10–12. We also have a toddler play area for younger siblings." },
+      { "question": "Do parents need to stay during sessions?", "answer": "For children under 7, we ask a parent or guardian to remain on the premises. For older children, you're welcome to drop off or relax in our parent café with free Wi‑Fi." },
+      { "question": "Can I cancel my membership anytime?", "answer": "Absolutely. All memberships are month‑to‑month with no long‑term commitment. Cancel anytime from your account dashboard or by emailing us." }
+    ],
+    "cta_text": "Sign up today and unlock a world of stories, events, and community."
+  }
+}
