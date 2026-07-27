@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nookly Events - Storytelling, reading sessions, holiday activities, competitions, and our full event calendar.">
+  <title>Events – Nookly</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #3B6FFF;
+      --coral: #FF5E7A;
+      --lime: #7ED957;
+      --yellow: #FFD23F;
+      --purple: #B388FF;
+      --peach: #FFB08A;
+      --bg: #FFFDF9;
+      --white: #FFFFFF;
+      --text: #1A1D2E;
+      --text-light: #4A4E5E;
+      --border: #E6E1D6;
+      --radius: 28px;
+      --font: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    h1 { font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; }
+    h2 { font-size: clamp(2rem, 4.5vw, 3.5rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; }
+    h3 { font-size: 1.5rem; font-weight: 700; }
+    p { font-size: 1.15rem; color: var(--text-light); max-width: 600px; }
+
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+    .section { padding: 100px 24px; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 18px 36px; border-radius: 40px; font-weight: 700; font-size: 1rem;
+      transition: all 0.25s ease; cursor: pointer; text-decoration: none; border: none;
+      color: white;
+    }
+    .btn-primary { background: var(--blue); box-shadow: 0 8px 20px rgba(59,111,255,0.25); }
+    .btn-primary:hover { background: #2B5CEB; transform: translateY(-3px); box-shadow: 0 12px 28px rgba(59,111,255,0.4); }
+    .btn-coral { background: var(--coral); box-shadow: 0 8px 20px rgba(255,94,122,0.25); }
+    .btn-coral:hover { background: #E84D68; transform: translateY(-3px); box-shadow: 0 12px 28px rgba(255,94,122,0.4); }
+
+    /* NAV */
+    .nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      background: var(--white); border-bottom: 1px solid var(--border);
+      padding: 0 24px; height: 80px; display: flex; align-items: center;
+    }
+    .nav-inner {
+      width: 100%; max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.8rem; color: var(--text); }
+    .logo-icon {
+      width: 40px; height: 40px; background: var(--blue); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; color: white;
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-weight: 600; color: var(--text); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-links a.active { color: var(--blue); font-weight: 700; }
+
+    /* PAGE HERO */
+    .page-hero {
+      padding: 160px 24px 100px;
+      background: #F8F0FF; /* soft purple tint */
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero h1 { color: var(--text); }
+    .page-hero h1 em { font-style: normal; color: var(--purple); }
+    .bg-shape-hero {
+      position: absolute; bottom: -60px; left: -40px; width: 300px; height: 300px;
+      background: var(--yellow); border-radius: 50px; transform: rotate(30deg); z-index: 0;
+      opacity: 0.3;
+    }
+
+    /* Section backgrounds */
+    .bg-warm-yellow { background: #FFF8E7; }
+    .bg-warm-green { background: #F0FFE8; }
+    .bg-warm-purple { background: #F8F0FF; }
+    .bg-warm-coral { background: #FFF0EE; }
+    .bg-warm-peach { background: #FFF4EC; }
+    .bg-white { background: white; }
+
+    /* EVENT CARDS */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .event-card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+      transition: transform 0.3s;
+    }
+    .event-card:hover { transform: translateY(-6px); }
+    .event-img {
+      height: 160px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; color: white;
+    }
+    .event-img.s1 { background: var(--coral); }
+    .event-img.s2 { background: var(--lime); }
+    .event-img.s3 { background: var(--purple); }
+    .event-img.s4 { background: var(--yellow); }
+    .event-img.s5 { background: var(--peach); }
+    .event-img.s6 { background: var(--blue); }
+    .event-details { padding: 24px; }
+    .event-tag {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem; font-weight: 700;
+      color: white; margin-bottom: 12px;
+    }
+    .tag-story { background: var(--coral); }
+    .tag-session { background: var(--blue); }
+    .tag-holiday { background: var(--purple); }
+    .tag-comp { background: var(--lime); color: var(--text); }
+
+    /* CALENDAR – simple month grid */
+    .calendar {
+      background: white;
+      border-radius: 32px;
+      padding: 40px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+      margin-top: 40px;
+    }
+    .month-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 32px;
+    }
+    .month-name { font-size: 1.8rem; font-weight: 800; }
+    .days-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 12px;
+      text-align: center;
+    }
+    .day-name { font-weight: 700; color: var(--text-light); padding: 8px 0; }
+    .day {
+      padding: 12px 4px;
+      border-radius: 16px;
+      font-weight: 600;
+      transition: background 0.2s;
+      cursor: pointer;
+    }
+    .day.event-day {
+      background: var(--coral);
+      color: white;
+    }
+    .day.event-day.alt { background: var(--lime); color: var(--text); }
+    .day:hover:not(.empty) { background: #F0F4FF; }
+
+    /* CTA */
+    .cta-banner {
+      background: var(--coral);
+      border-radius: 36px; padding: 60px 40px; text-align: center;
+      color: white;
+      margin-top: 40px;
+    }
+    .cta-banner h2, .cta-banner p { color: white; }
+    .cta-banner .btn { background: white; color: var(--coral); font-weight: 800; }
+    .cta-banner .btn:hover { background: #FFEDF0; }
+
+    /* FOOTER */
+    .footer {
+      background: var(--text); color: white; padding: 60px 24px 30px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+      gap: 40px; margin-bottom: 40px;
+    }
+    .footer a { color: #AAB2C0; transition: color 0.2s; }
+    .footer a:hover { color: white; }
+
+    /* REVEAL ANIMATIONS */
+    .reveal {
+      opacity: 0; transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .reveal.from-left { transform: translateX(-40px); }
+    .reveal.from-right { transform: translateX(40px); }
+    .reveal.from-bottom { transform: translateY(40px); }
+    .reveal.scale-in { transform: scale(0.95); }
+    .reveal.visible { opacity: 1; transform: translate(0) scale(1); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .calendar { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" fill="white" opacity=".8"/><path d="M12 6v12M4 12h16" stroke="white" stroke-width="2"/></svg></div>
+        Nookly
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="library.html">Library</a></li>
+        <li><a href="bookclub.html">Book Club</a></li>
+        <li><a href="events.html" class="active">Events</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="#" class="btn btn-coral">Become a Member</a>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="bg-shape-hero"></div>
+    <div class="container reveal from-bottom">
+      <h1>What's <em>Happening</em></h1>
+      <p style="margin: 20px auto 0; max-width: 650px;">From magical storytelling to creative competitions — there's always something exciting at Nookly.</p>
+    </div>
+  </section>
+
+  <!-- Storytelling & Reading Sessions -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="reveal from-bottom" style="text-align: center; margin-bottom: 40px;">
+        <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--coral);">Regular Events</span>
+        <h2>Storytelling & Reading Sessions</h2>
+      </div>
+      <div class="events-grid">
+        <div class="event-card reveal scale-in">
+          <div class="event-img s1">🌟</div>
+          <div class="event-details">
+            <span class="event-tag tag-story">Storytelling</span>
+            <h3>Stories Under the Stars</h3>
+            <p>Outdoor evening tales with blankets and hot chocolate. Every Friday, 6 PM. Ages 4–8.</p>
+          </div>
+        </div>
+        <div class="event-card reveal scale-in" style="transition-delay:0.1s;">
+          <div class="event-img s2">📚</div>
+          <div class="event-details">
+            <span class="event-tag tag-session">Reading Session</span>
+            <h3>Silent Reading Mornings</h3>
+            <p>Cozy, quiet reading time with themed book baskets. Saturdays, 9–11 AM. All ages.</p>
+          </div>
+        </div>
+        <div class="event-card reveal scale-in" style="transition-delay:0.2s;">
+          <div class="event-img s3">🎤</div>
+          <div class="event-details">
+            <span class="event-tag tag-story">Storytelling</span>
+            <h3>Guest Storyteller Hour</h3>
+            <p>Local authors and performers bring stories to life. Monthly on the first Sunday. Ages 6–12.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Holiday Activities & Competitions -->
+  <section class="section bg-warm-green">
+    <div class="container">
+      <div class="reveal from-bottom" style="text-align: center; margin-bottom: 40px;">
+        <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue);">Special Events</span>
+        <h2>Holiday Activities & Competitions</h2>
+      </div>
+      <div class="events-grid">
+        <div class="event-card reveal scale-in">
+          <div class="event-img s4">🎃</div>
+          <div class="event-details">
+            <span class="event-tag tag-holiday">Holiday</span>
+            <h3>Halloween Book Parade</h3>
+            <p>Dress as your favorite character and trick-or-treat for books! Oct 31st, 4 PM.</p>
+          </div>
+        </div>
+        <div class="event-card reveal scale-in" style="transition-delay:0.1s;">
+          <div class="event-img s5">🎄</div>
+          <div class="event-details">
+            <span class="event-tag tag-holiday">Holiday</span>
+            <h3>Winter Story Camp</h3>
+            <p>A week of crafts, cocoa, and holiday tales. Dec 20–24, daily 10 AM–1 PM.</p>
+          </div>
+        </div>
+        <div class="event-card reveal scale-in" style="transition-delay:0.2s;">
+          <div class="event-img s6">🏆</div>
+          <div class="event-details">
+            <span class="event-tag tag-comp">Competition</span>
+            <h3>Young Writers' Contest</h3>
+            <p>Submit your original short story by Aug 15th. Prizes for ages 6–12!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Event Calendar (visual month grid) -->
+  <section class="section bg-warm-peach">
+    <div class="container">
+      <div class="reveal from-bottom" style="text-align: center; margin-bottom: 40px;">
+        <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue);">Plan Ahead</span>
+        <h2>Event Calendar</h2>
+        <p>Mark your calendars! Here’s a look at this month's key dates.</p>
+      </div>
+      <div class="calendar reveal scale-in">
+        <div class="month-header">
+          <span style="font-weight:700;">◀</span>
+          <span class="month-name">July 2026</span>
+          <span style="font-weight:700;">▶</span>
+        </div>
+        <div class="days-grid">
+          <div class="day-name">Mon</div><div class="day-name">Tue</div><div class="day-name">Wed</div><div class="day-name">Thu</div><div class="day-name">Fri</div><div class="day-name">Sat</div><div class="day-name">Sun</div>
+          <!-- Empty cells for June 29,30 -->
+          <div class="day empty"></div><div class="day empty"></div><div class="day">1</div><div class="day">2</div><div class="day">3</div><div class="day event-day">4</div><div class="day">5</div>
+          <div class="day">6</div><div class="day">7</div><div class="day">8</div><div class="day">9</div><div class="day event-day alt">10</div><div class="day">11</div><div class="day event-day">12</div>
+          <div class="day">13</div><div class="day">14</div><div class="day">15</div><div class="day event-day alt">16</div><div class="day">17</div><div class="day">18</div><div class="day">19</div>
+          <div class="day">20</div><div class="day">21</div><div class="day">22</div><div class="day">23</div><div class="day event-day">24</div><div class="day">25</div><div class="day">26</div>
+          <div class="day">27</div><div class="day">28</div><div class="day">29</div><div class="day">30</div><div class="day event-day alt">31</div><div class="day empty"></div><div class="day empty"></div>
+        </div>
+        <p style="margin-top: 24px; text-align: center; font-weight: 600;">Event days: 4, 10, 12, 16, 24, 31</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="section bg-warm-coral">
+    <div class="container">
+      <div class="cta-banner reveal scale-in">
+        <h2>Don't Miss the Fun!</h2>
+        <p style="margin: 20px auto;">Join Nookly and get free access to all events, plus early registration for special activities.</p>
+        <a href="#" class="btn">Become a Member</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div style="display:flex; align-items:center; gap:10px; font-weight:800; font-size:1.8rem; margin-bottom:16px;">
+            <div class="logo-icon" style="background:var(--coral);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" fill="white" opacity=".8"/><path d="M12 6v12M4 12h16" stroke="white" stroke-width="2"/></svg></div> Nookly
+          </div>
+          <p style="color:#AAB2C0;">Where curious minds grow.</p>
+        </div>
+        <div><h4 style="color:white; margin-bottom:16px;">Explore</h4><a href="about.html">About</a><br><a href="library.html">Library</a><br><a href="bookclub.html">Book Club</a></div>
+        <div><h4 style="color:white; margin-bottom:16px;">Connect</h4><a href="events.html">Events</a><br><a href="contact.html">Contact</a><br><a href="#">Instagram</a></div>
+        <div><h4 style="color:white; margin-bottom:16px;">Visit</h4><p style="color:#AAB2C0;">123 Storybook Lane<br>Imagination City, IC 00000</p></div>
+      </div>
+      <div style="text-align:center; border-top:1px solid rgba(255,255,255,0.1); padding-top:30px; color:#AAB2C0;">
+        © 2026 Nookly. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
