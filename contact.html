@@ -1,497 +1,503 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Contact Nookly - Get in touch, find us, check opening hours, and read our FAQ.">
-  <title>Contact – Nookly</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --blue: #3B6FFF;
-      --coral: #FF5E7A;
-      --lime: #7ED957;
-      --yellow: #FFD23F;
-      --purple: #B388FF;
-      --peach: #FFB08A;
-      --bg: #FFFDF9;
-      --white: #FFFFFF;
-      --text: #1A1D2E;
-      --text-light: #4A4E5E;
-      --border: #E6E1D6;
-      --radius: 28px;
-      --font: 'Plus Jakarta Sans', sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Nookly – Get in touch, find us, check opening hours, and read our FAQ.">
+    <title>Contact – Nookly</title>
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font);
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.5;
-      overflow-x: hidden;
-    }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    h1 { font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; }
-    h2 { font-size: clamp(2rem, 4.5vw, 3.5rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; }
-    h3 { font-size: 1.5rem; font-weight: 700; }
-    p { font-size: 1.15rem; color: var(--text-light); max-width: 600px; }
-
-    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
-    .section { padding: 100px 24px; }
-
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      padding: 18px 36px; border-radius: 40px; font-weight: 700; font-size: 1rem;
-      transition: all 0.25s ease; cursor: pointer; text-decoration: none; border: none;
-      color: white;
-    }
-    .btn-primary { background: var(--blue); box-shadow: 0 8px 20px rgba(59,111,255,0.25); }
-    .btn-primary:hover { background: #2B5CEB; transform: translateY(-3px); box-shadow: 0 12px 28px rgba(59,111,255,0.4); }
-    .btn-coral { background: var(--coral); box-shadow: 0 8px 20px rgba(255,94,122,0.25); }
-    .btn-coral:hover { background: #E84D68; transform: translateY(-3px); box-shadow: 0 12px 28px rgba(255,94,122,0.4); }
-
-    /* NAV */
-    .nav {
-      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
-      background: var(--white); border-bottom: 1px solid var(--border);
-      padding: 0 24px; height: 80px; display: flex; align-items: center;
-    }
-    .nav-inner {
-      width: 100%; max-width: 1200px; margin: 0 auto;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.8rem; color: var(--text); }
-    .logo-icon {
-      width: 40px; height: 40px; background: var(--blue); border-radius: 12px;
-      display: flex; align-items: center; justify-content: center; color: white;
-    }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a { font-weight: 600; color: var(--text); transition: color 0.2s; }
-    .nav-links a:hover { color: var(--blue); }
-    .nav-links a.active { color: var(--blue); font-weight: 700; }
-
-    /* PAGE HERO */
-    .page-hero {
-      padding: 160px 24px 100px;
-      background: #F0FFE8; /* soft lime tint */
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .page-hero h1 { color: var(--text); }
-    .page-hero h1 em { font-style: normal; color: var(--lime); }
-    .bg-shape-hero {
-      position: absolute; top: -50px; right: -30px; width: 260px; height: 260px;
-      background: var(--coral); border-radius: 50px; transform: rotate(20deg); z-index: 0;
-      opacity: 0.25;
-    }
-
-    /* Section backgrounds */
-    .bg-warm-yellow { background: #FFF8E7; }
-    .bg-warm-green { background: #F0FFE8; }
-    .bg-warm-purple { background: #F8F0FF; }
-    .bg-warm-coral { background: #FFF0EE; }
-    .bg-white { background: white; }
-
-    /* CONTACT FORM + INFO GRID */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 60px;
-      margin-top: 40px;
-    }
-    .contact-form {
-      background: white;
-      border-radius: 32px;
-      padding: 40px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
-    }
-    .form-group { margin-bottom: 20px; }
-    .form-group label {
-      display: block; font-weight: 700; margin-bottom: 8px;
-      font-size: 0.95rem; color: var(--text);
-    }
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      width: 100%; padding: 16px 20px;
-      border: 2px solid var(--border);
-      border-radius: 16px;
-      font-family: var(--font); font-size: 1rem;
-      background: #FDFCF8; transition: border-color 0.2s;
-    }
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      outline: none; border-color: var(--blue);
-    }
-    .form-group textarea { resize: vertical; min-height: 120px; }
-
-    .info-sidebar {
-      display: flex; flex-direction: column; gap: 24px;
-    }
-    .info-card {
-      background: white;
-      border-radius: 24px;
-      padding: 28px 24px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.03);
-      display: flex; align-items: flex-start; gap: 16px;
-      transition: transform 0.3s;
-    }
-    .info-card:hover { transform: translateY(-4px); }
-    .info-icon {
-      width: 48px; height: 48px; border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 24px; flex-shrink: 0;
-    }
-    .info-icon.i1 { background: #FFF0D9; }
-    .info-icon.i2 { background: #E8F5FF; }
-    .info-icon.i3 { background: #F3F0FF; }
-
-    /* MAP PLACEHOLDER */
-    .map-placeholder {
-      background: var(--peach);
-      border-radius: 32px;
-      height: 280px;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
-      margin-top: 40px;
-    }
-
-    /* OPENING HOURS */
-    .hours-list {
-      max-width: 500px; margin: 40px auto 0;
-      display: flex; flex-direction: column; gap: 12px;
-    }
-    .hours-row {
-      display: flex; justify-content: space-between;
-      background: white; padding: 18px 24px;
-      border-radius: 18px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-      font-weight: 600;
-    }
-    .hours-row .day { color: var(--text); }
-    .hours-row .time { color: var(--blue); }
-
-    /* SOCIAL PILLS */
-    .social-pills {
-      display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
-      margin-top: 30px;
-    }
-    .social-pill {
-      display: flex; align-items: center; gap: 8px;
-      background: white; padding: 14px 24px;
-      border-radius: 40px; font-weight: 700;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-      transition: all 0.25s; text-decoration: none; color: var(--text);
-    }
-    .social-pill:hover { background: var(--blue); color: white; transform: translateY(-3px); }
-
-    /* FAQ */
-    .faq-list {
-      max-width: 750px; margin: 40px auto 0;
-      display: flex; flex-direction: column; gap: 12px;
-    }
-    .faq-item {
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-      overflow: hidden;
-    }
-    .faq-question {
-      width: 100%; padding: 20px 24px;
-      font-family: var(--font); font-size: 1.1rem; font-weight: 700;
-      text-align: left; border: none; background: none;
-      cursor: pointer; display: flex; justify-content: space-between; align-items: center;
-      color: var(--text);
-    }
-    .faq-question span { font-size: 1.5rem; transition: transform 0.3s; }
-    .faq-item.open .faq-question span { transform: rotate(45deg); }
-    .faq-answer {
-      max-height: 0; overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.4s ease;
-      padding: 0 24px;
-    }
-    .faq-item.open .faq-answer {
-      max-height: 300px;
-      padding: 0 24px 20px;
-    }
-    .faq-answer p { font-size: 1rem; }
-
-    /* CTA */
-    .cta-banner {
-      background: var(--blue);
-      border-radius: 36px; padding: 60px 40px; text-align: center;
-      color: white;
-      margin-top: 40px;
-    }
-    .cta-banner h2, .cta-banner p { color: white; }
-    .cta-banner .btn { background: white; color: var(--blue); font-weight: 800; }
-    .cta-banner .btn:hover { background: #EBF1FF; }
-
-    /* FOOTER */
-    .footer {
-      background: var(--text); color: white; padding: 60px 24px 30px;
-    }
-    .footer-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
-      gap: 40px; margin-bottom: 40px;
-    }
-    .footer a { color: #AAB2C0; transition: color 0.2s; }
-    .footer a:hover { color: white; }
-
-    /* REVEAL ANIMATIONS */
-    .reveal {
-      opacity: 0; transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-    .reveal.from-left { transform: translateX(-40px); }
-    .reveal.from-right { transform: translateX(40px); }
-    .reveal.from-bottom { transform: translateY(40px); }
-    .reveal.scale-in { transform: scale(0.95); }
-    .reveal.visible { opacity: 1; transform: translate(0) scale(1); }
-
-    @media (max-width: 768px) {
-      .contact-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Navigation -->
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="index.html" class="logo">
-        <div class="logo-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" fill="white" opacity=".8"/><path d="M12 6v12M4 12h16" stroke="white" stroke-width="2"/></svg></div>
-        Nookly
-      </a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="library.html">Library</a></li>
-        <li><a href="bookclub.html">Book Club</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
-      </ul>
-      <a href="#" class="btn btn-coral">Become a Member</a>
-    </div>
-  </nav>
-
-  <!-- Page Hero -->
-  <section class="page-hero">
-    <div class="bg-shape-hero"></div>
-    <div class="container reveal from-bottom">
-      <h1>Let's <em>Talk</em></h1>
-      <p style="margin: 20px auto 0; max-width: 650px;">Have a question or want to visit? Drop us a message, give us a call, or stop by — we'd love to meet you.</p>
-    </div>
-  </section>
-
-  <!-- Contact Form + Info Sidebar -->
-  <section class="section bg-white">
-    <div class="container">
-      <div class="reveal from-bottom" style="text-align: center; margin-bottom: 30px;">
-        <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--coral);">Get In Touch</span>
-        <h2>Send Us a Message</h2>
-      </div>
-      <div class="contact-grid">
-        <!-- Form -->
-        <div class="contact-form reveal from-left">
-          <form action="#" method="POST">
-            <div class="form-group">
-              <label for="name">Your Name *</label>
-              <input type="text" id="name" name="name" placeholder="e.g. Priya Sharma" required>
-            </div>
-            <div class="form-group">
-              <label for="email">Email Address *</label>
-              <input type="email" id="email" name="email" placeholder="e.g. priya@example.com" required>
-            </div>
-            <div class="form-group">
-              <label for="topic">What's this about?</label>
-              <select id="topic" name="topic">
-                <option value="">Select a topic</option>
-                <option value="membership">Membership Questions</option>
-                <option value="events">Events & Workshops</option>
-                <option value="bookclub">Book Club</option>
-                <option value="visit">Planning a Visit</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="message">Your Message *</label>
-              <textarea id="message" name="message" placeholder="Tell us how we can help..." required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
-          </form>
-        </div>
-
-        <!-- Info Sidebar -->
-        <div class="info-sidebar">
-          <div class="info-card reveal from-right">
-            <div class="info-icon i1">📍</div>
-            <div>
-              <h4>Visit Us</h4>
-              <p style="font-size:0.95rem;">123 Storybook Lane<br>Imagination City, IC 00000</p>
-            </div>
-          </div>
-          <div class="info-card reveal from-right" style="transition-delay:0.1s;">
-            <div class="info-icon i2">📧</div>
-            <div>
-              <h4>Email</h4>
-              <p style="font-size:0.95rem;">hello@nookly.com</p>
-            </div>
-          </div>
-          <div class="info-card reveal from-right" style="transition-delay:0.2s;">
-            <div class="info-icon i3">📞</div>
-            <div>
-              <h4>Phone</h4>
-              <p style="font-size:0.95rem;">+1 (555) 123-4567</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Map Placeholder -->
-  <section class="section bg-warm-green" style="padding-top: 0;">
-    <div class="container">
-      <div class="map-placeholder reveal scale-in">
-        <div style="text-align: center; color: white;">
-          <span style="font-size: 3rem;">🗺️</span>
-          <p style="color: white; font-weight: 700; font-size: 1.2rem;">Map Placeholder</p>
-          <p style="color: rgba(255,255,255,0.85);">Embed your Google Map or illustration here</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Opening Hours -->
-  <section class="section bg-warm-yellow">
-    <div class="container">
-      <div class="reveal from-bottom" style="text-align: center; margin-bottom: 30px;">
-        <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue);">When We're Open</span>
-        <h2>Opening Hours</h2>
-      </div>
-      <div class="hours-list">
-        <div class="hours-row reveal from-left">
-          <span class="day">Monday – Friday</span>
-          <span class="time">9:00 AM – 6:00 PM</span>
-        </div>
-        <div class="hours-row reveal from-right">
-          <span class="day">Saturday</span>
-          <span class="time">9:00 AM – 4:00 PM</span>
-        </div>
-        <div class="hours-row reveal from-left">
-          <span class="day">Sunday</span>
-          <span class="time">10:00 AM – 2:00 PM</span>
-        </div>
-      </div>
-      <p style="text-align: center; margin-top: 20px;">Closed on public holidays. Special event hours may vary — check our <a href="events.html" style="color: var(--blue); font-weight: 700;">Events page</a>.</p>
-    </div>
-  </section>
-
-  <!-- Social Media -->
-  <section class="section bg-white">
-    <div class="container" style="text-align: center;">
-      <div class="reveal from-bottom">
-        <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--coral);">Follow Along</span>
-        <h2>Social Media</h2>
-        <p>Join our community online for daily book recommendations, event updates, and behind‑the‑scenes fun.</p>
-      </div>
-      <div class="social-pills">
-        <a href="#" class="social-pill reveal scale-in">📸 Instagram</a>
-        <a href="#" class="social-pill reveal scale-in" style="transition-delay:0.05s;">📘 Facebook</a>
-        <a href="#" class="social-pill reveal scale-in" style="transition-delay:0.1s;">🐦 Twitter / X</a>
-        <a href="#" class="social-pill reveal scale-in" style="transition-delay:0.15s;">🎥 YouTube</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="section bg-warm-purple">
-    <div class="container">
-      <div class="reveal from-bottom" style="text-align: center; margin-bottom: 30px;">
-        <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue);">Got Questions?</span>
-        <h2>Frequently Asked Questions</h2>
-      </div>
-      <div class="faq-list">
-        <div class="faq-item reveal from-bottom">
-          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-            How do I sign up for a membership? <span>+</span>
-          </button>
-          <div class="faq-answer"><p>Click any "Become a Member" button on our site, choose your plan, and fill out the short form. You'll get a welcome email with everything you need within minutes.</p></div>
-        </div>
-        <div class="faq-item reveal from-bottom" style="transition-delay:0.05s;">
-          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-            Can I visit Nookly without a membership? <span>+</span>
-          </button>
-          <div class="faq-answer"><p>Yes! Drop-in visits are welcome during opening hours. You can browse the library, join a trial reading session, and explore the space before deciding to join.</p></div>
-        </div>
-        <div class="faq-item reveal from-bottom" style="transition-delay:0.1s;">
-          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-            What age groups does Nookly cater to? <span>+</span>
-          </button>
-          <div class="faq-answer"><p>Our programmes are designed for children aged 4–12, split into three groups: 4–6, 7–9, and 10–12. We also have a toddler play area for younger siblings.</p></div>
-        </div>
-        <div class="faq-item reveal from-bottom" style="transition-delay:0.15s;">
-          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-            Do parents need to stay during sessions? <span>+</span>
-          </button>
-          <div class="faq-answer"><p>For children under 7, we ask a parent or guardian to remain on the premises. For older children, you're welcome to drop off or relax in our parent café with free Wi‑Fi.</p></div>
-        </div>
-        <div class="faq-item reveal from-bottom" style="transition-delay:0.2s;">
-          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-            Can I cancel my membership anytime? <span>+</span>
-          </button>
-          <div class="faq-answer"><p>Absolutely. All memberships are month‑to‑month with no long‑term commitment. Cancel anytime from your account dashboard or by emailing us.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="section bg-warm-coral">
-    <div class="container">
-      <div class="cta-banner reveal scale-in">
-        <h2>Ready to Join the Nookly Family?</h2>
-        <p style="margin: 20px auto;">Sign up today and unlock a world of stories, events, and community.</p>
-        <a href="#" class="btn">Become a Member</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div style="display:flex; align-items:center; gap:10px; font-weight:800; font-size:1.8rem; margin-bottom:16px;">
-            <div class="logo-icon" style="background:var(--coral);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" fill="white" opacity=".8"/><path d="M12 6v12M4 12h16" stroke="white" stroke-width="2"/></svg></div> Nookly
-          </div>
-          <p style="color:#AAB2C0;">Where curious minds grow.</p>
-        </div>
-        <div><h4 style="color:white; margin-bottom:16px;">Explore</h4><a href="about.html">About</a><br><a href="library.html">Library</a><br><a href="bookclub.html">Book Club</a></div>
-        <div><h4 style="color:white; margin-bottom:16px;">Connect</h4><a href="events.html">Events</a><br><a href="contact.html">Contact</a><br><a href="#">Instagram</a></div>
-        <div><h4 style="color:white; margin-bottom:16px;">Visit</h4><p style="color:#AAB2C0;">123 Storybook Lane<br>Imagination City, IC 00000</p></div>
-      </div>
-      <div style="text-align:center; border-top:1px solid rgba(255,255,255,0.1); padding-top:30px; color:#AAB2C0;">
-        © 2026 Nookly. All rights reserved.
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Fredoka"', 'cursive', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#3B6FFF',
+                            blueDark: '#224BDB',
+                            coral: '#FF5E7A',
+                            coralDark: '#E03C58',
+                            lime: '#7ED957',
+                            yellow: '#FFD23F',
+                            yellowDark: '#E5B518',
+                            purple: '#9D65FF',
+                            purpleDark: '#7C3EFF',
+                            peach: '#FFB08A',
+                            mint: '#4EEDC4',
+                            dark: '#1E1B2E',
+                            cream: '#FFFDF9',
+                        }
+                    },
+                    boxShadow: {
+                        'fun': '0 8px 0px 0px #1E1B2E',
+                        'fun-lg': '0 12px 0px 0px #1E1B2E',
+                        'fun-coral': '0 8px 0px 0px #FF5E7A',
+                        'fun-blue': '0 8px 0px 0px #3B6FFF',
+                        'fun-yellow': '0 8px 0px 0px #FFD23F',
+                    },
+                    keyframes: {
+                        wiggle: { '0%, 100%': { transform: 'rotate(-3deg)' }, '50%': { transform: 'rotate(3deg)' } },
+                        floatSlow: { '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' }, '50%': { transform: 'translateY(-14px) rotate(2deg)' } },
+                        floatFast: { '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' }, '50%': { transform: 'translateY(-8px) rotate(-3deg)' } },
+                    },
+                    animation: {
+                        'wiggle': 'wiggle 2s ease-in-out infinite',
+                        'float-slow': 'floatSlow 5s ease-in-out infinite',
+                        'float-fast': 'floatFast 3.5s ease-in-out infinite',
+                    }
+                }
+            }
         }
-      });
-    }, { threshold: 0.15 });
-    reveals.forEach(el => observer.observe(el));
-  </script>
+    </script>
+
+    <style>
+        .bg-noise {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+        }
+        .paper-card {
+            background-color: #FFFFFF;
+            border: 3px solid #1E1B2E;
+            box-shadow: 6px 6px 0px 0px #1E1B2E;
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .paper-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0px 0px #1E1B2E;
+        }
+        .btn-bounce {
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 3px solid #1E1B2E;
+        }
+        .btn-bounce:hover {
+            transform: translate(-3px, -3px) scale(1.02);
+            box-shadow: 7px 7px 0px 0px #1E1B2E;
+        }
+        .btn-bounce:active {
+            transform: translate(2px, 2px) scale(0.98);
+            box-shadow: 2px 2px 0px 0px #1E1B2E;
+        }
+        .reveal-pop {
+            opacity: 0;
+            transform: scale(0.85) translateY(30px);
+            transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .reveal-pop.visible {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+        .magic-particle {
+            pointer-events: none;
+            position: fixed;
+            border-radius: 50%;
+            animation: particleFade 0.8s forwards ease-out;
+            z-index: 9999;
+        }
+        @keyframes particleFade {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0.2) translateY(-20px); }
+        }
+        /* FAQ accordion styles */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 200px;
+        }
+    </style>
+</head>
+<body class="bg-brand-cream text-brand-dark font-sans bg-noise selection:bg-brand-yellow selection:text-brand-dark overflow-x-hidden">
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="fixed top-0 left-0 right-0 z-50 px-4 py-3 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto">
+            <div class="bg-white/90 backdrop-blur-md border-3 border-brand-dark rounded-full px-6 py-3 shadow-fun flex items-center justify-between">
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 bg-brand-blue border-2 border-brand-dark rounded-2xl flex items-center justify-center text-white shadow-[3px_3px_0px_0px_#1E1B2E] group-hover:rotate-12 transition-transform duration-300">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="transform -rotate-6">
+                            <path d="M4 6h16v12H4z" fill="white" opacity=".9"/>
+                            <path d="M12 6v12M4 12h16" stroke="#1E1B2E" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <span class="font-display font-bold text-2xl tracking-wide text-brand-dark">Nookly<span class="text-brand-coral">.</span></span>
+                </a>
+                <ul class="hidden md:flex items-center gap-7 font-bold text-sm text-brand-dark">
+                    <li><a href="index.html" class="hover:text-brand-blue transition-colors">Home</a></li>
+                    <li><a href="about.html" class="hover:text-brand-blue transition-colors">About</a></li>
+                    <li><a href="library.html" class="hover:text-brand-blue transition-colors">Library</a></li>
+                    <li><a href="bookclub.html" class="hover:text-brand-blue transition-colors">Book Club</a></li>
+                    <li><a href="events.html" class="hover:text-brand-blue transition-colors">Events</a></li>
+                    <li><a href="contact.html" class="text-brand-blue underline decoration-brand-mint decoration-4 underline-offset-4">Contact</a></li>
+                </ul>
+                <div class="hidden sm:block">
+                    <a href="#membership" class="btn-bounce bg-brand-coral text-white font-display font-bold text-sm py-2.5 px-6 rounded-full shadow-fun-coral flex items-center gap-2">
+                        <span>Become a Member</span>
+                        <span>✨</span>
+                    </a>
+                </div>
+                <button class="md:hidden w-10 h-10 border-2 border-brand-dark rounded-xl bg-brand-yellow flex items-center justify-center font-bold">
+                    🍔
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== PAGE HERO ===== -->
+    <section class="relative pt-44 pb-24 bg-brand-mint/20 border-b-4 border-brand-dark text-center overflow-hidden">
+        <div class="absolute top-32 left-10 text-6xl animate-float-slow opacity-80 pointer-events-none select-none">💬</div>
+        <div class="absolute bottom-20 right-10 text-6xl animate-float-fast opacity-80 pointer-events-none select-none">📬</div>
+        <div class="max-w-4xl mx-auto px-6 reveal-pop">
+            <span class="inline-block bg-brand-yellow border-2 border-brand-dark px-5 py-2 rounded-full font-display font-bold text-sm uppercase tracking-wider shadow-[3px_3px_0px_0px_#1E1B2E] mb-6">
+                We'd Love to Hear from You
+            </span>
+            <h1 class="font-display font-extrabold text-5xl sm:text-6xl lg:text-7xl text-brand-dark mb-8">
+                Let's <span class="text-brand-mint relative inline-block">
+                    Talk
+                    <svg class="absolute -bottom-2 left-0 w-full h-4 text-brand-coral" viewBox="0 0 200 15" fill="none">
+                        <path d="M2 11C50 3 150 3 198 11" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+                    </svg>
+                </span>
+            </h1>
+            <p class="text-lg sm:text-xl text-brand-dark/70 font-medium max-w-lg mx-auto">
+                Have a question, want to visit, or just say hi? Drop us a message — we're all ears.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT FORM + INFO ===== -->
+    <section class="py-24 bg-brand-cream border-b-4 border-brand-dark">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-5 gap-10">
+                <!-- Form (3/5) -->
+                <div class="lg:col-span-3">
+                    <div class="paper-card rounded-[2.5rem] p-8 bg-white reveal-pop">
+                        <h2 class="font-display font-extrabold text-3xl text-brand-dark mb-8 flex items-center gap-3">
+                            <span class="text-4xl">✉️</span> Send Us a Message
+                        </h2>
+                        <form action="#" method="POST" class="space-y-6">
+                            <div>
+                                <label for="name" class="block font-bold mb-2 text-brand-dark">Your Name *</label>
+                                <input type="text" id="name" name="name" placeholder="e.g. Priya Sharma" required
+                                       class="w-full bg-white border-3 border-brand-dark rounded-2xl px-6 py-4 shadow-fun text-base font-medium outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/30 transition-all">
+                            </div>
+                            <div>
+                                <label for="email" class="block font-bold mb-2 text-brand-dark">Email Address *</label>
+                                <input type="email" id="email" name="email" placeholder="e.g. priya@example.com" required
+                                       class="w-full bg-white border-3 border-brand-dark rounded-2xl px-6 py-4 shadow-fun text-base font-medium outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/30 transition-all">
+                            </div>
+                            <div>
+                                <label for="topic" class="block font-bold mb-2 text-brand-dark">What's this about?</label>
+                                <select id="topic" name="topic"
+                                        class="w-full bg-white border-3 border-brand-dark rounded-2xl px-6 py-4 shadow-fun text-base font-medium outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/30 transition-all">
+                                    <option value="">Select a topic</option>
+                                    <option value="membership">Membership Questions</option>
+                                    <option value="events">Events & Workshops</option>
+                                    <option value="bookclub">Book Club</option>
+                                    <option value="visit">Planning a Visit</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="message" class="block font-bold mb-2 text-brand-dark">Your Message *</label>
+                                <textarea id="message" name="message" rows="5" placeholder="Tell us how we can help..." required
+                                          class="w-full bg-white border-3 border-brand-dark rounded-2xl px-6 py-4 shadow-fun text-base font-medium outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/30 transition-all resize-vertical"></textarea>
+                            </div>
+                            <button type="submit" class="btn-bounce bg-brand-blue text-white font-display font-bold text-lg py-4 px-10 rounded-2xl shadow-fun-blue w-full sm:w-auto flex items-center justify-center gap-2">
+                                <span>Send Message</span>
+                                <span class="text-xl">🚀</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Info Sidebar (2/5) -->
+                <div class="lg:col-span-2 flex flex-col gap-6">
+                    <div class="paper-card rounded-[2rem] p-6 bg-white reveal-pop delay-100 flex items-start gap-4">
+                        <div class="w-12 h-12 bg-brand-peach border-2 border-brand-dark rounded-xl flex items-center justify-center text-2xl shrink-0 shadow-[3px_3px_0px_0px_#1E1B2E]">📍</div>
+                        <div>
+                            <h4 class="font-display font-bold text-lg text-brand-dark">Visit Us</h4>
+                            <p class="text-brand-dark/70 text-sm">123 Storybook Lane<br>Imagination City, IC 00000</p>
+                        </div>
+                    </div>
+                    <div class="paper-card rounded-[2rem] p-6 bg-white reveal-pop delay-150 flex items-start gap-4">
+                        <div class="w-12 h-12 bg-brand-blue border-2 border-brand-dark rounded-xl flex items-center justify-center text-2xl shrink-0 shadow-[3px_3px_0px_0px_#1E1B2E]">📧</div>
+                        <div>
+                            <h4 class="font-display font-bold text-lg text-brand-dark">Email</h4>
+                            <p class="text-brand-dark/70 text-sm">hello@nookly.com</p>
+                        </div>
+                    </div>
+                    <div class="paper-card rounded-[2rem] p-6 bg-white reveal-pop delay-200 flex items-start gap-4">
+                        <div class="w-12 h-12 bg-brand-purple border-2 border-brand-dark rounded-xl flex items-center justify-center text-2xl shrink-0 shadow-[3px_3px_0px_0px_#1E1B2E]">📞</div>
+                        <div>
+                            <h4 class="font-display font-bold text-lg text-brand-dark">Phone</h4>
+                            <p class="text-brand-dark/70 text-sm">+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MAP PLACEHOLDER ===== -->
+    <section class="py-12 bg-brand-peach/10 border-b-4 border-brand-dark">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="paper-card rounded-[2.5rem] bg-brand-peach/30 h-72 flex flex-col items-center justify-center text-center reveal-pop overflow-hidden">
+                <span class="text-6xl mb-3">🗺️</span>
+                <p class="font-display font-extrabold text-2xl text-brand-dark">Map Placeholder</p>
+                <p class="text-brand-dark/70 font-medium">Embed your Google Map or custom illustration here</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== OPENING HOURS ===== -->
+    <section class="py-24 bg-brand-cream border-b-4 border-brand-dark">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-14 reveal-pop">
+                <span class="bg-brand-blue text-white font-display font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full border-2 border-brand-dark shadow-[2px_2px_0px_0px_#1E1B2E] inline-block mb-3">
+                    When We're Open
+                </span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark">
+                    Opening Hours
+                </h2>
+            </div>
+            <div class="space-y-4 max-w-md mx-auto">
+                <div class="paper-card rounded-2xl p-5 bg-white flex justify-between items-center reveal-pop">
+                    <span class="font-bold text-brand-dark">Monday – Friday</span>
+                    <span class="font-bold text-brand-blue">9:00 AM – 6:00 PM</span>
+                </div>
+                <div class="paper-card rounded-2xl p-5 bg-white flex justify-between items-center reveal-pop delay-75">
+                    <span class="font-bold text-brand-dark">Saturday</span>
+                    <span class="font-bold text-brand-lime">9:00 AM – 4:00 PM</span>
+                </div>
+                <div class="paper-card rounded-2xl p-5 bg-white flex justify-between items-center reveal-pop delay-150">
+                    <span class="font-bold text-brand-dark">Sunday</span>
+                    <span class="font-bold text-brand-coral">10:00 AM – 2:00 PM</span>
+                </div>
+            </div>
+            <p class="text-center text-sm text-brand-dark/60 mt-6 font-medium">
+                Closed on public holidays. Special event hours may vary — check our <a href="events.html" class="underline text-brand-blue font-bold">Events page</a>.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== SOCIAL MEDIA ===== -->
+    <section class="py-20 bg-brand-yellow/10 border-b-4 border-brand-dark">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <div class="reveal-pop mb-10">
+                <span class="bg-brand-coral text-white font-display font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full border-2 border-brand-dark shadow-[2px_2px_0px_0px_#1E1B2E] inline-block mb-3">
+                    Follow Along
+                </span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark mb-4">
+                    Social Media
+                </h2>
+                <p class="text-lg text-brand-dark/70 font-medium">
+                    Join our community online for daily book recommendations, event updates, and behind‑the‑scenes fun.
+                </p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#" class="btn-bounce bg-white text-brand-dark font-display font-bold px-6 py-4 rounded-full shadow-fun flex items-center gap-3 group hover:bg-brand-blue hover:text-white transition-colors reveal-pop">
+                    <span class="text-2xl">📸</span> Instagram
+                </a>
+                <a href="#" class="btn-bounce bg-white text-brand-dark font-display font-bold px-6 py-4 rounded-full shadow-fun flex items-center gap-3 group hover:bg-brand-coral hover:text-white transition-colors reveal-pop delay-75">
+                    <span class="text-2xl">📘</span> Facebook
+                </a>
+                <a href="#" class="btn-bounce bg-white text-brand-dark font-display font-bold px-6 py-4 rounded-full shadow-fun flex items-center gap-3 group hover:bg-brand-purple hover:text-white transition-colors reveal-pop delay-150">
+                    <span class="text-2xl">🐦</span> Twitter / X
+                </a>
+                <a href="#" class="btn-bounce bg-white text-brand-dark font-display font-bold px-6 py-4 rounded-full shadow-fun flex items-center gap-3 group hover:bg-brand-mint hover:text-brand-dark transition-colors reveal-pop delay-225">
+                    <span class="text-2xl">🎥</span> YouTube
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="py-24 bg-brand-cream border-b-4 border-brand-dark">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-14 reveal-pop">
+                <span class="bg-brand-purple text-white font-display font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full border-2 border-brand-dark shadow-[2px_2px_0px_0px_#1E1B2E] inline-block mb-3">
+                    Got Questions?
+                </span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark">
+                    Frequently Asked Questions
+                </h2>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="paper-card rounded-2xl bg-white overflow-hidden reveal-pop faq-item">
+                    <button class="w-full text-left p-5 font-display font-bold text-lg text-brand-dark flex justify-between items-center" onclick="this.parentElement.classList.toggle('open')">
+                        How do I sign up for a membership?
+                        <span class="text-2xl transition-transform duration-300">+</span>
+                    </button>
+                    <div class="faq-answer px-5">
+                        <p class="text-brand-dark/70 pb-5">Click any "Become a Member" button on our site, choose your plan, and fill out the short form. You'll get a welcome email with everything you need within minutes.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="paper-card rounded-2xl bg-white overflow-hidden reveal-pop delay-75 faq-item">
+                    <button class="w-full text-left p-5 font-display font-bold text-lg text-brand-dark flex justify-between items-center" onclick="this.parentElement.classList.toggle('open')">
+                        Can I visit Nookly without a membership?
+                        <span class="text-2xl transition-transform duration-300">+</span>
+                    </button>
+                    <div class="faq-answer px-5">
+                        <p class="text-brand-dark/70 pb-5">Yes! Drop-in visits are welcome during opening hours. You can browse the library, join a trial reading session, and explore the space before deciding to join.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="paper-card rounded-2xl bg-white overflow-hidden reveal-pop delay-150 faq-item">
+                    <button class="w-full text-left p-5 font-display font-bold text-lg text-brand-dark flex justify-between items-center" onclick="this.parentElement.classList.toggle('open')">
+                        What age groups does Nookly cater to?
+                        <span class="text-2xl transition-transform duration-300">+</span>
+                    </button>
+                    <div class="faq-answer px-5">
+                        <p class="text-brand-dark/70 pb-5">Our programmes are designed for children aged 4–12, split into three groups: 4–6, 7–9, and 10–12. We also have a toddler play area for younger siblings.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="paper-card rounded-2xl bg-white overflow-hidden reveal-pop delay-200 faq-item">
+                    <button class="w-full text-left p-5 font-display font-bold text-lg text-brand-dark flex justify-between items-center" onclick="this.parentElement.classList.toggle('open')">
+                        Do parents need to stay during sessions?
+                        <span class="text-2xl transition-transform duration-300">+</span>
+                    </button>
+                    <div class="faq-answer px-5">
+                        <p class="text-brand-dark/70 pb-5">For children under 7, we ask a parent or guardian to remain on the premises. For older children, you're welcome to drop off or relax in our parent café with free Wi‑Fi.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="paper-card rounded-2xl bg-white overflow-hidden reveal-pop delay-250 faq-item">
+                    <button class="w-full text-left p-5 font-display font-bold text-lg text-brand-dark flex justify-between items-center" onclick="this.parentElement.classList.toggle('open')">
+                        Can I cancel my membership anytime?
+                        <span class="text-2xl transition-transform duration-300">+</span>
+                    </button>
+                    <div class="faq-answer px-5">
+                        <p class="text-brand-dark/70 pb-5">Absolutely. All memberships are month‑to‑month with no long‑term commitment. Cancel anytime from your account dashboard or by emailing us.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="py-20 bg-brand-coral/10 relative overflow-hidden" id="membership">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="paper-card rounded-[3rem] p-10 md:p-14 bg-brand-yellow/30 text-center reveal-pop relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 text-8xl opacity-20 pointer-events-none select-none">💌</div>
+                <div class="text-5xl mb-4">🌟</div>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark mb-4">
+                    Ready to Join the Nookly Family?
+                </h2>
+                <p class="text-lg text-brand-dark/80 font-medium max-w-lg mx-auto mb-8">
+                    Sign up today and unlock a world of stories, events, and community.
+                </p>
+                <a href="#" class="btn-bounce bg-brand-coral text-white font-display font-bold text-lg py-4 px-8 rounded-2xl shadow-fun-coral inline-flex items-center gap-2">
+                    <span>Become a Member</span>
+                    <span>✨</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-brand-dark text-white pt-20 pb-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div>
+                    <a href="index.html" class="flex items-center gap-3 mb-4 group">
+                        <div class="w-10 h-10 bg-brand-coral border-2 border-white rounded-xl flex items-center justify-center text-white shadow-[3px_3px_0px_0px_#FFF]">
+                            📚
+                        </div>
+                        <span class="font-display font-bold text-2xl tracking-wide text-white">Nookly</span>
+                    </a>
+                    <p class="text-slate-300 font-medium leading-relaxed">
+                        Where curious minds grow. Fostering a love for reading in children worldwide.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-display font-bold text-lg mb-4 text-brand-yellow">Explore</h4>
+                    <ul class="space-y-3 font-medium text-slate-300">
+                        <li><a href="about.html" class="hover:text-brand-coral transition-colors">About</a></li>
+                        <li><a href="library.html" class="hover:text-brand-coral transition-colors">Library</a></li>
+                        <li><a href="bookclub.html" class="hover:text-brand-coral transition-colors">Book Club</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-display font-bold text-lg mb-4 text-brand-mint">Connect</h4>
+                    <ul class="space-y-3 font-medium text-slate-300">
+                        <li><a href="events.html" class="hover:text-brand-coral transition-colors">Events</a></li>
+                        <li><a href="contact.html" class="hover:text-brand-coral transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-brand-coral transition-colors">Instagram</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-display font-bold text-lg mb-4 text-brand-peach">Visit Us</h4>
+                    <p class="text-slate-300 font-medium leading-relaxed mb-3">
+                        123 Storybook Lane<br>
+                        Imagination City, IC 00000
+                    </p>
+                </div>
+            </div>
+            <div class="border-t-2 border-slate-700 pt-8 text-center text-slate-400 font-medium text-sm">
+                © 2026 Nookly. All rights reserved. Made with ✨ for curious kids.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+        // Magic particle trail
+        let lastParticleTime = 0;
+        const colors = ['#FF5E7A', '#3B6FFF', '#FFD23F', '#9D65FF', '#4EEDC4'];
+        document.addEventListener('mousemove', (e) => {
+            const now = Date.now();
+            if (now - lastParticleTime > 50) {
+                lastParticleTime = now;
+                const p = document.createElement('div');
+                p.className = 'magic-particle';
+                const size = Math.random() * 10 + 5;
+                p.style.width = `${size}px`;
+                p.style.height = `${size}px`;
+                p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                p.style.border = '1px solid #1E1B2E';
+                p.style.left = `${e.clientX}px`;
+                p.style.top = `${e.clientY}px`;
+                document.body.appendChild(p);
+                setTimeout(() => p.remove(), 800);
+            }
+        });
+
+        // Reveal animations on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal-pop').forEach(el => observer.observe(el));
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 30) nav.classList.add('py-1'); else nav.classList.remove('py-1');
+        });
+
+        // FAQ toggle – all answers closed on page load
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.classList.remove('open');
+        });
+    </script>
 </body>
 </html>
