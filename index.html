@@ -114,7 +114,7 @@
             box-shadow: 2px 2px 0px 0px #1E1B2E;
         }
 
-        /* Wavy Cutout Mask Effects */
+        /* Wavy Cutout Mask Effects (unused now but kept for other pages) */
         .cutout-mask-circle {
             clip-path: circle(0% at 50% 50%);
             transition: clip-path 1.1s cubic-bezier(0.25, 1, 0.5, 1);
@@ -337,11 +337,53 @@
         </div>
     </section>
 
-    <!-- FEATURED PROGRAMME SECTION -->
+    <!-- ===== VIDEO SHOWCASE SECTION ===== -->
+    <section class="py-20 bg-brand-cream border-b-4 border-brand-dark relative overflow-hidden">
+        <!-- Floating doodles -->
+        <div class="absolute top-10 left-8 text-5xl animate-float-slow opacity-70 pointer-events-none select-none">🎬</div>
+        <div class="absolute bottom-10 right-10 text-4xl animate-wiggle opacity-70 pointer-events-none select-none">🍿</div>
+
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-10 reveal-pop">
+                <span class="inline-block bg-brand-coral text-white font-display font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full border-2 border-brand-dark shadow-[2px_2px_0px_0px_#1E1B2E] mb-4">
+                    See the Magic
+                </span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-brand-dark mb-4">
+                    Watch Nookly in Action ✨
+                </h2>
+                <p class="text-lg text-brand-dark/70 font-medium max-w-xl mx-auto">
+                    Take a peek inside our reading club – storytelling, crafts, and happy readers.
+                </p>
+            </div>
+
+            <!-- Video container (neubrutalist paper-card style) -->
+            <div class="paper-card rounded-[2.5rem] p-4 sm:p-6 bg-white reveal-pop relative overflow-hidden max-w-3xl mx-auto">
+                <!-- 16:9 aspect ratio wrapper -->
+                <div class="relative w-full rounded-2xl overflow-hidden border-3 border-brand-dark shadow-fun bg-brand-dark" style="padding-top: 56.25%;">
+                    <!-- Replace the YouTube embed URL with your real Nookly video -->
+                    <iframe 
+                        class="absolute inset-0 w-full h-full"
+                        src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?si=Example" 
+                        title="Nookly video"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <!-- Fun caption -->
+                <p class="text-center mt-4 font-display font-bold text-sm text-brand-dark/60">
+                    🎥 A typical Saturday morning at Nookly
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED PROGRAMME SECTION (now always visible, gap fixed) -->
     <section class="py-24 bg-brand-mint/20 relative border-b-4 border-brand-dark overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
             
-            <div class="paper-card rounded-[3rem] p-8 md:p-14 bg-white relative overflow-hidden cutout-mask-circle" id="featured-cutout">
+            <div class="paper-card rounded-[3rem] p-8 md:p-14 bg-white relative overflow-hidden reveal-pop">
                 
                 <!-- Corner Decorative Doodle -->
                 <div class="absolute top-4 right-6 text-3xl opacity-40">✨</div>
